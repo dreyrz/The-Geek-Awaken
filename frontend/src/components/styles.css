@@ -1,0 +1,51 @@
+.listaCat{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #414141;
+}
+.liCFilho {
+    float: left;
+}
+.liCFilho a {
+    display: flex;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+li a:hover{
+    cursor: pointer;
+}
+.listaCat2{
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #414141;
+    display: none;
+    position: absolute;
+    margin-right:0;
+    padding: 0;
+}
+.listaCat2 li{
+    margin-top: 2%;
+    width: 150px;
+    color: white;
+}
+.listaCat2 li p{
+    padding:5%;
+    margin-left: 5%;
+}
+.listaCat2 li:hover{
+    cursor: pointer;
+    background-color: #7a7a7a;
+}
+.liCFilho:hover{
+    background-color: #646464;
+}
+.liCFilho:hover .listaCat2{
+    display: block;
+}
+#inicio{
+    margin-left: 0;
+}
