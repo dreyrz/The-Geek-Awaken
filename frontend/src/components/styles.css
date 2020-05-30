@@ -49,3 +49,37 @@ li a:hover{
 #inicio{
     margin-left: 0;
 }
+.catJogos{
+    height: 400px;
+    width: 300px;
+    flex-direction: column;
+}
+.catFilmes{
+    height: 400px;
+    width: 300px;
+    flex-direction: column;
+}
+.catAnimes{
+    height: 400px;
+    width: 300px;
+    flex-direction: column;
+    
+}
+.container{
+    display:flex;
+    justify-content:space-between;
+    margin-right:5%;
+    margin-left:5%;
+}
+.imageCat{
+    height: 70%;
+}
+.textCat{
+    height: 30%;
+    border-style: solid;
+    overflow-y: scroll;
+}
+.image{
+    height: 100%;
+    width: 100%;
+}
