@@ -20,11 +20,11 @@ export default function Banner() {
                     <InstagramIcon style={{ color: red[50] }} />
                 </a>
 
-                <a className="yt" href='https://www.instagram.com'>
+                <a className="yt" href='https://www.youtube.com'>
                 <YouTubeIcon style={{ color: red[50] }} />
                 </a>
 
-                <a className="tt" href='https://www.instagram.com'>
+                <a className="tt" href='https://www.twitter.com'>
                 <TwitterIcon style={{ color: red[50] }} />
                 </a>
 

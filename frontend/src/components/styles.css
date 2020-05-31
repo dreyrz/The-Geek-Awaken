@@ -169,3 +169,12 @@ li a:hover{
     height: 100%;
     width: 100%;
 }
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    height:300px;
+    width: 200px;
+}
