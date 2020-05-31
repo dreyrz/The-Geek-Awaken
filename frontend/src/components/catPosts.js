@@ -13,7 +13,7 @@ export default function CatPosts(props){
     }
 
     return(
-        <div className="container">
+        <div className="containerOB">
             {vetorCats.map((cat,key)=>(
                 <div onClick={()=>handleClick(cat.id)} className="cats" key={key}>
                     <img className="image" src={cat.image}/>

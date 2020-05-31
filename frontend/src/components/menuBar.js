@@ -3,15 +3,43 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./styles.css"
 
 export default function menuBar(){
-    const menusJogos = ["Uncharted","Mario Kart"]
-    const menusMangas = ["Dragon Ball Z"]
-    const menusFilmes = ["Poderoso Chefão"]
-    const menusSeries = ["13 reasons why"]
-    const menusAnimes = ["Dragon Ball Z","the rising of the shield hero of the mommy"]
+    const menusJogos = ["Ação","Animação","Aventura"
+                            ,"Comédia","Documentário"
+                            ,"Fantasia","Faroeste"
+                            ,"Ficção científica"
+                            ,"Guerra" ,"Musicais"
+                            ,"Romance", "Suspense"
+                            ,"Terror","Tragédia/Drama"]
+    const menusMangas = ["Ação","Animação","Aventura"
+                            ,"Comédia","Documentário"
+                            ,"Fantasia","Faroeste"
+                            ,"Ficção científica"
+                            ,"Guerra" ,"Musicais"
+                            ,"Romance", "Suspense"
+                            ,"Terror","Tragédia/Drama"]
+    const menusFilmes = ["Ação","Animação","Aventura"
+                            ,"Comédia","Documentário"
+                            ,"Fantasia","Faroeste"
+                            ,"Ficção científica"
+                            ,"Guerra" ,"Musicais"
+                            ,"Romance", "Suspense"
+                            ,"Terror","Tragédia/Drama"]
+    const menusSeries = ["Ação","Animação","Aventura"
+                            ,"Comédia","Documentário"
+                            ,"Fantasia","Faroeste"
+                            ,"Ficção científica"
+                            ,"Guerra" ,"Musicais"
+                            ,"Romance", "Suspense"
+                            ,"Terror","Tragédia/Drama"]
+    const menusAnimes = ["Ação","Animação","Aventura"
+                            ,"Comédia","Documentário"
+                            ,"Fantasia","Faroeste"
+                            ,"Ficção científica"
+                            ,"Guerra" ,"Musicais"
+                            ,"Romance", "Suspense"
+                            ,"Terror","Tragédia/Drama"]
 
-    function handleClick(id){
-        window.location=`/post?id=${id}`
-    }
+   
      return (
          <div>
              <ul className="listaCat">

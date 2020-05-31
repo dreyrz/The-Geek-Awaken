@@ -7,6 +7,7 @@
 }
 .liCFilho {
     float: left;
+    margin-left: 3%;
 }
 .liCFilho a {
     display: flex;
@@ -26,6 +27,8 @@ li a:hover{
     position: absolute;
     margin-right:0;
     padding: 0;
+    height: 150px;
+    overflow-y: auto;
 }
 .listaCat2 li{
     margin-top: 2%;
@@ -47,7 +50,7 @@ li a:hover{
     display: block;
 }
 #inicio{
-    margin-left: 0;
+    margin-left: 5%;
 }
 .cats{
     height: 400px;
@@ -57,9 +60,9 @@ li a:hover{
 .title{
     background-color: rgba(34,63,90, 0.75);
     position: absolute;
-    margin-top: -80px;
+    margin-top: -45px;
 }
-.container h3{
+.containerOB h3{
     width: 300px;
     color: rgb(224, 224, 224);
     font-size: 18px;
@@ -69,7 +72,7 @@ li a:hover{
     height: 40px;
     font-family: 'ars-maquette-web', sans-serif;
 }
-.container{
+.containerOB{
     display:flex;
     justify-content:space-between;
     margin-right:5%;
@@ -83,3 +86,90 @@ li a:hover{
     height: 100%;
     width: 100%;
 }
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.container {
+    background-color: black;
+    height: 300px;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    overflow:hidden; 
+
+}
+
+.social {
+    background-color: rgb(70, 69, 69);
+    height:50px;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    
+}
+
+.logo {
+    align-self: center;
+    height:95%;
+    margin-top: 40px;
+    margin-right: 180px;
+    
+}
+
+.ig {
+    height:50px;
+    width:4%;
+    margin-left:5px;
+    margin-right:5px;
+    cursor: pointer;
+    background-color: rgb(81, 127, 164);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: filter;
+}
+
+.ig:hover{
+    filter: brightness(90%)
+}
+
+.yt {
+    height:50px;
+    width:4%;
+    margin-left:5px;
+    margin-right:5px;
+    cursor: pointer;
+    background-color: rgb(187, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: filter;
+}
+
+.yt:hover {
+    filter: brightness(90%)
+}
+
+.tt {
+    height:50px;
+    width:4%;
+    margin-left:1px;
+    margin-right:10px;
+    cursor: pointer;
+    background-color: rgb(0, 172, 237);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: filter;
+}
+
+.tt:hover{
+    filter: brightness(90%)
+}
+

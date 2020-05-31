@@ -1,6 +1,7 @@
 import React from 'react'
 import MenuBar from "../components/menuBar"
 import imagem from "../assets/WhatsApp Image 2020-05-29 at 17.22.47.jpeg"
+import Banner from "../components/banner"
 import "./styles.css"
 
 export default function PostView(){
@@ -24,6 +25,7 @@ export default function PostView(){
 
     return(
         <div>
+            <Banner/>
             <MenuBar/>
             <div className="containerPost">
                 <div className="containerTitle"><h1>{post.titulo}</h1></div>
