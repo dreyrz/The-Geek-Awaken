@@ -49,21 +49,25 @@ li a:hover{
 #inicio{
     margin-left: 0;
 }
-.catJogos{
+.cats{
     height: 400px;
     width: 300px;
-    flex-direction: column;
+    cursor: pointer;
 }
-.catFilmes{
-    height: 400px;
-    width: 300px;
-    flex-direction: column;
+.title{
+    background-color: rgba(34,63,90, 0.75);
+    position: absolute;
+    margin-top: -80px;
 }
-.catAnimes{
-    height: 400px;
+.container h3{
     width: 300px;
-    flex-direction: column;
-    
+    color: rgb(224, 224, 224);
+    font-size: 18px;
+    line-height: 1.21em;
+    font-weight: 900;
+    margin-left: 6%;
+    height: 40px;
+    font-family: 'ars-maquette-web', sans-serif;
 }
 .container{
     display:flex;
@@ -71,12 +75,8 @@ li a:hover{
     margin-right:5%;
     margin-left:5%;
 }
-.imageCat{
-    height: 70%;
-}
 .textCat{
     height: 30%;
-    border-style: solid;
     overflow-y: scroll;
 }
 .image{
