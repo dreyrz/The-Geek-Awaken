@@ -1,12 +1,37 @@
 import React from 'react'
 import "./styles.css"
 import imagem from "../assets/WhatsApp Image 2020-05-29 at 17.22.47.jpeg"
+import firebase from "../firebase"
 
 export default function CatPosts(props){
-    const vetorCats = [{image:imagem,title:'THE GOD OF HIGH SCHOOL',id:"imagem1"},
-                        {image:imagem,title:'THE GOD OF HIGH SCHOOL',id:"imagem2"},
-                        {image:imagem,title:'THE GOD OF HIGH SCHOOL',id:"imagem3"},
-                        {image:imagem,title:'THE GOD OF HIGH SCHOOL',id:"imagem4"}]
+
+    const [cate1,setCat1] = React.useState({imagem:'',titulo:'',id:'anime1'})
+    const [cate2,setCat2] = React.useState({imagem:'',titulo:'',id:'anime2'})
+    const [cate3,setCat3] = React.useState({imagem:'',titulo:'',id:'anime3'})
+    const [cate4,setCat4] = React.useState({imagem:'',titulo:'',id:'anime4'})
+
+   async  function carregarDados(){
+        await firebase.database().ref('posts/anime1').once('value').then(function(snapshot){
+            setCat1({titulo:snapshot.val().titulo,
+                image:snapshot.val().imagem,id:'anime1'})
+        })
+        await firebase.database().ref('posts/anime2').once('value').then(function(snapshot){
+            setCat2({titulo:snapshot.val().titulo,
+                image:snapshot.val().imagem,id:'anime2'})
+        })
+        await firebase.database().ref('posts/anime3').once('value').then(function(snapshot){
+            setCat3({titulo:snapshot.val().titulo,
+                image:snapshot.val().imagem,id:'anime3'})
+        })
+        await firebase.database().ref('posts/anime4').once('value').then(function(snapshot){
+            setCat4({titulo:snapshot.val().titulo,
+                image:snapshot.val().imagem,id:'anime4'})
+        })
+    }
+    
+    React.useEffect(()=>{
+        carregarDados();
+    },[])
 
     function handleClick(id){
         window.location=`/post?id=${id}`
@@ -14,12 +39,22 @@ export default function CatPosts(props){
 
     return(
         <div className="containerOB">
-            {vetorCats.map((cat,key)=>(
-                <div onClick={()=>handleClick(cat.id)} className="cats" key={key}>
-                    <img className="image" src={cat.image}/>
-                    <div className="title"><h3>{cat.title}</h3></div>
-                </div>
-            ))}
+            <div onClick={()=>handleClick(cate1.id)} className="cats">
+                <img className="image" src={cate1.image}/>
+                <div className="title"><h3>{cate1.titulo}</h3></div>
+            </div>
+            <div onClick={()=>handleClick(cate2.id)} className="cats">
+                <img className="image" src={cate2.image}/>
+                <div className="title"><h3>{cate2.titulo}</h3></div>
+            </div>
+            <div onClick={()=>handleClick(cate3.id)} className="cats">
+                <img className="image" src={cate3.image}/>
+                <div className="title"><h3>{cate3.titulo}</h3></div>
+            </div>
+            <div onClick={()=>handleClick(cate4.id)} className="cats">
+                <img className="image" src={cate4.image}/>
+                <div className="title"><h3>{cate4.titulo}</h3></div>
+            </div>
         </div>
     )
 }
