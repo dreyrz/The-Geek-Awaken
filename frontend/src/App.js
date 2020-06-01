@@ -7,14 +7,17 @@ import ReviewsRecentes from './components/reviewsR'
 
 function App() {
   return (
-    <div>
-        <Banner/>
-        <MenuBar/>
-        <div style={{marginTop:"5%"}}><CatPosts/></div>
-        
+    
+    <div className='body'      >
+      
+      <Banner/>
+      <MenuBar/>
+      <div className="page">
+        <div style={{marginTop:"1%"}}><CatPosts/></div> 
         <div>
           <ReviewsRecentes/>
         </div>
+      </div>
     </div>
   );
 }

@@ -1,47 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     outline: 0;
 }
-body {
-    
-    background-image: url('.././assets/59164.jpg')
-}
-
-.container {
+body{
     background-color: black;
-    height: 300px;
-    width: 100%;
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-   overflow: hidden;
 }
-
-.social {
-    background-color: rgb(70, 69, 69);
-    height:50px;
+.page {
+    background-color:white;
+    margin: 0px 50px 50px 50px;
+}
+.container {
+    background-color: red;
     width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+}
+.logo {
+  height: 200px;
+  width: 100%;
+}
+.listaCat{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #414141;
+}
+.social {
     display:flex;
     flex-direction: row;
     justify-content: flex-end;
+    height: 56px;
 }
-.logoC {
-    height:250px;
-    width: 110%;
-    background-color: yellow;
-}
-.logo {
-    align-self: center;
-  height: 100%;
-  width: 100%;
-}
-
 .ig {
-    height:50px;
-    width:4%;
-    margin-left:5px;
-    margin-right:5px;
+    width:8%;
     cursor: pointer;
     background-color: rgb(81, 127, 164);
     display: flex;
@@ -55,8 +53,8 @@ body {
 }
 
 .yt {
-    height:50px;
-    width:4%;
+    
+    width:8%;
     margin-left:5px;
     margin-right:5px;
     cursor: pointer;
@@ -72,10 +70,9 @@ body {
 }
 
 .tt {
-    height:50px;
-    width:4%;
-    margin-left:1px;
-    margin-right:10px;
+    
+    width:8%;
+    margin-right:5px;
     cursor: pointer;
     background-color: rgb(0, 172, 237);
     display: flex;
@@ -86,14 +83,6 @@ body {
 
 .tt:hover{
     filter: brightness(90%)
-}
-
-.listaCat{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #414141;
 }
 .liCFilho {
     float: left;
@@ -174,35 +163,69 @@ li a:hover{
     height: 100%;
     width: 100%;
 }
-
-.card {
+.containerReviews {
     margin-left: 5%;
+    margin-top: 2%;
+    
+}
+.containerReviews h1 {
+    font-size: 45px;
+    font-family: 'ars-marquete-web', sans-serif;
+    font-weight: 900;
+    color:black;
+    -webkit-font-smoothing: antialised;
+}
+.card {
     margin-top: 2%;
     width: 50%;
     display: flex;
     flex-direction: row;
-    border-radius:5px;
+    border-radius:7px;
     overflow: hidden;
+    background-color: rgb(114, 114, 114);
+    height: 200px;
 }
-
+.card:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
 .cardImage {
     height:200px;
     width: 50%;
     background-color: red;
+    border-radius: 7px;
     
 }
-
+.cardTitle {
+    font: 900 14px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    font-size: 40px;
+    
+}
+.plataform {
+    color: black;
+    font: 500 40px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    margin-top: 18%;
+}
 .nota {
     width: 50px;
     height: 27px;
     background: red;
     position: absolute;
-    font-size: 30px;
     text-align: center;
     display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: red;
+    
   }
+  .notaText {
+    font: 900 25px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    color: white;
+}
 .nota:before {
     content: "";
     position: absolute;
@@ -213,6 +236,7 @@ li a:hover{
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 13px solid red;
+    
   }
 .nota:after {
     content: "";
@@ -225,43 +249,18 @@ li a:hover{
     border-right: 25px solid transparent;
     border-top: 13px solid red;
 }
-.notaN {
-    font-size: 30px;
-    font-weight: 900;
-}
-
-.cardContent {
-    width: 50%;
-    background-color: yellow;
-    height: 200px;
-}
-
-.plataforma {
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.r {
-    margin-left: 5%;
-    margin-top: 5%;
-    font-size: 40px;
-    font-family: 'ars-maquette-web', sans-serif;
-    font-weight: 900;
-    color:#ffff
-}
 .verMaisContainer {
     margin-top: 5%;
+    padding-bottom: 10px;
     height: 80px;
     width: 100%;
-    background-color: rgb(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
-.verMaisText {
-    font-size: 40px;
-    color:#ffff;
+.verMaisContainer h1 {
+    color:black;
     display: inline-block;
-    margin-top: 15px;
+    font: 900 40px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
 
 }
