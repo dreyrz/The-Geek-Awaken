@@ -11,10 +11,8 @@ function App() {
         <Banner/>
         <MenuBar/>
         <div style={{marginTop:"5%"}}><CatPosts/></div>
-        <div style={{marginTop:"5%"}}>
-            <h2>Reviews Recentes</h2>
-        </div>
-        <div style={{marginTop:"5%"}}>
+        
+        <div>
           <ReviewsRecentes/>
         </div>
     </div>
