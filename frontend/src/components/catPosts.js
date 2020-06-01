@@ -34,7 +34,7 @@ export default function CatPosts(props){
     },[])
 
     function handleClick(id){
-        window.location=`/post?id=${id}`
+        window.location=`/postFront?id=${id}`
     }
 
     return(

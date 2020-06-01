@@ -1,31 +1,32 @@
 import React from 'react'
+import firebase from "../firebase"
 import './styles.css'
-import imagem from "../assets/WhatsApp Image 2020-05-29 at 17.22.47.jpeg"
 
 export default function ReviewsRecentes() {
-    const vetorStorage = [
-    { image: imagem, title: '1', id: "imagem1" },
-    { image: imagem, title: '2', id: "imagem2" },
-    { image: imagem, title: '3', id: "imagem3" },
-    { image: imagem, title: '4', id: "imagem4" },
-    { image: imagem, title: '5', id: "imagem3" },
-    { image: imagem, title: '6', id: "imagem4" },
-    { image: imagem, title: '7', id: "imagem1" },
-    { image: imagem, title: '8', id: "imagem2" },
-    { image: imagem, title: '9', id: "imagem3" }]
+    const [vetorStorage,setVetorStorage] = React.useState([])
+    const [vetor,setVetor] = React.useState([])
     const [vetorCats, setVetorCats] = React.useState([])
     const [contador, setContador] = React.useState(0)
     
-    function carregarDados(){
+    async function carregarDados(){
+        let vetorPostsFeedID = []
+        await firebase.database().ref(`posts/feed`).once('value').then(function(snapshot){
+            Object.keys(snapshot.val()).forEach(function(postFeed){
+                vetorPostsFeedID.push(snapshot.val()[postFeed])
+            })
+        })
+
         let vetorAux = [];
         let cont = contador
-        for(cont; cont<vetorStorage.length;cont++){
+        for(cont; cont<vetorPostsFeedID.length;cont++){
             if(cont<4){
-                vetorAux.push(vetorStorage[cont])
+                vetorAux.push(vetorPostsFeedID[cont])
             }
         }
+        console.log(vetorAux)
         setContador(4)
         setVetorCats(vetorAux);
+        setVetorStorage(vetorPostsFeedID)
     }
 
     React.useEffect(()=>{
@@ -33,7 +34,7 @@ export default function ReviewsRecentes() {
     },[])
 
     function handleClick(id) {
-        window.location = `/post?id=${id}`
+        window.location = `/postView?id=${id}`
     }
 
     function verMais() {
@@ -67,10 +68,10 @@ export default function ReviewsRecentes() {
             <div className="r">Reviews Recentes</div>
             {vetorCats.map((cat, key) => (
                 <div className='card' key={key} onClick={() => handleClick(cat.id)} >
-                    <img className="cardImage" alt='card' src={cat.image} />
+                    <img className="cardImage" alt='card' src={cat.imagem} />
 
                     <div className='nota'>
-                        <h1 className="notaN">10</h1>
+                         <h1 className="notaN">{cat.titulo}</h1>
                     </div>
 
                     <div className="cardContent">
