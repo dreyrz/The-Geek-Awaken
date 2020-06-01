@@ -11,7 +11,6 @@ function App() {
         <Banner/>
         <MenuBar/>
         <div style={{marginTop:"5%"}}><CatPosts banco={firebase}/></div>
-        <div style={{marginTop:"5%"}}><h2>Reviews Recentes:</h2></div>   
         <div><ReviewsRecentes/></div>
     </div>
   );

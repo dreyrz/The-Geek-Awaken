@@ -11,21 +11,21 @@ export default function CatPosts(props){
     const [cate4,setCat4] = React.useState({imagem:'',titulo:'',id:'anime4'})
 
    async  function carregarDados(){
-        await firebase.database().ref('posts/anime1').once('value').then(function(snapshot){
+        await firebase.database().ref('posts/postsFront/postFront1').once('value').then(function(snapshot){
             setCat1({titulo:snapshot.val().titulo,
-                image:snapshot.val().imagem,id:'anime1'})
+                image:snapshot.val().imagem,id:'postFront1'})
         })
-        await firebase.database().ref('posts/anime2').once('value').then(function(snapshot){
+        await firebase.database().ref('posts/postsFront/postFront2').once('value').then(function(snapshot){
             setCat2({titulo:snapshot.val().titulo,
-                image:snapshot.val().imagem,id:'anime2'})
+                image:snapshot.val().imagem,id:'postFront2'})
         })
-        await firebase.database().ref('posts/anime3').once('value').then(function(snapshot){
+        await firebase.database().ref('posts/postsFront/postFront3').once('value').then(function(snapshot){
             setCat3({titulo:snapshot.val().titulo,
-                image:snapshot.val().imagem,id:'anime3'})
+                image:snapshot.val().imagem,id:'postFront3'})
         })
-        await firebase.database().ref('posts/anime4').once('value').then(function(snapshot){
+        await firebase.database().ref('posts/postsFront/postFront4').once('value').then(function(snapshot){
             setCat4({titulo:snapshot.val().titulo,
-                image:snapshot.val().imagem,id:'anime4'})
+                image:snapshot.val().imagem,id:'postFront4'})
         })
     }
     
@@ -39,7 +39,6 @@ export default function CatPosts(props){
 
     return(
         <div className="containerOB">
-<<<<<<< HEAD
             <div onClick={()=>handleClick(cate1.id)} className="cats">
                 <img className="image" src={cate1.image}/>
                 <div className="title"><h3>{cate1.titulo}</h3></div>
@@ -56,14 +55,6 @@ export default function CatPosts(props){
                 <img className="image" src={cate4.image}/>
                 <div className="title"><h3>{cate4.titulo}</h3></div>
             </div>
-=======
-            {vetorCats.map((cat,key)=>(
-                <div onClick={()=>handleClick(cat.id)} className="cats" key={key}>
-                    <img className="image" src={cat.image}/>
-                    <div className="title"><h3>{cat.title}</h3></div>
-                </div>
-            ))}
->>>>>>> ar
         </div>
     )
 }

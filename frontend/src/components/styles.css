@@ -238,3 +238,93 @@ body {
     filter: brightness(90%)
 }
 
+.card {
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    border-radius:5px;
+    overflow: hidden;
+}
+
+.cardImage {
+    height:200px;
+    width: 50%;
+    background-color: red;
+    
+}
+
+.nota {
+    width: 50px;
+    height: 27px;
+    background: red;
+    position: absolute;
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+.nota:before {
+    content: "";
+    position: absolute;
+    top: -13px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 13px solid red;
+  }
+.nota:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 13px solid red;
+}
+.notaN {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.cardContent {
+    width: 50%;
+    background-color: yellow;
+    height: 200px;
+}
+
+.plataforma {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.r {
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: 40px;
+    font-family: 'ars-maquette-web', sans-serif;
+    font-weight: 900;
+    color:#ffff
+}
+.verMaisContainer {
+    margin-top: 5%;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(0,0,0,0.5);
+    text-align: center;
+}
+.verMaisText {
+    font-size: 40px;
+    color:#ffff;
+    display: inline-block;
+    margin-top: 15px;
+
+}
