@@ -39,6 +39,7 @@ export default function CatPosts(props){
 
     return(
         <div className="containerOB">
+<<<<<<< HEAD
             <div onClick={()=>handleClick(cate1.id)} className="cats">
                 <img className="image" src={cate1.image}/>
                 <div className="title"><h3>{cate1.titulo}</h3></div>
@@ -55,6 +56,14 @@ export default function CatPosts(props){
                 <img className="image" src={cate4.image}/>
                 <div className="title"><h3>{cate4.titulo}</h3></div>
             </div>
+=======
+            {vetorCats.map((cat,key)=>(
+                <div onClick={()=>handleClick(cat.id)} className="cats" key={key}>
+                    <img className="image" src={cat.image}/>
+                    <div className="title"><h3>{cat.title}</h3></div>
+                </div>
+            ))}
+>>>>>>> ar
         </div>
     )
 }

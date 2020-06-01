@@ -153,6 +153,10 @@ li div:hover{
     padding: 0;
     outline: 0;
 }
+body {
+    
+    background-image: url('.././assets/59164.jpg')
+}
 
 .container {
     background-color: black;
@@ -161,8 +165,7 @@ li div:hover{
     display:flex;
     align-items: center;
     flex-direction: column;
-    overflow:hidden; 
-
+   overflow: hidden;
 }
 
 .social {
@@ -172,16 +175,16 @@ li div:hover{
     display:flex;
     flex-direction: row;
     justify-content: flex-end;
-
-    
 }
-
+.logoC {
+    height:250px;
+    width: 110%;
+    background-color: yellow;
+}
 .logo {
     align-self: center;
-    height:95%;
-    margin-top: 40px;
-    margin-right: 180px;
-    
+  height: 100%;
+  width: 100%;
 }
 
 .ig {

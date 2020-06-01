@@ -3,7 +3,7 @@ import MenuBar from "./components/menuBar"
 import CatPosts from "./components/catPosts"
 import Banner from "./components/banner"
 import firebase from "./firebase"
-
+import ReviewsRecentes from './components/reviewsR'
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
         <Banner/>
         <MenuBar/>
         <div style={{marginTop:"5%"}}><CatPosts banco={firebase}/></div>
-        <div style={{marginTop:"5%"}}><h2>Reviews Recentes:</h2></div>
+        <div style={{marginTop:"5%"}}><h2>Reviews Recentes:</h2></div>   
+        <div><ReviewsRecentes/></div>
     </div>
   );
 }
