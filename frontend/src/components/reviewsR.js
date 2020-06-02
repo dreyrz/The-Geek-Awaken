@@ -64,7 +64,7 @@ export default function ReviewsRecentes() {
     }
     return (
         <div className='containerReviews'>
-            <h1>Reviews Recentes</h1>
+            <h1>Postagens recentes</h1>
             {vetorCats.map((cat, key) => (           
                 <div>
                     <div className="linha"></div>
