@@ -11,6 +11,13 @@
         margin-right: 20%;
         margin-bottom: 3%;
     }
+    .containerPostCat{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: red;
+        margin-bottom: 3%;
+    }
     .containerTitle{
         font-family: "roboto";
         width: 55%;
@@ -73,4 +80,50 @@
         width: 95%;
         height: 300px;
     }
+}
+
+.card {
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    border-radius:7px;
+    height: 200px;
+}
+
+.linha {
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid rgb(78, 76, 76,0.5);
+    margin-top: 2%;
+}
+.verMaisContainer {
+    margin-top: 5%;
+    
+    height: 80px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+.verMaisContainer h1 {
+    color:rgb(197, 197, 197);
+    font: 900 40px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+}
+.card h2 {
+    font: 900 14px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    font-size: 40px;
+    color: rgb(197, 197, 197);
+}
+.card h2:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+.card h4 { 
+    font: 400 25px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    margin-top: 2%; 
+    color: rgb(197, 197, 197);
 }

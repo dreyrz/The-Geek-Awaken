@@ -26,6 +26,7 @@ export default function ReviewsRecentes() {
         setContador(4)
         setVetorCats(vetorAux);
         setVetorStorage(vetorPostsFeedID)
+        console.log(vetorAux)
     }
 
     React.useEffect(()=>{
@@ -67,15 +68,15 @@ export default function ReviewsRecentes() {
             {vetorCats.map((cat, key) => (           
                 <div>
                     <div className="linha"></div>
-                    <div className='card' key={key} onClick={() => handleClick(cat.id)}>
-                    <img className="cardImage" alt='imagem do card' src={cat.image} />                   
-                    <div>
-                        <div>
-                            <h2>The God Of HighSchool</h2>
-                            <h4>Esse manga é a marca do site, e se vocês descobrissem o porquê, ficariam enojados. isso e mt importante apra aprender a fazer com que as pessoas cuidem de sua vidakk</h4>
-                        </div>
-                    </div>                      
-                </div>
+                    <div className='card' >
+                        <img key={key} onClick={() => handleClick(cat.id)} className="cardImage" alt='imagem do card' src={cat.imagem} />             
+                        <div style={{overflowY:"scroll"}}>
+                            <div>
+                                <h2 key={key} onClick={() => handleClick(cat.id)}>{cat.titulo}</h2>
+                                <h4>{cat.textos.texto2}</h4>
+                            </div>
+                        </div>                      
+                 </div>
                 </div>
             ))}
             <div className='verMaisContainer' style={{ cursor: 'pointer' }} onClick={() => verMais()} >

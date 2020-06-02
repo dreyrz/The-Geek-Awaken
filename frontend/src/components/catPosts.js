@@ -9,7 +9,6 @@ export default function CatPosts(props){
     const [vetCats,setVetCats] = React.useState([{imagem:'',titulo:'',id:''}])
 
    async  function carregarDados(){
-       console.log(props)
        let vetAux = []
         await firebase.database().ref('posts/postsFront').once('value').then(function(snapshot){
                 Object.keys(snapshot.val()).forEach(function(postFeed){

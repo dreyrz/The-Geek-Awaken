@@ -2,6 +2,7 @@ import React from 'react'
 import MenuBar from "../components/menuBar"
 import Banner from "../components/banner"
 import firebase from "../firebase"
+import { Link } from "react-router-dom"
 import "./styles.css"
 
 export default function PostCatView(){
@@ -10,6 +11,7 @@ export default function PostCatView(){
     const [post, setPost] = React.useState({images:'', textos:'', titulos:''});
     const [vetor,setVetor] = React.useState([])
     const [obras, setObras] = React.useState([])
+    const [cat, setCat] = React.useState()
 
     async function carregarDados(){
         let str = '';
@@ -18,16 +20,21 @@ export default function PostCatView(){
                 str = `${str}` + `${window.location.search[i]}`
             }
         }
+        setCat(str)
         let obrasAux = []; 
+        let cont = 0;
         await firebase.database().ref(`posts/categorias/${str.toLowerCase()}`).once('value').
         then(function(snapshot){
             Object.keys(snapshot.val()).forEach(function(postFeed){
+                cont++
                 obrasAux.push({nomeDaObra:postFeed,images:snapshot.val()[postFeed].fotos,
-                    titulos:snapshot.val()[postFeed].titulos,textos:snapshot.val()[postFeed].textos,imagem:snapshot.val()[postFeed].imagem})
+                    titulos:snapshot.val()[postFeed].titulos,textos:snapshot.val()[postFeed].textos,imagem:snapshot.val()[postFeed].imagem
+                    ,id:snapshot.val()[postFeed].id})
             })
 
             
         })
+        console.log(cont)
         setObras(obrasAux)
         setPost({titulos:'',images:'',textos:''})
         setPostId(str)
@@ -38,18 +45,60 @@ export default function PostCatView(){
         carregarDados();
     },[])
 
+    function handleClick(id) {
+        window.location = `/postView?id=${id}`
+    }
+
+    /*function verMais() {
+        let vetorAux = [];
+        let cont = contador
+        let aux = 0
+        let i = 0
+        for(let y = 0; y<vetorCats.length; y++){
+            vetorAux.push(vetorCats[y])
+        }
+        if(vetorStorage.length - cont < 4){
+            cont--
+            aux = vetorStorage.length - cont
+            for(let t=0; t<aux;t++){
+                vetorAux.push(vetorStorage[cont])
+                cont++
+            }
+        }
+        for(cont; cont<vetorStorage.length;cont++){
+            i++
+            if(i<4){
+                vetorAux.push(vetorStorage[cont])
+            }
+        }
+        aux != 0 ?  setContador(contador+aux) : setContador(contador+4)
+        setVetorCats(vetorAux)
+    }*/
+
     return(
         <div>
             <Banner/>
             <MenuBar/>
-            <div className="containerPost">
-            {obras.map((obra,key)=>(
-                    <>
-                        <div className="containerTitle"><h1>{obra.nomeDaObra}</h1></div>
-                        <div className="containerImage"><img src={obra.imagem}/></div>
-                    </>
-                ))}
+            <div className='containerReviews'>
+            <h1>{cat}</h1>
+            {obras.map((cat, key) => (           
+                <div key={key}>
+                    <div className="linha"></div>
+                    <div className='card' >
+                        <img key={key} onClick={() => handleClick(cat.id)} className="cardImage" alt='imagem do card' src={cat.imagem} />             
+                        <div style={{overflowY:"scroll"}}>
+                            <div>
+                                <h2 key={key} onClick={() => handleClick(cat.id)}>{cat.nomeDaObra}</h2>
+                                <h4>{cat.textos.texto2}</h4>
+                            </div>
+                        </div>                      
+                 </div>
+                </div>
+            ))}
+            <div className='verMaisContainer' style={{ cursor: 'pointer' }} >
+                <h1>Ver mais</h1>
             </div>
+        </div>
         </div>
     );
 }
