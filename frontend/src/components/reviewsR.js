@@ -23,7 +23,6 @@ export default function ReviewsRecentes() {
                 vetorAux.push(vetorPostsFeedID[cont])
             }
         }
-        console.log(vetorAux)
         setContador(4)
         setVetorCats(vetorAux);
         setVetorStorage(vetorPostsFeedID)

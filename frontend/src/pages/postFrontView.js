@@ -4,38 +4,20 @@ import Banner from "../components/banner"
 import firebase from "../firebase"
 import "./styles.css"
 
-export default function PostFrontView(){
+export default function PostFrontView(props){
 
-    const [postId, setPostId] = React.useState(null);
-    const [post, setPost] = React.useState({images:'', textos:'', titulos:''});
-    const [vetor,setVetor] = React.useState([])
+    const [postagem,setPostagem] = React.useState([])
 
     async function carregarDados(){
-        let str = '';
-        for(var i =0; i<window.location.search.length;i++){
-            if(i>3){
-                str = `${str}` + `${window.location.search[i]}`
-            }
-        }
-        let fotos = [];
-        let textos = [];
-        let titulos = [];
-        await firebase.database().ref(`posts/postsFront/${str}`).once('value').then(function(snapshot){
-            Object.keys(snapshot.val().fotos).forEach(function(foto){
-                fotos.push(snapshot.val().fotos[foto])
-            })
-            Object.keys(snapshot.val().titulos).forEach(function(foto){
-                titulos.push(snapshot.val().titulos[foto])
-            })
-            Object.keys(snapshot.val().textos).forEach(function(foto){
-                textos.push(snapshot.val().textos[foto])
-            })
+        let aux = props.location.state.post
+        let vetAux = []
+        let cont = 1
+        Object.keys(aux.titulos).forEach(function(titulo){
+            vetAux.push({titulos:aux.titulos[titulo],textos:aux.textos['texto'+cont],images:aux.imagens['foto'+cont]})
+            cont++
             
         })
-
-        setPost({titulos:titulos,images:fotos,textos:textos})
-        setPostId(str)
-        setVetor(titulos)
+        setPostagem(vetAux)
     }
 
     React.useEffect(()=>{
@@ -47,11 +29,11 @@ export default function PostFrontView(){
             <Banner/>
             <MenuBar/>
             <div className="containerPost">
-            {vetor.map((titulo,key)=>(
+            {postagem.map((post,key)=>(
                     <>
-                        <div className="containerTitle"><h1>{titulo}</h1></div>
-                        <div className="containerImage"><img src={post.images[key]}/></div>
-                        <div className="containerTexto"><p>{post.textos[key]}</p></div>
+                        <div className="containerTitle"><h1>{post.titulos}</h1></div>
+                        <div className="containerImage"><img src={post.images}/></div>
+                        <div className="containerTexto"><p>{post.textos}</p></div>
                     </>
                 ))}
             </div>

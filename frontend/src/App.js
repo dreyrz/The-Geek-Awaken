@@ -10,7 +10,7 @@ function App() {
     <div>
         <Banner/>
         <MenuBar/>
-        <div style={{marginTop:"5%"}}><CatPosts banco={firebase}/></div>
+        <div style={{marginTop:"5%"}}><CatPosts/></div>
         <div><ReviewsRecentes/></div>
     </div>
   );
