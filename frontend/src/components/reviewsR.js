@@ -63,16 +63,16 @@ export default function ReviewsRecentes() {
     }
     return (
         <div className='containerReviews'>
-            <h1>Reviews Recentes</h1>
+            <h1>Postagens recentes</h1>
             {vetorCats.map((cat, key) => (           
                 <div>
                     <div className="linha"></div>
                     <div className='card' key={key} onClick={() => handleClick(cat.id)}>
-                    <img className="cardImage" alt='imagem do card' src={cat.image} />                   
+                    <img className="cardImage" alt='imagem do card' src={cat.imagem} />                   
                     <div>
                         <div>
-                            <h2>The God Of HighSchool</h2>
-                            <h4>Esse manga é a marca do site, e se vocês descobrissem o porquê, ficariam enojados. isso e mt importante apra aprender a fazer com que as pessoas cuidem de sua vidakk</h4>
+                            <h2>{cat.titulo}</h2>
+                            <h4>{cat.textos.texto1}</h4>
                         </div>
                     </div>                      
                 </div>
