@@ -1,5 +1,155 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
+.listaCat{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #414141;
+}
+.liCFilho {
+    float: left;
+    margin-left: 3%;
+}
+.liCFilho div {
+    display: flex;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+li div:hover{
+    cursor: pointer;
+}
+.listaCat2{
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #414141;
+    display: none;
+    position: absolute;
+    margin-right:0;
+    padding: 0;
+    height: 150px;
+    overflow-y: auto;
+}
+.listaCat2 li{
+    margin-top: 2%;
+    width: 150px;
+    color: white;
+}
+.listaCat2 li p{
+    padding:5%;
+    margin-left: 5%;
+}
+.listaCat2 li:hover{
+    cursor: pointer;
+    background-color: #7a7a7a;
+}
+.liCFilho:hover{
+    background-color: #646464;
+}
+.liCFilho:hover .listaCat2{
+    display: block;
+}
+#inicio{
+    margin-left: 5%;
+}
+@media (min-width: 1343px){
+    .containerOB h3{
+        width: 300px;
+        color: rgb(224, 224, 224);
+        font-size: 18px;
+        line-height: 1.21em;
+        font-weight: 900;
+        margin-left: 6%;
+        height: 40px;
+        font-family: 'ars-maquette-web', sans-serif;
+    }
+    .containerOB{
+        display:flex;
+        justify-content:space-between;
+        margin-right:5%;
+        margin-left:5%;
+    }
+    .cats{
+        height: 400px;
+        width: 300px;
+        cursor: pointer;
+    }
+    .title{
+        background-color: rgba(34,63,90, 0.75);
+        position: absolute;
+        margin-top: -45px;
+    }
+}
+@media (max-width: 1343px){
+    .containerOB h3{
+        width: 200px;
+        color: rgb(224, 224, 224);
+        font-size: 18px;
+        line-height: 1.21em;
+        font-weight: 900;
+        margin-left: 6%;
+        height: 40px;
+        font-family: 'ars-maquette-web', sans-serif;
+    }
+    .containerOB{
+        display:flex;
+        justify-content:space-between;
+        margin-right:5%;
+        margin-left:5%;
+    }
+    .cats{
+        height: 400px;
+        width: 200px;
+        cursor: pointer;
+    }
+    .title{
+        background-color: rgba(34,63,90, 0.75);
+        position: absolute;
+        margin-top: -45px;
+    }
+}
+@media (max-width: 896px){
+    .containerOB h3{
+        width: 100%;
+        color: rgb(224, 224, 224);
+        font-size: 18px;
+        line-height: 1.21em;
+        font-weight: 900;
+        margin-left: 6%;
+        height: 40px;
+        font-family: 'ars-maquette-web', sans-serif;
+    }
+    .containerOB{
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-right:5%;
+        margin-left:5%;
+    }
+    .cats{
+        height: 400px;
+        width: 60%;
+        cursor: pointer;
+        margin-bottom: 5%;
+    }
+    .title{
+        background-color: rgba(34,63,90, 0.75);
+        position: absolute;
+        margin-top: -45px;
+        width: 54%;
+    }
+}
+
+.textCat{
+    height: 30%;
+    overflow-y: scroll;
+}
+.image{
+    height: 100%;
+    width: 100%;
+}
 * {
     margin: 0;
     padding: 0;
@@ -39,7 +189,7 @@ body{
     height: 56px;
 }
 .ig {
-    width:8%;
+    width:11%;
     cursor: pointer;
     background-color: rgb(81, 127, 164);
     display: flex;
@@ -47,14 +197,11 @@ body{
     align-items: center;
     transition: filter;
 }
-
 .ig:hover{
     filter: brightness(90%)
 }
-
 .yt {
-    
-    width:8%;
+    width:11%;
     margin-left:5px;
     margin-right:5px;
     cursor: pointer;
@@ -71,7 +218,7 @@ body{
 
 .tt {
     
-    width:8%;
+    width:11%;
     margin-right:5px;
     cursor: pointer;
     background-color: rgb(0, 172, 237);
@@ -80,178 +227,54 @@ body{
     align-items: center;
     transition: filter;
 }
-
 .tt:hover{
     filter: brightness(90%)
 }
-.liCFilho {
-    float: left;
-}
-.liCFilho a {
-    display: flex;
-    color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-}
-li a:hover{
-    cursor: pointer;
-}
-.listaCat2{
-    list-style-type: none;
-    overflow: hidden;
-    background-color: #414141;
-    display: none;
-    position: absolute;
-    margin-right:0;
-    padding: 0;
-}
-.listaCat2 li{
-    margin-top: 2%;
-    width: 150px;
-    color: white;
-}
-.listaCat2 li p{
-    padding:5%;
-    margin-left: 5%;
-}
-.listaCat2 li:hover{
-    cursor: pointer;
-    background-color: #7a7a7a;
-}
-.liCFilho:hover{
-    background-color: #646464;
-}
-.liCFilho:hover .listaCat2{
-    display: block;
-}
-#inicio{
-    margin-left: 0;
-}
-.cats{
-    height: 400px;
-    width: 300px;
-    cursor: pointer;
-}
-.title{
-    background-color: rgba(34,63,90, 0.75);
-    position: absolute;
-    margin-top: -80px;
-}
-.containerOB h3{
-    width: 300px;
-    color: rgb(224, 224, 224);
-    font-size: 18px;
-    line-height: 1.21em;
-    font-weight: 900;
-    margin-left: 6%;
-    height: 40px;
-    font-family: 'ars-maquette-web', sans-serif;
-}
-.containerOB{
-    display:flex;
-    justify-content:space-between;
-    margin-right:5%;
-    margin-left:5%;
-    
-}
-.textCat{
-    height: 30%;
-    overflow-y: scroll;
-}
-.image{
-    height: 100%;
-    width: 100%;
-}
-.containerReviews {
-    margin-left: 5%;
-    margin-top: 2%;
-    
-}
 .containerReviews h1 {
-    font-size: 45px;
+    margin-left:5%;
+    font-size: 35px;
     font-family: 'ars-marquete-web', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     color:black;
     -webkit-font-smoothing: antialised;
 }
 .card {
+    margin-left: 5%;
     margin-top: 2%;
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     border-radius:7px;
-    overflow: hidden;
-    background-color: rgb(114, 114, 114);
     height: 200px;
-}
-.card:hover {
-    cursor: pointer;
-    filter: brightness(90%);
 }
 .cardImage {
     height:200px;
-    width: 50%;
-    background-color: red;
-    border-radius: 7px;
+    width: 300px;
     
+    border-radius: 7px;
+    margin-right: 4%;
 }
-.cardTitle {
+.cardImage:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+.card h2 {
     font: 900 14px Roboto, sans-serif;
     -webkit-font-smoothing: antialised;
     font-size: 40px;
-    
 }
-.plataform {
-    color: black;
-    font: 500 40px Roboto, sans-serif;
+.card h2:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+.card h4 { 
+    font: 400 25px Roboto, sans-serif;
     -webkit-font-smoothing: antialised;
-    margin-top: 18%;
-}
-.nota {
-    width: 50px;
-    height: 27px;
-    background: red;
-    position: absolute;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    background-color: red;
-    
-  }
-  .notaText {
-    font: 900 25px Roboto, sans-serif;
-    -webkit-font-smoothing: antialised;
-    color: white;
-}
-.nota:before {
-    content: "";
-    position: absolute;
-    top: -13px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 13px solid red;
-    
-  }
-.nota:after {
-    content: "";
-    position: absolute;
-    bottom: -13px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-top: 13px solid red;
+    margin-top: 2%; 
 }
 .verMaisContainer {
     margin-top: 5%;
-    padding-bottom: 10px;
+    
     height: 80px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -259,8 +282,13 @@ li a:hover{
 }
 .verMaisContainer h1 {
     color:black;
-    display: inline-block;
     font: 900 40px Roboto, sans-serif;
     -webkit-font-smoothing: antialised;
+}
 
+.linha {
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid rgb(78, 76, 76,0.5);
+    margin-top: 2%;
 }

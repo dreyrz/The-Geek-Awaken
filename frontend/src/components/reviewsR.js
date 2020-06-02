@@ -1,44 +1,135 @@
 import React from 'react'
+import firebase from "../firebase"
 import './styles.css'
-import imagem from "../assets/WhatsApp Image 2020-05-29 at 17.22.47.jpeg"
 
 export default function ReviewsRecentes() {
-    const [vetorCats, setVetorCats] = React.useState([{ image: imagem, title: 'ronald disse que ele é assi msm', id: "imagem1" },
-    { image: imagem, title: 'The God of HighSchool', id: "imagem2" },
-    { image: imagem, title: 'Cuidado, eu sou o rei!', id: "imagem3" },
-    { image: imagem, title: 'ronald disse que ele é assi msm', id: "imagem4" }])
+    const [vetorStorage,setVetorStorage] = React.useState([])
+    const [vetor,setVetor] = React.useState([])
+    const [vetorCats, setVetorCats] = React.useState([])
+    const [contador, setContador] = React.useState(0)
+    
+    async function carregarDados(){
+        let vetorPostsFeedID = []
+        await firebase.database().ref(`posts/feed`).once('value').then(function(snapshot){
+            Object.keys(snapshot.val()).forEach(function(postFeed){
+                vetorPostsFeedID.push(snapshot.val()[postFeed])
+            })
+        })
+
+        let vetorAux = [];
+        let cont = contador
+        for(cont; cont<vetorPostsFeedID.length;cont++){
+            if(cont<4){
+                vetorAux.push(vetorPostsFeedID[cont])
+            }
+        }
+        console.log(vetorAux)
+        setContador(4)
+        setVetorCats(vetorAux);
+        setVetorStorage(vetorPostsFeedID)
+    }
+
+    React.useEffect(()=>{
+        carregarDados();
+    },[])
 
     function handleClick(id) {
-        window.location = `/post?id=${id}`
+        window.location = `/postView?id=${id}`
     }
+
     function verMais() {
-        var vetorAux = vetorCats;
-        vetorAux.push({ image: imagem, title: 'socrr deus', id: "imagem2" });
-        console.log(vetorCats);
-        setVetorCats(vetorAux);
+        let vetorAux = [];
+        let cont = contador
+        let aux = 0
+        let i = 0
+        for(let y = 0; y<vetorCats.length; y++){
+            vetorAux.push(vetorCats[y])
+        }
+        if(vetorStorage.length - cont < 4){
+            cont--
+            aux = vetorStorage.length - cont
+            for(let t=0; t<aux;t++){
+                vetorAux.push(vetorStorage[cont])
+                cont++
+            }
+        }
+        for(cont; cont<vetorStorage.length;cont++){
+            i++
+            if(i<4){
+                vetorAux.push(vetorStorage[cont])
+            }
+        }
+        aux != 0 ?  setContador(contador+aux) : setContador(contador+4)
+        setVetorCats(vetorAux)
     }
     return (
         <div className='containerReviews'>
             <h1>Reviews Recentes</h1>
-            {vetorCats.map((cat, key) => (
-                <div className='card' key={key} onClick={() => handleClick(cat.id)}>
-                    <img className="cardImage" alt='imagem do card' src={cat.image} />
-
-                    <div className='nota'>
-                        <h3 className='notaText'>10</h3>
-                    </div>
-
+            {vetorCats.map((cat, key) => (           
+                <div>
+                    <div className="linha"></div>
+                    <div className='card' key={key} onClick={() => handleClick(cat.id)}>
+                    <img className="cardImage" alt='imagem do card' src={cat.image} />                   
                     <div>
-                        <h2 className='cardTitle' >{cat.title}</h2>
-                        <h4 className='plataform' >Xbox One</h4>
-                    </div>
-
+                        <div>
+                            <h2>The God Of HighSchool</h2>
+                            <h4>Esse manga é a marca do site, e se vocês descobrissem o porquê, ficariam enojados. isso e mt importante apra aprender a fazer com que as pessoas cuidem de sua vidakk</h4>
+                        </div>
+                    </div>                      
+                </div>
                 </div>
             ))}
-
             <div className='verMaisContainer' style={{ cursor: 'pointer' }} onClick={() => verMais()} >
-                <h1>Exibir Mais</h1>
+                <h1>Ver mais</h1>
             </div>
         </div>
     )
 }
+//<h2 className='cardTitle'>{cat.title}</h2>
+
+/*hexagono css .nota {
+    width: 50px;
+    height: 27px;
+    background: red;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: red;
+    margin-left: 16%;
+  }
+.nota h3 {
+    font: 900 25px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    color: white;
+}
+.nota:before {
+    content: "";
+    position: absolute;
+    top: -13px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 13px solid red;
+    
+  }
+.nota:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 13px solid red;
+
+
+HEXAGONO CODIGO: 
+<div className='nota'>
+                        <h3>10</h3>
+                    </div>
+}*/ 

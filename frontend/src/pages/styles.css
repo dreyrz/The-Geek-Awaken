@@ -16,9 +16,11 @@
     margin-right: 5%;
     margin-bottom: 3%;
     font-size: 22px;
+    color: rgb(255, 255, 255);
 }
 .containerTexto{
     margin-top: 3%;
+    color: rgb(255, 255, 255);
     line-height: 2;
     hyphens: auto;
     -webkit-hyphens: auto;
