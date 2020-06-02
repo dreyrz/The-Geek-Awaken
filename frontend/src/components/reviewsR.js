@@ -61,29 +61,74 @@ export default function ReviewsRecentes() {
         aux != 0 ?  setContador(contador+aux) : setContador(contador+4)
         setVetorCats(vetorAux)
     }
-
     return (
-        <div>
-            <div className="r">Reviews Recentes</div>
-            {vetorCats.map((cat, key) => (
-                <div className='card' key={key} onClick={() => handleClick(cat.id)} >
-                    <img className="cardImage" alt='card' src={cat.imagem} />
-
-                    <div className='nota'>
-                         <h1 className="notaN">{cat.titulo}</h1>
-                    </div>
-
-                    <div className="cardContent">
-                        <h1>{cat.title}</h1>
-                        <h2 className='plataforma' >PC</h2>
-                    </div>
-
+        <div className='containerReviews'>
+            <h1>Reviews Recentes</h1>
+            {vetorCats.map((cat, key) => (           
+                <div>
+                    <div className="linha"></div>
+                    <div className='card' key={key} onClick={() => handleClick(cat.id)}>
+                    <img className="cardImage" alt='imagem do card' src={cat.image} />                   
+                    <div>
+                        <div>
+                            <h2>The God Of HighSchool</h2>
+                            <h4>Esse manga é a marca do site, e se vocês descobrissem o porquê, ficariam enojados. isso e mt importante apra aprender a fazer com que as pessoas cuidem de sua vidakk</h4>
+                        </div>
+                    </div>                      
+                </div>
                 </div>
             ))}
-
-            <div className="verMaisContainer" style={{ cursor: 'pointer' }} onClick={()=>verMais()} >
-                <h1 className='verMaisText'>Ver Mais</h1>
+            <div className='verMaisContainer' style={{ cursor: 'pointer' }} onClick={() => verMais()} >
+                <h1>Ver mais</h1>
             </div>
         </div>
     )
 }
+//<h2 className='cardTitle'>{cat.title}</h2>
+
+/*hexagono css .nota {
+    width: 50px;
+    height: 27px;
+    background: red;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: red;
+    margin-left: 16%;
+  }
+.nota h3 {
+    font: 900 25px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    color: white;
+}
+.nota:before {
+    content: "";
+    position: absolute;
+    top: -13px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 13px solid red;
+    
+  }
+.nota:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 13px solid red;
+
+
+HEXAGONO CODIGO: 
+<div className='nota'>
+                        <h3>10</h3>
+                    </div>
+}*/ 

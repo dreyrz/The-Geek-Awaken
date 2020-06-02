@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 .listaCat{
     list-style-type: none;
     margin: 0;
@@ -153,45 +155,41 @@ li div:hover{
     padding: 0;
     outline: 0;
 }
-body {
-    
-    background-image: url('.././assets/59164.jpg')
-}
-
-.container {
+body{
     background-color: black;
-    height: 300px;
-    width: 100%;
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-   overflow: hidden;
 }
-
-.social {
-    background-color: rgb(70, 69, 69);
-    height:50px;
+.page {
+    background-color:white;
+    margin: 0px 50px 50px 50px;
+}
+.container {
+    background-color: red;
     width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+}
+.logo {
+  height: 200px;
+  width: 100%;
+}
+.listaCat{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #414141;
+}
+.social {
     display:flex;
     flex-direction: row;
     justify-content: flex-end;
+    height: 56px;
 }
-.logoC {
-    height:250px;
-    width: 110%;
-    background-color: yellow;
-}
-.logo {
-    align-self: center;
-  height: 100%;
-  width: 100%;
-}
-
 .ig {
-    height:50px;
-    width:4%;
-    margin-left:5px;
-    margin-right:5px;
+    width:11%;
     cursor: pointer;
     background-color: rgb(81, 127, 164);
     display: flex;
@@ -199,14 +197,11 @@ body {
     align-items: center;
     transition: filter;
 }
-
 .ig:hover{
     filter: brightness(90%)
 }
-
 .yt {
-    height:50px;
-    width:4%;
+    width:11%;
     margin-left:5px;
     margin-right:5px;
     cursor: pointer;
@@ -222,10 +217,9 @@ body {
 }
 
 .tt {
-    height:50px;
-    width:4%;
-    margin-left:1px;
-    margin-right:10px;
+    
+    width:11%;
+    margin-right:5px;
     cursor: pointer;
     background-color: rgb(0, 172, 237);
     display: flex;
@@ -233,98 +227,68 @@ body {
     align-items: center;
     transition: filter;
 }
-
 .tt:hover{
     filter: brightness(90%)
 }
-
+.containerReviews h1 {
+    margin-left:5%;
+    font-size: 35px;
+    font-family: 'ars-marquete-web', sans-serif;
+    font-weight: 700;
+    color:black;
+    -webkit-font-smoothing: antialised;
+}
 .card {
     margin-left: 5%;
     margin-top: 2%;
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: row;
-    border-radius:5px;
-    overflow: hidden;
-}
-
-.cardImage {
-    height:200px;
-    width: 50%;
-    background-color: red;
-    
-}
-
-.nota {
-    width: 50px;
-    height: 27px;
-    background: red;
-    position: absolute;
-    font-size: 30px;
-    text-align: center;
-    display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-.nota:before {
-    content: "";
-    position: absolute;
-    top: -13px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 13px solid red;
-  }
-.nota:after {
-    content: "";
-    position: absolute;
-    bottom: -13px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-top: 13px solid red;
-}
-.notaN {
-    font-size: 30px;
-    font-weight: 900;
-}
-
-.cardContent {
-    width: 50%;
-    background-color: yellow;
+    border-radius:7px;
     height: 200px;
 }
-
-.plataforma {
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.cardImage {
+    height:200px;
+    width: 300px;
+    
+    border-radius: 7px;
+    margin-right: 4%;
 }
-
-.r {
-    margin-left: 5%;
-    margin-top: 5%;
+.cardImage:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+.card h2 {
+    font: 900 14px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
     font-size: 40px;
-    font-family: 'ars-maquette-web', sans-serif;
-    font-weight: 900;
-    color:#ffff
+}
+.card h2:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+.card h4 { 
+    font: 400 25px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    margin-top: 2%; 
 }
 .verMaisContainer {
     margin-top: 5%;
+    
     height: 80px;
     width: 100%;
-    background-color: rgb(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
-.verMaisText {
-    font-size: 40px;
-    color:#ffff;
-    display: inline-block;
-    margin-top: 15px;
+.verMaisContainer h1 {
+    color:black;
+    font: 900 40px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+}
 
+.linha {
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid rgb(78, 76, 76,0.5);
+    margin-top: 2%;
 }
