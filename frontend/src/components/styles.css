@@ -320,7 +320,7 @@ body{
     width: 300px;  
     border-radius: 7px;
 }
-.cardImage:hover {
+.cardImageAux:hover {
     cursor: pointer;
     filter: brightness(90%);
 }

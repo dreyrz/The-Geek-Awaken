@@ -63,7 +63,8 @@ export default function ReviewsRecentes() {
                     <div className="line"></div>
                     <div className='card' >
                         <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} >
-                            <img className="cardImage" alt='imagem do card' src={cat.imagem} />  
+                            <div className="cardImageAux"><img className="cardImage" alt='imagem do card' src={cat.imagem} />  </div>
+                            
                         </Link>           
 
                             <div className='cardText'>
