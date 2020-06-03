@@ -9,6 +9,7 @@
 .liCFilho {
     float: left;
     margin-left: 3%;
+    
 }
 .liCFilho div {
     display: flex;
@@ -80,6 +81,7 @@ li div:hover{
         position: absolute;
         margin-top: -45px;
     }
+    
 }
 @media (max-width: 1373px){
     .containerOB h3{
@@ -108,6 +110,8 @@ li div:hover{
         position: absolute;
         margin-top: -45px;
     }
+    
+
 }
 @media (max-width: 1148px){
     .containerOB h3{
@@ -138,6 +142,8 @@ li div:hover{
         margin-top: -45px;
         width: 250px;
     }
+    
+    
 }
 @media (max-width: 1100px){
     .containerOB h3{
@@ -170,6 +176,7 @@ li div:hover{
         margin-top: -45px;
         width: 180px;
     }
+    
 }
 @media (max-width: 821px){
     .containerOB h3{
@@ -200,6 +207,7 @@ li div:hover{
         margin-top: -45px;
         width: 400px;
     }
+    
 }
 .textCat{
     height: 30%;
@@ -226,8 +234,7 @@ body{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    flex-direction: row;
-    
+    flex-direction: row;  
 }
 .logo {
     height: 200px;
@@ -242,63 +249,59 @@ body{
 }
 .socialContainer{
     display:flex;
-    justify-content: flex-end;    
-    height: 56px;
-    flex-direction: row;
-    margin-left: 28%;
+    position: relative;
+    margin:0 auto;
+    margin-top:1%;
+  
 }
 .social {
-    display: flex;
+    display:flex;
+    width: 100%;
+    height: 100%;
+
+    flex-direction: row-reverse;
+    padding-right: 5%;
 }
 .ig {
-    margin-right: 10%;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: filter;
+    transition: color;
     color: white;
-}
-.igc {
-    font-size: 100px;
+    
 }
 .ig:hover{
-    filter: brightness(90%)
+    cursor:pointer;
+    color:  #c13584;
 }
+
 .yt {
-    margin-right: 10%;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: filter;
+    transition: color;
     color:white;
+    margin-right: 25px;
 }
 .yt:hover {
-    filter: brightness(90%)
-}
-.tt {   
-    margin-right: 40px;
+    color : #ff0000;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: filter;
+}
+
+.tt {   
+    cursor: pointer;
+    transition: color;
     color: white;
+   margin-right: 25px;
 }
 .tt:hover{
-    filter: brightness(90%)
+    color: #1da1f2;
+    cursor: pointer;
 }
 .containerReviews{
     margin-top: 5%;
 }
 .containerReviews h1 {
-    margin-left:5%;
-    font-size: 35px;
-    font-family: 'ars-marquete-web', sans-serif;
-    font-weight: 700;
-    color:white;
     -webkit-font-smoothing: antialised;
+    margin-left:5%;
+    font: 700 30px Roboto, sans-serif;
+    color: white;
 }
 .card {
     margin-left: 5%;
@@ -307,11 +310,11 @@ body{
     display: flex;
     flex-direction: row;
     border-radius:7px;
-    height: 200px;
+    height: 100%;
     overflow: scroll;
     overflow-x: hidden;
     
-}
+}  
 .cardImage {
     height:200px;
     width: 300px;  
@@ -321,23 +324,22 @@ body{
     cursor: pointer;
     filter: brightness(90%);
 }
-.card h2 {
-    font: 900 14px Roboto, sans-serif;
-    -webkit-font-smoothing: antialised;
-    font-size: 40px;
-    color: white;
-    margin-left:4%;
+.cardText {
+    margin-left:5%; 
+    height: 100%;
+    width:50%;
 }
-.card h2:hover {
-    cursor: pointer;
-    filter: brightness(90%);
+.cardText h2 {
+    font: 700 20px Roboto, sans-serif;
+    color:blue;
 }
-.card h4 { 
-    font: 400 25px Roboto, sans-serif;
-    -webkit-font-smoothing: antialised;
+.cardText h2:hover {
+    color:red;
+}
+
+.cardText h4 {  
     margin-top: 2%;
-    color: white;
-    margin-left: 4%;
+    font-size: 15px;
 }
 .verMaisContainer {
     margin-top: 5%; 
@@ -354,7 +356,7 @@ body{
 .line{
     height: 1px;
     width: 95%;
-    border-top: 1px solid rgba(182, 178, 178, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     margin-top: 10px;
 }
 ::-webkit-scrollbar {

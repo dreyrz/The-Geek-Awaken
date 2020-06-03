@@ -1,6 +1,5 @@
 import React from 'react'
 import "./styles.css"
-import imagem from "../assets/WhatsApp Image 2020-05-29 at 17.22.47.jpeg"
 import firebase from "../firebase"
 import { Link } from 'react-router-dom'
 

@@ -7,9 +7,6 @@ import "./styles.css"
 
 export default function PostCatView(){
 
-    const [postId, setPostId] = React.useState(null);
-    const [post, setPost] = React.useState({images:'', textos:'', titulos:''});
-    const [vetor,setVetor] = React.useState([])
     const [obras, setObras] = React.useState([])
     const [cat, setCat] = React.useState()
 
@@ -27,27 +24,19 @@ export default function PostCatView(){
         then(function(snapshot){
             Object.keys(snapshot.val()).forEach(function(postFeed){
                 cont++
-                obrasAux.push({nomeDaObra:postFeed,images:snapshot.val()[postFeed].fotos,
-                    titulos:snapshot.val()[postFeed].titulos,textos:snapshot.val()[postFeed].textos,imagem:snapshot.val()[postFeed].imagem
-                    ,id:snapshot.val()[postFeed].id})
+                obrasAux.push({nomeDaObra:postFeed,fotos:snapshot.val()[postFeed].fotos,
+                    titulos:snapshot.val()[postFeed].titulos,textos:snapshot.val()[postFeed].textos,
+                    imagem:snapshot.val()[postFeed].imagem,sinopse:snapshot.val()[postFeed].sinopse,id:snapshot.val()[postFeed].id})
             })
 
             
         })
-        console.log(cont)
         setObras(obrasAux)
-        setPost({titulos:'',images:'',textos:''})
-        setPostId(str)
-        setVetor([])
     }
 
     React.useEffect(()=>{
         carregarDados();
     },[])
-
-    function handleClick(id) {
-        window.location = `/postView?id=${id}`
-    }
 
     /*function verMais() {
         let vetorAux = [];
@@ -85,11 +74,11 @@ export default function PostCatView(){
                 <div key={key}>
                     <div className="linha"></div>
                     <div className='card' >
-                        <img key={key} onClick={() => handleClick(cat.id)} className="cardImage" alt='imagem do card' src={cat.imagem} />             
+                        <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} ><img className="cardImage" alt='imagem do card' src={cat.imagem} />  </Link>             
                         <div style={{overflowY:"scroll"}}>
                             <div>
-                                <h2 key={key} onClick={() => handleClick(cat.id)}>{cat.nomeDaObra}</h2>
-                                <h4>{cat.textos.texto2}</h4>
+                                <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}><h2>{cat.nomeDaObra}</h2></Link>
+                                <h4>{cat.sinopse}</h4>
                             </div>
                         </div>                      
                  </div>
