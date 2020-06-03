@@ -16,7 +16,6 @@ export default function menuBar(){
     
      return (
          <div className="containerMenu">
-             
                 <ul className="listaCat">
                     <li onClick={()=>(window.location=`/`)}  id="inicio" className="liCFilho"><div>Inicio</div></li>
                     <li className="liCFilho"><div>Jogos<ArrowDropDownIcon/></div>
@@ -53,25 +52,8 @@ export default function menuBar(){
                                 <li onClick={()=>(window.location=`/postCatViewid=${series}`)} key={key}><p>{series}</p></li>
                             ))}
                         </ul>
-                    </li>
-                    <div className="socialContainer">
-                        <div className="social">
-                            <a className="ig" target="_blank" rel="noopener noreferrer" href='https://www.instagram.com/the_geek_awaken/' >
-                                <InstagramIcon className='igc'  />
-                            </a>
-
-                            <a className="yt" target="_blank" rel="noopener noreferrer" href='https://www.youtube.com/channel/UC-rFR4rU0OeHCWzOdVrywWA'>
-                                <YouTubeIcon style={{fontSize: 30 }} />
-                            </a>
-
-                            <a className="tt" target="_blank" rel="noopener noreferrer" href='https://twitter.com/TheGeekAwaken'>
-                                <TwitterIcon style={{fontSize: 30 }} />
-                            </a>
-                        </div>
-            </div>
-                </ul>            
-               
-           
+                    </li>    
+                </ul>               
         </div>
 
      )
