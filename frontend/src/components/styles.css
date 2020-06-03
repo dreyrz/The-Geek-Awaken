@@ -223,13 +223,12 @@ body{
     margin: 0px 50px 50px 50px;
 }
 .container {
-    background-color: red;
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    overflow: hidden;
+    
 }
 .logo {
     height: 200px;
@@ -310,13 +309,14 @@ body{
     flex-direction: row;
     border-radius:7px;
     height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
     
 }
 .cardImage {
     height:200px;
     width: 300px;  
     border-radius: 7px;
-    margin-right: 4%;
 }
 .cardImage:hover {
     cursor: pointer;
@@ -326,7 +326,8 @@ body{
     font: 900 14px Roboto, sans-serif;
     -webkit-font-smoothing: antialised;
     font-size: 40px;
-    color: white; 
+    color: white;
+    margin-left:4%;
 }
 .card h2:hover {
     cursor: pointer;
@@ -337,6 +338,7 @@ body{
     -webkit-font-smoothing: antialised;
     margin-top: 2%;
     color: white;
+    margin-left: 4%;
 }
 .verMaisContainer {
     margin-top: 5%; 
@@ -350,9 +352,12 @@ body{
     font: 900 40px Roboto, sans-serif;
     -webkit-font-smoothing: antialised;
 }
-.linha {
+.line{
     height: 1px;
-    width: 100%;
-    border-top: 1px solid rgba(168, 161, 161, 0.5);
-    margin-top: 2%;
+    width: 95%;
+    border-top: 1px solid rgba(182, 178, 178, 0.5);
+    margin-top: 10px;
+}
+::-webkit-scrollbar {
+    width: 0px; 
 }

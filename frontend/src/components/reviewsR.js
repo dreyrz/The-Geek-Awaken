@@ -59,7 +59,7 @@ export default function ReviewsRecentes() {
                 vetorAux.push(vetorStorage[cont])
             }
         }
-        aux != 0 ?  setContador(contador+aux) : setContador(contador+4)
+        aux !== 0 ?  setContador(contador+aux) : setContador(contador+4)
         setVetorCats(vetorAux)
     }
     return (
@@ -67,14 +67,15 @@ export default function ReviewsRecentes() {
             <h1>Postagens recentes</h1>
             {vetorCats.map((cat, key) => (           
                 <div>
-                    <div className="linha"></div>
-                    <div className='card' >
-                        <img key={key} onClick={() => handleClick(cat.id)} className="cardImage" alt='imagem do card' src={cat.imagem} />             
-                        <div style={{overflowY:"scroll"}}>
-                            <div>
-                                <h2 key={key} onClick={() => handleClick(cat.id)}>{cat.titulo}</h2>
-                                <h4>{cat.textos.texto2}</h4>
-                            </div>
+                    <div className="line"></div>
+                    <div className='card'>
+                        <div className="cardImageC">
+                            <img key={key} onClick={() => handleClick(cat.id)} className="cardImage" alt='imagem do card' src={cat.imagem} />             
+                        </div>
+                        
+                        <div>
+                            <h2 key={key} onClick={() => handleClick(cat.id)}>{cat.titulo}</h2>
+                            <h4>{cat.textos.texto2}</h4>
                         </div>                      
                  </div>
                 </div>
