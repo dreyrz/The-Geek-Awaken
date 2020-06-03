@@ -1,10 +1,10 @@
 import React from 'react'
 import firebase from "../firebase"
+import { Link } from 'react-router-dom'
 import './styles.css'
 
 export default function ReviewsRecentes() {
     const [vetorStorage,setVetorStorage] = React.useState([])
-    const [vetor,setVetor] = React.useState([])
     const [vetorCats, setVetorCats] = React.useState([])
     const [contador, setContador] = React.useState(0)
     
@@ -15,7 +15,6 @@ export default function ReviewsRecentes() {
                 vetorPostsFeedID.push(snapshot.val()[postFeed])
             })
         })
-
         let vetorAux = [];
         let cont = contador
         for(cont; cont<vetorPostsFeedID.length;cont++){
@@ -26,54 +25,48 @@ export default function ReviewsRecentes() {
         setContador(4)
         setVetorCats(vetorAux);
         setVetorStorage(vetorPostsFeedID)
-        console.log(vetorAux)
     }
 
     React.useEffect(()=>{
         carregarDados();
     },[])
 
-    function handleClick(id) {
-        window.location = `/postView?id=${id}`
-    }
-
     function verMais() {
         let vetorAux = [];
         let cont = contador
         let aux = 0
         let i = 0
-        for(let y = 0; y<vetorCats.length; y++){
-            vetorAux.push(vetorCats[y])
-        }
+        vetorAux=[...vetorCats]
         if(vetorStorage.length - cont < 4){
-            cont--
             aux = vetorStorage.length - cont
             for(let t=0; t<aux;t++){
                 vetorAux.push(vetorStorage[cont])
                 cont++
             }
         }
-        for(cont; cont<vetorStorage.length;cont++){
-            i++
-            if(i<4){
-                vetorAux.push(vetorStorage[cont])
+        else{
+            for(cont; cont<vetorStorage.length;cont++){
+                if(i<4){
+                    vetorAux.push(vetorStorage[cont])
+                }
+                i++
             }
         }
-        aux != 0 ?  setContador(contador+aux) : setContador(contador+4)
         setVetorCats(vetorAux)
+        aux != 0 ?  setContador(contador+aux) : setContador(contador+4)
     }
     return (
         <div className='containerReviews'>
             <h1>Postagens recentes</h1>
             {vetorCats.map((cat, key) => (           
-                <div>
+                <div key={key}>
                     <div className="linha"></div>
                     <div className='card' >
-                        <img key={key} onClick={() => handleClick(cat.id)} className="cardImage" alt='imagem do card' src={cat.imagem} />             
+                        <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} ><img className="cardImage" alt='imagem do card' src={cat.imagem} />  </Link>           
                         <div style={{overflowY:"scroll"}}>
                             <div>
-                                <h2 key={key} onClick={() => handleClick(cat.id)}>{cat.titulo}</h2>
-                                <h4>{cat.textos.texto2}</h4>
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} ><h2>{cat.titulo}</h2> </Link> 
+                                <h4>{cat.sinopse}</h4>
                             </div>
                         </div>                      
                  </div>

@@ -8,7 +8,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 
 
 export default function menuBar(){
-    const menusJogos = []
+    const menusJogos = ["Puzzle"]
     const menusMangas = []
     const menusFilmes = ["Romance","Drama"]
     const menusSeries = []

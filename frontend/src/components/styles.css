@@ -223,7 +223,6 @@ body{
     margin: 0px 50px 50px 50px;
 }
 .container {
-    background-color: red;
     width: 100%;
     display: flex;
     justify-content: start;

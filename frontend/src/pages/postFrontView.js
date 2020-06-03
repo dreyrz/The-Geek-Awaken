@@ -1,7 +1,6 @@
 import React from 'react'
 import MenuBar from "../components/menuBar"
 import Banner from "../components/banner"
-import firebase from "../firebase"
 import "./styles.css"
 
 export default function PostFrontView(props){
