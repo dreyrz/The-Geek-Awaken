@@ -15,6 +15,7 @@ export default function ReviewsRecentes() {
                 vetorPostsFeedID.push(snapshot.val()[postFeed])
             })
         })
+        vetorPostsFeedID.reverse()
         let vetorAux = [];
         let cont = contador
         for(cont; cont<vetorPostsFeedID.length;cont++){
