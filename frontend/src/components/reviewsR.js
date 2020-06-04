@@ -56,18 +56,18 @@ export default function ReviewsRecentes() {
         aux !== 0 ?  setContador(contador+aux) : setContador(contador+4)
     }
     return (
-        <div className='containerReviews'>
+        <div id='containerReviews'>
             <h1>Postagens recentes</h1>
             {vetorCats.map((cat, key) => (           
                 <div key={key}>
-                    <div className="line"></div>
-                    <div className='card' >
+                    <div id="line"></div>
+                    <div id='card' >
                         <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} >
-                            <div className="cardImageAux"><img className="cardImage" alt='imagem do card' src={cat.imagem} />  </div>
+                            <div id="cardImageAux"><img id="cardImage" alt='imagem do card' src={cat.imagem} />  </div>
                             
                         </Link>           
 
-                            <div className='cardText'>
+                            <div id='cardText'>
                                 <Link style={{ textDecoration: 'none'}} to={{pathname:'/postView', state:{post:cat}}}>
                                     <h2>{cat.titulo}</h2> 
                                 </Link> 
@@ -76,7 +76,7 @@ export default function ReviewsRecentes() {
                     </div>
                 </div>
             ))}
-            <div className='verMaisContainer' style={{ cursor: 'pointer' }} onClick={() => verMais()} >
+            <div id='verMaisContainer' style={{ cursor: 'pointer' }} onClick={() => verMais()} >
                 <h1>Ver mais</h1>
             </div>
         </div>
