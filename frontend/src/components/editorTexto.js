@@ -5,6 +5,7 @@ import ImageUploadComponent from "./imageUpload"
 
 export default function EditorTexto(props){
 const [salvo, setSalvo] = React.useState(false)
+const [image, setImage] = React.useState(null)
 const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
 const [editorStateTexto, setEditorStateTexto] = React.useState(() => EditorState.createEmpty(),);
 const blocksTitulo = convertToRaw(editorState.getCurrentContent()).blocks;
@@ -16,11 +17,20 @@ const textoValue = blocksTexto.map(block => (!block.text.trim() && '\n') || bloc
 function toggleInlineStyle(inlineStyle) {
     setEditorStateTexto(RichUtils.toggleInlineStyle(editorStateTexto, inlineStyle));
 }
+function handleChange(e){
+  if(e.target.files[0]){
+      const imagem = e.target.files[0]
+      setImage(imagem)
+  }
+}
+function handleImageNew(){
+  props.sendImage(image)
+}
 function toggleBlockTypeStyle(blockType) {
     setEditorState(RichUtils.toggleBlockType(editorState, blockType));
 }
 function salvar(){
-    props.salvar(props.postagemInfo,props.secoes == undefined ? "init":props.secoes,tituloValue,textoValue)
+    props.salvar(props.postagemInfo,props.secoes === undefined ? "init":props.secoes,tituloValue,textoValue)
     tituloValue.length<2 ? setSalvo(false):setSalvo(true)
     textoValue.length<2 ? setSalvo(false):setSalvo(true)
 }
@@ -38,7 +48,13 @@ const body = (
             onChange={setEditorState}/>
         </div>
         <div>
-          <ImageUploadComponent url={props.url} sendImage={props.sendImage}/>
+          {//<ImageUploadComponent url={props.url} images={props.images} sendImage={props.sendImage}/>}
+          }
+          {/*<div>
+            <input type="file" onChange={handleChange}/>
+            <button onClick={handleImageNew}>Enviar</button>
+            <br/>
+          </div>*/}
         </div>
         <div>
           <button onClick={()=>toggleInlineStyle("BOLD")}>Bold</button>
@@ -49,7 +65,7 @@ const body = (
             editorState={editorStateTexto}
             onChange={setEditorStateTexto} />
         </div>
-          <button style={{display: salvo == false? "block":"none"}} onClick={()=>salvar()}>Salvar Secao</button>
+          <button style={{display: salvo === false? "block":"none"}} onClick={()=>salvar()}>Salvar Secao</button>
     </div>
   );
 return body

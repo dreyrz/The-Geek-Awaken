@@ -31,7 +31,7 @@ export default function PostFrontView(props){
             {postagem.map((post,key)=>(
                     <>
                         <div className="containerTitle"><h1>{post.titulos}</h1></div>
-                        <div className="containerImage"><img src={post.images}/></div>
+                        <div className="containerImage"><img alt="" src={post.images}/></div>
                         <div className="containerTexto"><p>{post.textos}</p></div>
                     </>
                 ))}

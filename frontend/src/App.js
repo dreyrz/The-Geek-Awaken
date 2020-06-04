@@ -9,6 +9,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import firebase from './firebase'
 import ImageUpload from './components/imageUpload'
 
+/*erro em incrementar as fotos atraves do filho editor texto
+erro ao tentar enviar as fotos com a url salva da funcao, esta enviando undefined antes de salvar*/
+
+
 const useStyles = makeStyles((theme) => ({
     modal: {
       position: 'absolute',
@@ -29,18 +33,19 @@ export default function App() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [postagemInfo, setPostagemInfo] = React.useState([]);
-  const [image, setImage] = React.useState(null)
+  const [image, setImage] = React.useState([])
   const [mainImage, setMainImage] = React.useState(null)
+  const [imagi, setImagi] = React.useState(null)
   const [url, setUrl] = React.useState('')
+  const [urls, setUrls] = React.useState([])
   const [mainTitutlo, setMainTitulo] = React.useState('')
   const [sinopse, setSinopse] = React.useState('')
   const [progress, setProgress] = React.useState(0)
   const [progressMainImage, setProgressMainImage] = React.useState(0)
   const [urlMainImage, setUrlMainImage] = React.useState('')
   const [vetorSecoes, setVetorSecoes] = React.useState([
-    <EditorTexto url={url} sendImage={salvarImagem} postagemInfo={postagemInfo}  salvar={salvarPostagem}/>
+    <EditorTexto sendImage={salvarImagem} postagemInfo={postagemInfo}  salvar={salvarPostagem}/>
   ])
-
   function handleOpen(){
     setOpen(true);
   }
@@ -61,39 +66,64 @@ export default function App() {
        })
     
   }
-  function salvarImagem(image,url){
-    setProgress(0)
-    setImage(image)
-    const uploadTask = firebase.storage().ref(`${image.name}`).put(image)
-        uploadTask.on('state_changed',(snapshot)=>{
-            const progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes)*100)
-            setProgress(progress)
-        },(error)=>{
-           console.log(error)
-       },()=>{
-           firebase.storage().ref().child(image.name).getDownloadURL().then(url=>setUrl(url))
-       })
-    
+  async function salvarImagem(imagem){
+    let vetAux = [...image]
+    vetAux.push(imagem)
+    setImage(vetAux)
+    alert("imagem salva")
+    console.log(vetAux)
   }
   function handleMainTitulo(e){
-    console.log(e.target.value)
     setMainTitulo(e.target.value)
+  }
+  function handleUrl(url){
+    let aux = [...urls]
+    aux.push(url)
+    setUrls(aux)
+    console.log(url)
+    console.log(aux)
   }
   async function enviar(){
     if(postagemInfo.length==0){
       alert("Escreva algo")
-    }else if(image == null || mainImage == null){
-      alert("Escolha uma imagem")
     }
     else{
-       var newKeyPost = (await firebase.database().ref(`posts/feed/`).child("feed").push()).key;
+      const objTitulos = {}
+      const objFotos = {}
+       const objTextos = {}
+       let teste
+       console.log(image)
+       for(let t = 0; t<image.length;t++){
+      setProgress(0)
+      const uploadTask = firebase.storage().ref(`${image[t].name}`).put(image[t])
+          uploadTask.on('state_changed',(snapshot)=>{
+              const progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes)*100)
+              setProgress(progress)
+          },(error)=>{
+             console.log(error)
+         },()=>{
+             firebase.storage().ref().child(image[t].name).getDownloadURL().then((handleUrl))
+         })
+     }
+       for(let i = 0; i<postagemInfo.length; i++){
+        objTitulos[`titulo${i+1}`] = postagemInfo[i].titulo
+        objTextos[`texto${i+1}`] = postagemInfo[i].texto
+        objFotos[`foto${i+1}`] = urls[i]
+       }
+       /*var newKeyPost = (await firebase.database().ref(`posts/feed/`).child("feed").push()).key;
        var updates = {}
-       updates[`/posts/feed/`+ newKeyPost] = {titulo:mainTitutlo,imagem:urlMainImage,id:newKeyPost,sinopse:sinopse,fotos:{imagem1:1},titulos:{titulo1:1},textos:{texto1:1}}
+       updates[`/posts/feed/`+ newKeyPost] = {titulo:mainTitutlo,imagem:urlMainImage,id:newKeyPost,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
        firebase.database().ref().update(updates)
-       window.location.reload()
+       window.location.reload()*/
+       console.log(objFotos)
     }
   }
-
+  function handleChange(e){
+    if(e.target.files[0]){
+        const imagem = e.target.files[0]
+        setImagi(imagem)
+    }
+  }
   function salvarPostagem(postagem,secoes,titulo,texto){
       if(titulo.length<2 || texto.length<2){
         alert("escreva algo para salvar")
@@ -103,7 +133,6 @@ export default function App() {
       setPostagemInfo(vetAux)
       let vetAux2 = secoes == "init" ? [...vetorSecoes] : [...secoes]
       vetAux2.push(<EditorTexto sendImage={salvarImagem} secoes={vetAux2} postagemInfo={vetAux} salvar={salvarPostagem}/>)
-      console.log(vetAux)
       setVetorSecoes(vetAux2)
       }
 
@@ -145,8 +174,13 @@ export default function App() {
               {secao}
           </div>
           ))}
-          <progress value={progress} max="100"/>
+          {/*<progress value={progress} max="100"/>*/}
           <button onClick={()=>enviar()}>Enviar</button>
+          <div>
+            <input type="file" onChange={handleChange}/>
+            <button onClick={()=>salvarImagem(imagi)}>Enviar</button>
+            <br/>
+          </div>
         </div>
       </Modal>
     </div>

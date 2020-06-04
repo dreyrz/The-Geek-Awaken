@@ -1,10 +1,8 @@
 import React from 'react'
-import firebase from "../firebase"
 
 export default function ImageUploadComponent(props){
     const [image, setImage] = React.useState(null)
     const [url, setUrl] = React.useState('')
-    const [progress, setProgress] = React.useState(0)
 
     function handleChange(e){
         if(e.target.files[0]){
@@ -27,7 +25,7 @@ export default function ImageUploadComponent(props){
 
        }
        else{
-        props.sendImage(image,url)
+        props.sendImage(image,url,props.images)
 
        }
     }
