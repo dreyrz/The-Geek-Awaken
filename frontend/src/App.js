@@ -211,7 +211,7 @@ export default function App() {
           <input onChange={e=>setUsername(e.target.value)} placeholder="username"/>
           <input onChange={e=>setSenha(e.target.value)} placeholder="senha"/>
           <button onClick={()=>{
-            if(username ==='teste' && senha === 'teste'){
+            if(username ==='editor' && senha === 'logar'){
              localStorage.setItem("logado","logado") 
             }
           }}>confimar</button>
