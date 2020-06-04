@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import firebase from './firebase'
 import ImageUpload from './components/imageUpload'
 
-/*erro em incrementar as fotos atraves do filho editor texto
+/*
 erro ao tentar enviar as fotos com a url salva da funcao, esta enviando undefined antes de salvar*/
 
 
@@ -32,25 +32,34 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [openLogar, setOpenLogar] = React.useState(false);
   const [postagemInfo, setPostagemInfo] = React.useState([]);
   const [image, setImage] = React.useState([])
   const [mainImage, setMainImage] = React.useState(null)
   const [imagi, setImagi] = React.useState(null)
-  const [url, setUrl] = React.useState('')
-  const [urls, setUrls] = React.useState([])
+  const [urli, setUrli] = React.useState([])
   const [mainTitutlo, setMainTitulo] = React.useState('')
+  const [senha, setSenha] = React.useState('')
+  const [username, setUsername] = React.useState('')
   const [sinopse, setSinopse] = React.useState('')
   const [progress, setProgress] = React.useState(0)
   const [progressMainImage, setProgressMainImage] = React.useState(0)
   const [urlMainImage, setUrlMainImage] = React.useState('')
   const [vetorSecoes, setVetorSecoes] = React.useState([
-    <EditorTexto sendImage={salvarImagem} postagemInfo={postagemInfo}  salvar={salvarPostagem}/>
+    <EditorTexto images={image} sendImage={salvarImagem} postagemInfo={postagemInfo}  salvar={salvarPostagem}/>
   ])
   function handleOpen(){
     setOpen(true);
   }
   function handleClose(){
+    localStorage.removeItem('logado')
     setOpen(false);
+  }
+  function handleOpenLogar(){
+    setOpenLogar(true);
+  }
+  function handleCloseLogar(){
+    setOpenLogar(false);
   }
   function salvarMainImagem(image,url){
     setProgressMainImage(0)
@@ -66,55 +75,60 @@ export default function App() {
        })
     
   }
-  async function salvarImagem(imagem){
-    let vetAux = [...image]
-    vetAux.push(imagem)
-    setImage(vetAux)
-    alert("imagem salva")
-    console.log(vetAux)
+  async function salvarImagem(imagem,images){
+    let bool = true
+    for(let i= 0; i<images.length;i++){
+      if(images[i].name == imagem.name){
+        alert("imagem ja salva")
+        bool = false
+      }
+    }if(vetorSecoes.length<image.length+1){
+      bool = false
+      alert("Nao pode alterar a imagem")
+    }
+    if(bool){
+      images.push(imagem)
+      setImage(images)
+      alert("imagem salva")
+      setProgress(0)
+        firebase.storage().ref(`${imagem.name}`).put(imagem).on('state_changed', (snapshot) => {
+         const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+         setProgress(progress);
+       }, (error) => {
+         console.log(error);
+       }, () => {
+         firebase.storage().ref().child(imagem.name).getDownloadURL().then((function(url){
+           let aux = [...urli]
+           aux.push(url)
+           setUrli(aux)
+         }));
+       })
+      console.log(images)}
   }
   function handleMainTitulo(e){
     setMainTitulo(e.target.value)
-  }
-  function handleUrl(url){
-    let aux = [...urls]
-    aux.push(url)
-    setUrls(aux)
-    console.log(url)
-    console.log(aux)
   }
   async function enviar(){
     if(postagemInfo.length==0){
       alert("Escreva algo")
     }
+    else if(image.length<1 ||mainImage == null){
+      alert("selecione as imagens")
+    }
     else{
       const objTitulos = {}
       const objFotos = {}
        const objTextos = {}
-       let teste
-       console.log(image)
-       for(let t = 0; t<image.length;t++){
-      setProgress(0)
-      const uploadTask = firebase.storage().ref(`${image[t].name}`).put(image[t])
-          uploadTask.on('state_changed',(snapshot)=>{
-              const progress = Math.round((snapshot.bytesTransferred/snapshot.totalBytes)*100)
-              setProgress(progress)
-          },(error)=>{
-             console.log(error)
-         },()=>{
-             firebase.storage().ref().child(image[t].name).getDownloadURL().then((handleUrl))
-         })
-     }
        for(let i = 0; i<postagemInfo.length; i++){
         objTitulos[`titulo${i+1}`] = postagemInfo[i].titulo
         objTextos[`texto${i+1}`] = postagemInfo[i].texto
-        objFotos[`foto${i+1}`] = urls[i]
+        objFotos[`foto${i+1}`] = urli[i]
        }
-       /*var newKeyPost = (await firebase.database().ref(`posts/feed/`).child("feed").push()).key;
+       var newKeyPost = (await firebase.database().ref(`posts/feed/`).child("feed").push()).key;
        var updates = {}
        updates[`/posts/feed/`+ newKeyPost] = {titulo:mainTitutlo,imagem:urlMainImage,id:newKeyPost,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
-       firebase.database().ref().update(updates)
-       window.location.reload()*/
+       await firebase.database().ref().update(updates)
+       window.location.reload()
        console.log(objFotos)
     }
   }
@@ -124,6 +138,7 @@ export default function App() {
         setImagi(imagem)
     }
   }
+
   function salvarPostagem(postagem,secoes,titulo,texto){
       if(titulo.length<2 || texto.length<2){
         alert("escreva algo para salvar")
@@ -132,17 +147,19 @@ export default function App() {
       vetAux.push({titulo:titulo,texto:texto})
       setPostagemInfo(vetAux)
       let vetAux2 = secoes == "init" ? [...vetorSecoes] : [...secoes]
-      vetAux2.push(<EditorTexto sendImage={salvarImagem} secoes={vetAux2} postagemInfo={vetAux} salvar={salvarPostagem}/>)
+      vetAux2.push(<EditorTexto images={image} sendImage={salvarImagem} secoes={vetAux2} postagemInfo={vetAux} salvar={salvarPostagem}/>)
       setVetorSecoes(vetAux2)
       }
-
+  }
+  function handleLogar(){
+    handleOpenLogar()
   }
   
   return (
     
     <div className='body'>
       <Banner/>
-      <MenuBar/>
+      <MenuBar logar={handleLogar}/>
       <div className="page">
         <div style={{marginTop:"5%"}}><CatPosts/></div> 
           <ReviewsRecentes openModal={handleOpen}/>
@@ -174,12 +191,30 @@ export default function App() {
               {secao}
           </div>
           ))}
-          {/*<progress value={progress} max="100"/>*/}
+          <progress value={progress} max="100"/>
           <button onClick={()=>enviar()}>Enviar</button>
-          <div>
+          {/*<div>
             <input type="file" onChange={handleChange}/>
             <button onClick={()=>salvarImagem(imagi)}>Enviar</button>
             <br/>
+          </div>*/}
+        </div>
+      </Modal>
+      <Modal
+        open={openLogar}
+        onClose={handleCloseLogar}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <div className={classes.modal}>
+          <div>
+          <input onChange={e=>setUsername(e.target.value)} placeholder="username"/>
+          <input onChange={e=>setSenha(e.target.value)} placeholder="senha"/>
+          <button onClick={()=>{
+            if(username ==='teste' && senha === 'teste'){
+             localStorage.setItem("logado","logado") 
+            }
+          }}>confimar</button>
           </div>
         </div>
       </Modal>

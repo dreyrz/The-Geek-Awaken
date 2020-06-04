@@ -57,7 +57,7 @@ export default function ReviewsRecentes(props) {
     }
     return (
         <div className='containerReviews'>
-            <div style={{display:"flex"}}><h1>Postagens recentes</h1><button onClick={()=>props.openModal()} style={{display: localStorage.getItem('logado') === 'logado' ? "block":"block"}}>Novo</button></div>
+            <div style={{display:"flex"}}><h1>Postagens recentes</h1><button onClick={()=>props.openModal()} style={{display: localStorage.getItem('logado') === 'logado' ? "block":"none"}}>Novo</button></div>
             {vetorCats.map((cat, key) => (           
                 <div key={key}>
                     <div className="line"></div>

@@ -41,6 +41,10 @@ li div:hover{
     padding:5%;
     margin-left: 5%;
 }
+#logar:hover{
+    background-color: #414141;
+
+}
 .listaCat2 li:hover{
     cursor: pointer;
     background-color: #7a7a7a;

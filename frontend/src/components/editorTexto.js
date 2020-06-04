@@ -24,7 +24,7 @@ function handleChange(e){
   }
 }
 function handleImageNew(){
-  props.sendImage(image)
+  props.sendImage(image, props.images)
 }
 function toggleBlockTypeStyle(blockType) {
     setEditorState(RichUtils.toggleBlockType(editorState, blockType));
@@ -50,11 +50,11 @@ const body = (
         <div>
           {//<ImageUploadComponent url={props.url} images={props.images} sendImage={props.sendImage}/>}
           }
-          {/*<div>
+          <div>
             <input type="file" onChange={handleChange}/>
             <button onClick={handleImageNew}>Enviar</button>
             <br/>
-          </div>*/}
+          </div>
         </div>
         <div>
           <button onClick={()=>toggleInlineStyle("BOLD")}>Bold</button>
