@@ -9,10 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import firebase from './firebase'
 import ImageUpload from './components/imageUpload'
 
-/*
-erro ao tentar enviar as fotos com a url salva da funcao, esta enviando undefined antes de salvar*/
-
-
 const useStyles = makeStyles((theme) => ({
     modal: {
       position: 'absolute',
@@ -50,6 +46,7 @@ export default function App() {
   ])
   function handleOpen(){
     setOpen(true);
+    localStorage.setItem('url',JSON.stringify([]))
   }
   function handleClose(){
     localStorage.removeItem('logado')
@@ -82,9 +79,6 @@ export default function App() {
         alert("imagem ja salva")
         bool = false
       }
-    }if(vetorSecoes.length<image.length+1){
-      bool = false
-      alert("Nao pode alterar a imagem")
     }
     if(bool){
       images.push(imagem)
@@ -98,17 +92,18 @@ export default function App() {
          console.log(error);
        }, () => {
          firebase.storage().ref().child(imagem.name).getDownloadURL().then((function(url){
-           let aux = [...urli]
+          let aux = JSON.parse(localStorage.getItem('url'))
            aux.push(url)
-           setUrli(aux)
+           localStorage.setItem('url',JSON.stringify(aux))
          }));
        })
-      console.log(images)}
+    }
   }
   function handleMainTitulo(e){
     setMainTitulo(e.target.value)
   }
   async function enviar(){
+    console.log(JSON.parse(localStorage.getItem('url')))
     if(postagemInfo.length==0){
       alert("Escreva algo")
     }
@@ -116,26 +111,22 @@ export default function App() {
       alert("selecione as imagens")
     }
     else{
+      const uerielis = JSON.parse(localStorage.getItem('url'))
       const objTitulos = {}
       const objFotos = {}
        const objTextos = {}
        for(let i = 0; i<postagemInfo.length; i++){
         objTitulos[`titulo${i+1}`] = postagemInfo[i].titulo
         objTextos[`texto${i+1}`] = postagemInfo[i].texto
-        objFotos[`foto${i+1}`] = urli[i]
+        objFotos[`foto${i+1}`] = uerielis[i]
        }
+       console.log(urli)
+       console.log(objFotos)
        var newKeyPost = (await firebase.database().ref(`posts/feed/`).child("feed").push()).key;
        var updates = {}
        updates[`/posts/feed/`+ newKeyPost] = {titulo:mainTitutlo,imagem:urlMainImage,id:newKeyPost,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
        await firebase.database().ref().update(updates)
        window.location.reload()
-       console.log(objFotos)
-    }
-  }
-  function handleChange(e){
-    if(e.target.files[0]){
-        const imagem = e.target.files[0]
-        setImagi(imagem)
     }
   }
 
@@ -143,6 +134,7 @@ export default function App() {
       if(titulo.length<2 || texto.length<2){
         alert("escreva algo para salvar")
       }else{
+        setProgress(0)
       let vetAux = [...postagem]
       vetAux.push({titulo:titulo,texto:texto})
       setPostagemInfo(vetAux)
@@ -193,11 +185,6 @@ export default function App() {
           ))}
           <progress value={progress} max="100"/>
           <button onClick={()=>enviar()}>Enviar</button>
-          {/*<div>
-            <input type="file" onChange={handleChange}/>
-            <button onClick={()=>salvarImagem(imagi)}>Enviar</button>
-            <br/>
-          </div>*/}
         </div>
       </Modal>
       <Modal

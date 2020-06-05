@@ -57,6 +57,7 @@ li div:hover{
 }
 #inicio{
     margin-left: 5%;
+    padding: 3px;
 }
 @media (min-width: 1374px){
     .containerOB h3{
