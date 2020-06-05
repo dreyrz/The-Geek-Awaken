@@ -150,7 +150,6 @@ export default function App() {
   return (
     
     <div className='body'>
-      <Banner/>
       <MenuBar logar={handleLogar}/>
       <div className="page">
         <div style={{marginTop:"5%"}}><CatPosts/></div> 

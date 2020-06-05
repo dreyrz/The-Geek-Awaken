@@ -56,27 +56,27 @@ export default function ReviewsRecentes(props) {
         aux !== 0 ?  setContador(contador+aux) : setContador(contador+4)
     }
     return (
-        <div className='containerReviews'>
+        <div id='containerReviews'>
             <div style={{display:"flex"}}><h1>Postagens recentes</h1><button onClick={()=>props.openModal()} style={{display: localStorage.getItem('logado') === 'logado' ? "block":"none"}}>Novo</button></div>
             {vetorCats.map((cat, key) => (           
                 <div key={key}>
-                    <div className="line"></div>
-                    <div className='card' >
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} >
-                            <div className="cardImageAux"><img className="cardImage" alt='imagem do card' src={cat.imagem} />  </div>
-                            
-                        </Link>           
-
-                            <div className='cardText'>
-                                <Link style={{ textDecoration: 'none'}} to={{pathname:'/postView', state:{post:cat}}}>
-                                    <h2>{cat.titulo}</h2> 
-                                </Link> 
-                                    <h4>{cat.sinopse}</h4>
-                            </div>      
+                    <div id="line"></div>
+                    <div id='card'>
+                        <div id="cardImageAux">
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} >
+                                    <img id="cardImage" alt='imagem do card' src={cat.imagem} />             
+                            </Link>  
+                        </div>         
+                        <div id='cardText'>
+                            <Link style={{ textDecoration: 'none'}} to={{pathname:'/postView', state:{post:cat}}}>
+                                 <h2>{cat.titulo}</h2> 
+                             </Link> 
+                                <h4>{cat.sinopse}</h4>
+                        </div>      
                     </div>
                 </div>
             ))}
-            <div className='verMaisContainer' style={{ cursor: 'pointer' }} onClick={() => verMais()} >
+            <div id='verMaisContainer' style={{ cursor: 'pointer' }} onClick={() => verMais()} >
                 <h1>Ver mais</h1>
             </div>
         </div>
