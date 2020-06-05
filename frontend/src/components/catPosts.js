@@ -28,8 +28,8 @@ export default function CatPosts(props){
             {vetCats.map((cat,key)=>(
                 <Link to={{pathname:"/postFront",state:{post:cat}}}>
                     <div key={key} className="cats">
-                        <img className="image" src={cat.imagem} style={{borderRadius:'7px'}} />
-                        <div className="title" style={{borderRadius:'7px'}} ><h3>{cat.titulo}</h3></div>
+                        <img className="image" src={cat.imagem} style={{borderRadius:'7px'}} alt=''/>
+                        <div className="title"  ><h3>{cat.titulo}</h3></div>
                     </div>
                 </Link>
                 

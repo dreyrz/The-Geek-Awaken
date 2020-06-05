@@ -3,12 +3,13 @@ import firebase from "../firebase"
 import { Link } from 'react-router-dom'
 import './styles.css'
 
-export default function ReviewsRecentes() {
+export default function ReviewsRecentes(props) {
     const [vetorStorage,setVetorStorage] = React.useState([])
     const [vetorCats, setVetorCats] = React.useState([])
     const [contador, setContador] = React.useState(0)
     
     async function carregarDados(){
+        console.log(props)
         let vetorPostsFeedID = []
         await firebase.database().ref(`posts/feed`).once('value').then(function(snapshot){
             Object.keys(snapshot.val()).forEach(function(postFeed){
@@ -30,7 +31,6 @@ export default function ReviewsRecentes() {
     React.useEffect(()=>{
         carregarDados();
     },[])
-
     function verMais() {
         let vetorAux = [];
         let cont = contador
@@ -57,22 +57,22 @@ export default function ReviewsRecentes() {
     }
     return (
         <div id='containerReviews'>
-            <h1>Postagens recentes</h1>
+            <div style={{display:"flex"}}><h1>Postagens recentes</h1><button onClick={()=>props.openModal()} style={{display: localStorage.getItem('logado') === 'logado' ? "block":"none"}}>Novo</button></div>
             {vetorCats.map((cat, key) => (           
                 <div key={key}>
                     <div id="line"></div>
-                    <div id='card' >
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} >
-                            <div id="cardImageAux"><img id="cardImage" alt='imagem do card' src={cat.imagem} />  </div>
-                            
-                        </Link>           
-
-                            <div id='cardText'>
-                                <Link style={{ textDecoration: 'none'}} to={{pathname:'/postView', state:{post:cat}}}>
-                                    <h2>{cat.titulo}</h2> 
-                                </Link> 
-                                    <h4>{cat.sinopse}</h4>
-                            </div>      
+                    <div id='card'>
+                        <div id="cardImageAux">
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} >
+                                    <img id="cardImage" alt='imagem do card' src={cat.imagem} />             
+                            </Link>  
+                        </div>         
+                        <div id='cardText'>
+                            <Link style={{ textDecoration: 'none'}} to={{pathname:'/postView', state:{post:cat}}}>
+                                 <h2>{cat.titulo}</h2> 
+                             </Link> 
+                                <h4>{cat.sinopse}</h4>
+                        </div>      
                     </div>
                 </div>
             ))}

@@ -41,6 +41,10 @@ li div:hover{
     padding:5%;
     margin-left: 5%;
 }
+#logar:hover{
+    background-color: #414141;
+
+}
 .listaCat2 li:hover{
     cursor: pointer;
     background-color: #7a7a7a;
@@ -112,6 +116,8 @@ li div:hover{
         background-color: rgba(34,63,90, 0.75);
         position: absolute;
         margin-top: -44px;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
     }
     
 
@@ -229,20 +235,9 @@ body{
     background-color: black;
 }
 .page {
-    background-image: url("../assets/59164.jpg");
+    background-color: white;
     margin: 0px 100px 100px 100px;
 
-}
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;  
-}
-.logo {
-    height: 200px;
-    width: 100%;
 }
 .listaCat{
     list-style-type: none;
@@ -304,49 +299,58 @@ body{
     -webkit-font-smoothing: antialised;
     
     font: 700 30px Roboto, sans-serif;
-    color: white;
+    color: black;
     margin-left:5%;
 }
 #card {
     margin-left: 5%;
     margin-top: 2%;
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     border-radius:7px;
-    height: 200px;
-    position: relative;
-    overflow: scroll;
-    overflow-x: hidden;
-    
+    height: 120px;
 }
-#cardImage {
-    height:200px;
-    width: 300px;  
-    border-radius: 7px;
+#cardImageAux {
+    height: 95%;
+    width: 23%;
 }
 #cardImageAux:hover {
     cursor: pointer;
-    filter: brightness(90%); 
+    filter: brightness(90%);
+}
+#cardImage {
+    border: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    height: 100%;
+    width: 100%;
 }
 #cardText {
-    margin-left:5%; 
+    margin-left:5%;
+    height: 80%; 
+    width: 60%;
+    position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 #cardText h2 {
     -webkit-font-smoothing: antialised;
-    font: 700 35px Roboto, sans-serif;
-    color:white;
+    font: 700 25px Roboto, sans-serif;
+    color: black;
+    transition: filter;
 }
 #cardText h2:hover {
     cursor:pointer;
-    filter: brightness(90%);
+    text-decoration: underline;
 }
 
 #cardText h4 {  
     -webkit-font-smoothing: antialised;
-    font: 500 20px Roboto, sans-serif;
+    font: 500 15px Roboto, sans-serif;
     margin-top: 2%;
-    color: white;
+    color: black;
 }
 #verMaisContainer {
     margin-top: 5%; 
@@ -362,8 +366,8 @@ body{
 }
 #line{
     height: 1px;
-    width: 95%;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    width: 75%;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
     margin-top: 10px;
 }
 ::-webkit-scrollbar {

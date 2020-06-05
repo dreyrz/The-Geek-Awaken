@@ -7,7 +7,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
 
-export default function menuBar(){
+export default function menuBar(props){
     const menusJogos = ["Puzzle"]
     const menusMangas = []
     const menusFilmes = ["Romance","Drama"]
@@ -69,6 +69,7 @@ export default function menuBar(){
                             ))}   
                         </ul>
                     </li>
+                    <li className="liCFilho" id="logar" onClick={()=>props.logar()}><div></div></li>
                     <li className="LiCFilho">
                     <div className="socialContainer">
                         <div className="social">
