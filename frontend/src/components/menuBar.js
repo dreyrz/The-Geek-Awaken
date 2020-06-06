@@ -1,11 +1,10 @@
-import React from 'react'
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./styles.css";
-
-import InstagramIcon from '@material-ui/icons/Instagram';
+import React from 'react'
+import logo from '../assets/logo.png'
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
-
+import InstagramIcon from '@material-ui/icons/Instagram';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 export default function menuBar(props){
     const menusJogos = ["Puzzle"]
@@ -15,7 +14,6 @@ export default function menuBar(props){
     const menusAnimes = ["Shounen", "Escolar", "Sobrenatural"]
 
     function socialFont() {
-        
         if (window.matchMedia("(min-width: 1374px)").matches) {    
             return 40;
         } else if (window.matchMedia('(max-width: 1373px)')){
@@ -30,9 +28,11 @@ export default function menuBar(props){
     }
     
      return (
-         <div className="containerMenu">
-             
-                <ul className="listaCat">
+         <header className="containerMenu">
+                <ul id="listaCat"style={{maxHeight:'55px'}}>
+                      <li id='logo'>
+                        <img src={logo} alt='logo'></img>      
+                    </li>
                     <li onClick={()=>(window.location=`/`)}  id="inicio" className="liCFilho"><div>Início</div></li>
                     <li className="liCFilho"><div>Jogos<ArrowDropDownIcon/></div>
                         <ul className="listaCat2">
@@ -70,24 +70,18 @@ export default function menuBar(props){
                         </ul>
                     </li>
                     <li className="liCFilho" id="logar" onClick={()=>props.logar()}><div></div></li>
-                    <li className="LiCFilho">
                     <div className="socialContainer">
-                        <div className="social">
                         <a  target="_blank" rel="noopener noreferrer" href='https://www.instagram.com/the_geek_awaken/' >
                                     <InstagramIcon className="ig" style={{fontSize: socialFont() }} />
-                            </a>  
-                            
-                            <a  target="_blank" rel="noopener noreferrer" href='https://www.youtube.com/channel/UC-rFR4rU0OeHCWzOdVrywWA'>
+                        </a>  
+                        <a  target="_blank" rel="noopener noreferrer" href='https://www.youtube.com/channel/UC-rFR4rU0OeHCWzOdVrywWA'>
                                     <YouTubeIcon className="yt" style={{fontSize: socialFont() }} />
-                            </a>
-                            <a  target="_blank" rel="noopener noreferrer" href='https://twitter.com/TheGeekAwaken'>
-                                    <TwitterIcon className="tt" style={{fontSize: socialFont()}} />
-                            </a>
-                        </div>
-                    </div>   
-                    </li>
+                        </a>
+                        <a  target="_blank" rel="noopener noreferrer" href='https://twitter.com/TheGeekAwaken'>
+                                    <TwitterIcon className="tt" style={{fontSize: socialFont() }} />
+                        </a>
+                    </div>      
                 </ul>               
-        </div>
-
+        </header>
      )
 }

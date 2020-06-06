@@ -42,10 +42,10 @@ const body = (
           <button onClick={()=>toggleBlockTypeStyle("header-five")}>Titulo Pequeno</button>
         </div>
         <div style={{width:"90%",marginLeft:"10%"}} className="editor-container">
-          <Editor
-            placeholder="Titulo"
+          <Editor div='teste'
+            placeholder="Título"
             editorState={editorState}
-            onChange={setEditorState}/>
+            onChange={setEditorState} id='editorTitulo' />
         </div>
         <div>
           {//<ImageUploadComponent url={props.url} images={props.images} sendImage={props.sendImage}/>}
@@ -60,7 +60,7 @@ const body = (
           <button onClick={()=>toggleInlineStyle("BOLD")}>Bold</button>
           <button onClick={()=>toggleInlineStyle("ITALIC")}>Italico</button>
           <button onClick={()=>toggleInlineStyle("UNDERLINE")}>Sublinhar</button>
-          <Editor
+          <Editor 
             placeholder="Texto"
             editorState={editorStateTexto}
             onChange={setEditorStateTexto} />

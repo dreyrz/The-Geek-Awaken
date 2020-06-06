@@ -1,13 +1,13 @@
 import React from 'react';
 import MenuBar from "./components/menuBar"
 import CatPosts from "./components/catPosts"
-import Banner from "./components/banner"
 import ReviewsRecentes from './components/reviewsR'
 import Modal from '@material-ui/core/Modal';
 import EditorTexto from './components/editorTexto';
 import { makeStyles } from '@material-ui/core/styles';
 import firebase from './firebase'
 import ImageUpload from './components/imageUpload'
+import './global.css';
 
 /*
 erro ao tentar enviar as fotos com a url salva da funcao, esta enviando undefined antes de salvar*/
@@ -16,14 +16,21 @@ erro ao tentar enviar as fotos com a url salva da funcao, esta enviando undefine
 const useStyles = makeStyles((theme) => ({
     modal: {
       position: 'absolute',
-      width: "600px",
-      height: "600px",
+      width: "90%",
+      height:'90%',
+      borderRadius:'15px',
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      marginLeft:"28%",
-      marginTop:"2%",
-      overflowY:"scroll"
+      border: '1px solid #000',
+      display:'flex',
+      flexDirection:'column',
+      justifyContent:'center',
+      alignItems:'center', 
+      textAlign:'center',
+      overflowY:"scroll",
+      top: '50%',
+      left: '50%',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
     },
     editorTitulo:{
       marginTop:"5%"
@@ -141,7 +148,7 @@ export default function App() {
 
   function salvarPostagem(postagem,secoes,titulo,texto){
       if(titulo.length<2 || texto.length<2){
-        alert("escreva algo para salvar")
+        alert("Escreva algo para salvar")
       }else{
       let vetAux = [...postagem]
       vetAux.push({titulo:titulo,texto:texto})
@@ -156,64 +163,60 @@ export default function App() {
   }
   
   return (
-    
     <div className='body'>
       <MenuBar logar={handleLogar}/>
       <div className="page">
-        <div style={{marginTop:"5%"}}><CatPosts/></div> 
+        <div><CatPosts/></div> 
           <ReviewsRecentes openModal={handleOpen}/>
       </div>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        <div className={classes.modal}>
-          <div>
-            <h1>Selecione uma imagem para ser a principal</h1>
-            <ImageUpload direct={true} func={salvarMainImagem}/> 
-            <img src={urlMainImage} width="300px" height="300px"/>
-            <progress value={progressMainImage} max="100"/>
-        
+        aria-describedby="simple-modal-description">
+          <div className={classes.modal}>
+            <div id='modalStyle'>
+              <h1>Selecione uma imagem para ser a principal</h1>
+              <ImageUpload direct={true} func={salvarMainImagem}/> 
+              <img src={urlMainImage} width="100px" height="100px" style={{padding:'2%'}} />
+              <progress value={progressMainImage} max="100"/>
+
+              <h1>Escreva um título para ser o principal</h1>
+              <input onChange={handleMainTitulo} style={{height:'60px',width:'90%',fontSize:'20px'}} />
+
+              <h1>Escreva uma sinopse</h1>
+              <input onChange={e=>setSinopse(e.target.value)} style={{height:'60px',width:'90%',fontSize:'20px'}} />
+            
+            {vetorSecoes.map((secao,key)=>(
+              <div key={key}>
+                {secao}
+            </div>
+            ))}
+            <progress value={progress} max="100"/>
+            <button onClick={()=>enviar()}>Enviar</button>
+            {/*<div>
+              <input type="file" onChange={handleChange}/>
+              <button onClick={()=>salvarImagem(imagi)}>Enviar</button>
+              <br/>
+            </div>*/}
+            </div>
           </div>
-          <div>
-            <h1>Escreva um titulo para ser o principal</h1>
-            <input onChange={handleMainTitulo}/>
-          </div>
-          <div>
-            <h1>Escreva uma sinopse</h1>
-            <input onChange={e=>setSinopse(e.target.value)}/>
-          </div>
-          {vetorSecoes.map((secao,key)=>(
-            <div key={key}>
-              {secao}
-          </div>
-          ))}
-          <progress value={progress} max="100"/>
-          <button onClick={()=>enviar()}>Enviar</button>
-          {/*<div>
-            <input type="file" onChange={handleChange}/>
-            <button onClick={()=>salvarImagem(imagi)}>Enviar</button>
-            <br/>
-          </div>*/}
-        </div>
       </Modal>
       <Modal
         open={openLogar}
         onClose={handleCloseLogar}
         aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
+        aria-describedby="simple-modal-description">
         <div className={classes.modal}>
-          <div>
-          <input onChange={e=>setUsername(e.target.value)} placeholder="username"/>
-          <input onChange={e=>setSenha(e.target.value)} placeholder="senha"/>
-          <button onClick={()=>{
-            if(username ==='editor' && senha === 'logar'){
-             localStorage.setItem("logado","logado") 
-            }
-          }}>confimar</button>
+          <div id='modalLogin'>
+            <input onChange={e=>setUsername(e.target.value)} placeholder="Username"/>
+            <input onChange={e=>setSenha(e.target.value)} placeholder="Senha"/>
+            <button onClick={()=>{
+              if(username ==='' && senha === ''){ //editor logar
+              localStorage.setItem("logado","logado") 
+              handleOpen();
+              }
+            }}>Confimar</button>
           </div>
         </div>
       </Modal>
