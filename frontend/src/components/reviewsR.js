@@ -21,10 +21,9 @@ export default function ReviewsRecentes(props) {
         for(cont; cont<vetorPostsFeedID.length;cont++){
             if(cont<4){
                 vetorAux.push(vetorPostsFeedID[cont])
-                props.posts.push(vetorPostsFeedID[cont])
             }
+            props.posts.push(vetorPostsFeedID[cont])
         }
-        console.log(props.posts)
         setContador(4)
         setVetorCats(vetorAux);
         setVetorStorage(vetorPostsFeedID)
@@ -80,7 +79,7 @@ export default function ReviewsRecentes(props) {
                     <div id="line"></div>
                 </div>
             ))}
-            
+            <h4 onClick={()=>verMais()}>Ver Mais</h4>
         </div>
     )
 }

@@ -8,7 +8,6 @@ export default function CatPosts(props){
     const [vetCats,setVetCats] = React.useState([{imagem:'',titulo:'',id:''}])
 
    async  function carregarDados(){
-       console.log(props.posts)
        let vetAux = []
         await firebase.database().ref('posts/postsFront').once('value').then(function(snapshot){
                 Object.keys(snapshot.val()).forEach(function(postFeed){
@@ -30,7 +29,7 @@ export default function CatPosts(props){
         <div className="containerOB"  >    
             {vetCats.map((cat,key)=>(
                 <div>
-                    <button onClick={()=>props.openModal(props.posts)}>clique</button>
+                    <button style={{display: localStorage.getItem('logado') === 'logado' ? "block":"none"}} onClick={()=>props.openModal(key)}>clique</button>
                     <Link to={{pathname:"/postFront",state:{post:cat}}}>
                         <div key={key} className="cats" >
                             <img className="image" src={cat.imagem}  alt=''/>

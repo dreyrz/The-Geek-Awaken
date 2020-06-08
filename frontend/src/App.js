@@ -5,6 +5,9 @@ import ReviewsRecentes from './components/reviewsR'
 import Modal from '@material-ui/core/Modal';
 import EditorTexto from './components/editorTexto';
 import { makeStyles } from '@material-ui/core/styles';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 import firebase from './firebase'
 import ImageUpload from './components/imageUpload'
 import './global.css';
@@ -27,6 +30,16 @@ const useStyles = makeStyles((theme) => ({
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
     },
+    modalEditPost:{
+      width:"350px",
+      height:"180px",
+      borderRadius:'15px',
+      backgroundColor: theme.palette.background.paper,
+      marginTop: '12%',
+      marginLeft:'25%',
+      padding:"5%"
+
+    },
     editorTitulo:{
       marginTop:"5%"
     }
@@ -39,7 +52,12 @@ export default function App() {
   const [postagemInfo, setPostagemInfo] = React.useState([]);
   const [image, setImage] = React.useState([])
   const [mainImage, setMainImage] = React.useState(null)
+  const [postFrontKey, setPostFrontKey] = React.useState(null)
   const [postsRecentes, setPostsRecentes] = React.useState([])
+  const [postChoose, setPostChoose]= React.useState('')
+  const [postChooseInfo, setPostChooseInfo]= React.useState('')
+  const [categoria, setCategoria]= React.useState('')
+  const [categorias, setCategorias]= React.useState([])
   const [mainTitutlo, setMainTitulo] = React.useState('')
   const [senha, setSenha] = React.useState('')
   const [username, setUsername] = React.useState('')
@@ -57,6 +75,8 @@ export default function App() {
   function handleClose(){
     localStorage.removeItem('logado')
     setOpen(false);
+    setCategorias([])
+    setCategorias('')
   }
   function handleOpenLogar(){
     setOpenLogar(true);
@@ -64,12 +84,22 @@ export default function App() {
   function handleCloseLogar(){
     setOpenLogar(false);
   }
-  function handleOpenEditPost(){
+  function handleOpenEditPost(key){
     setOpenEditPost(true);
+    setPostFrontKey(key+1)
   }
   function handleCloseEditPost(){
     setOpenEditPost(false);
+    setPostChoose('')
   }
+  function handleChange(event){
+    setPostChoose(event.target.value)
+    for(let t = 0;t<postsRecentes.length;t++){
+      if(postsRecentes[t].titulo == event.target.value){
+        setPostChooseInfo(postsRecentes[t])
+      }
+    }
+  };
   function salvarMainImagem(image,url){
     setProgressMainImage(0)
     setMainImage(image)
@@ -114,13 +144,18 @@ export default function App() {
   function handleMainTitulo(e){
     setMainTitulo(e.target.value)
   }
+  function handleCategoria(e){
+    setCategoria(e.target.value)
+  }
   async function enviar(){
-    console.log(JSON.parse(localStorage.getItem('url')))
     if(postagemInfo.length==0){
       alert("Escreva algo")
     }
     else if(image.length<1 ||mainImage == null){
       alert("selecione as imagens")
+    }
+    else if(categorias.length===0){
+      alert("Escreva uma categoria")
     }
     else{
       const uerielis = JSON.parse(localStorage.getItem('url'))
@@ -136,6 +171,34 @@ export default function App() {
        var updates = {}
        updates[`/posts/feed/`+ newKeyPost] = {titulo:mainTitutlo,imagem:urlMainImage,id:newKeyPost,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
        await firebase.database().ref().update(updates)
+    let vetorPostsFeedID = []
+        await firebase.database().ref(`posts/categorias`).once('value').then(function(snapshot){
+            Object.keys(snapshot.val()).forEach(function(postFeed){
+                vetorPostsFeedID.push(postFeed)
+            })
+        })
+        let auxCategoria = []
+        for(let t = 0; t<categorias.length;t++){
+          auxCategoria.push({nome:categorias[t],existe:false})
+        }
+        for(let i = 0; i<auxCategoria.length;i++){
+          let achou = false
+          for(let x=0;x<vetorPostsFeedID.length;x++){
+            if(auxCategoria[i].nome == vetorPostsFeedID[x]){
+              achou = true
+              console.log("entrou if")
+              var upar = {}
+              upar[`/posts/categorias/${auxCategoria[i].nome}/`+ mainTitutlo] = {titulo:mainTitutlo,imagem:urlMainImage,id:mainTitutlo,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
+              await firebase.database().ref().update(upar)
+            }
+          }
+          if(achou===false){
+            console.log("else")
+            var upar = {}
+            upar[`/posts/categorias/${auxCategoria[i].nome}/`+ mainTitutlo] = {titulo:mainTitutlo,imagem:urlMainImage,id:mainTitutlo,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
+            await firebase.database().ref().update(upar)
+          }
+        }
        window.location.reload()
     }
   }
@@ -180,7 +243,19 @@ export default function App() {
               <input onChange={handleMainTitulo} placeholder='Título do card/carrossel' 
               style={{height:'60px',width:'60%',fontSize:'20px',padding:'1%'}} 
               maxLength='30'/>
-
+              <h1 style={{marginTop:'3%'}} >Categorias</h1>
+              <input onChange={handleCategoria} placeholder='Nome da categoria' 
+              style={{height:'60px',width:'60%',fontSize:'20px',padding:'1%'}} 
+              maxLength='30'/>
+              {categorias.map((categoria,key)=>(
+                <p key={key}>{categoria}</p>
+              ))}
+              <button onClick={()=>{
+                let aux = [...categorias]
+                aux.push(categoria)
+                setCategoria('')
+                setCategorias(aux)
+              }}>Adicionar</button>
               <h1 style={{marginTop:'3%'}} >Sinopse do card/carrossel</h1>
               <textarea onChange={e=>setSinopse(e.target.value)} placeholder='Sinopse do card/carrossel' 
               style={{height:'70px',width:'60%',fontSize:'20px',resize:'none',padding:'1%'}} 
@@ -208,7 +283,7 @@ export default function App() {
             <button onClick={()=>{
               if(username === 'editor' && senha === 'logar'){
               localStorage.setItem("logado","logado") 
-              handleOpen();
+              handleCloseLogar()
               }
             }}>Confimar</button>
           </div>
@@ -219,12 +294,47 @@ export default function App() {
         onClose={handleCloseEditPost}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description">
-        <div className={classes.modal}>
-          {console.log("modal")}
-          {console.log(postsRecentes)}
+        <div className={classes.modalEditPost}>
+        <FormControl style={{width:"80%"}}>
+        <InputLabel htmlFor='postChoose-native-simple'>Escolha um Post</InputLabel>
+        <Select
+          native
+          value={postChoose}
+          onChange={handleChange}
+          inputProps={{
+            name: 'postChoose',
+            id: 'postChoose-native-simple',
+          }}
+        >
+        <option aria-label="None" value="" />
+        {postsRecentes.map((post,key)=>(
+          <option key={key} aria-label="None" value={post.titulo}>{post.titulo}</option>
+        ))}
+        </Select>
+      </FormControl>
+        <button onClick={async()=>(
+          await firebase.database().ref(`posts/postsFront/postFront${postFrontKey}`).set({
+            fotos: postChooseInfo.fotos,
+            imagem:postChooseInfo.imagem,
+            sinopse:postChooseInfo.sinopse,
+            textos:postChooseInfo.textos,
+            titulos:postChooseInfo.titulos,
+            titulo:postChooseInfo.titulo
+          }).then(handleCloseEditPost())
+         
+        )}>Modificar</button>
+          
         </div>
       </Modal>
     </div>
   );
 }
 
+// handle change dinamico
+/* const handleChange = (event) => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };*/
