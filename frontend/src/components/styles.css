@@ -1,22 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-.listaCat{
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;700&display=swap');
+#listaCat{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #414141;
+    background-color: white;
+}
+#logo{
+    float: left;
+    width: 15%;
+    height: 63px;
+    overflow: hidden;
+    margin-left: 1%;
+}
+#logo:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+#logo img {
+    margin-top:1%;
+    transform:scale(1.7,1.7);
+    object-fit:cover;
+    height:80%;
+    width:90%;
+    margin-left:14%;
 }
 .liCFilho {
     float: left;
     margin-left: 3%;
-    
 }
 .liCFilho div {
     display: flex;
-    color: white;
     text-align: center;
-    padding: 16px;
+    padding: 14px;
     text-decoration: none;
+    -webkit-font-smoothing: antialised;
+    font: 500 20px Barlow Condensed, sans-serif;
+    color: black;
 }
 li div:hover{
     cursor: pointer;
@@ -24,33 +44,35 @@ li div:hover{
 .listaCat2{
     list-style-type: none;
     overflow: hidden;
-    background-color: #414141;
+    background-color: white;
     display: none;
     position: absolute;
     margin-right:0;
     padding: 0;
     height: 150px;
     overflow-y: auto;
+    
 }
 .listaCat2 li{
     margin-top: 2%;
     width: 150px;
-    color: white;
+    color: rgb(54, 54, 54);
+    -webkit-font-smoothing: antialised;
+    font: 500 20px Barlow Condensed, sans-serif;
 }
 .listaCat2 li p{
     padding:5%;
     margin-left: 5%;
 }
-#logar:hover{
-    background-color: #414141;
-
+#logar div:hover{
+    cursor: auto;
 }
 .listaCat2 li:hover{
     cursor: pointer;
-    background-color: #7a7a7a;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .liCFilho:hover{
-    background-color: #646464;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .liCFilho:hover .listaCat2{
     display: block;
@@ -96,9 +118,9 @@ li div:hover{
         line-height: 1.21em;
         font-weight: 900;
         margin-left: 6%;
-        
         height: 40px;
         font-family: 'ars-maquette-web', sans-serif;
+        
     }
     .containerOB{
         display:flex;
@@ -226,19 +248,7 @@ li div:hover{
 .image{
     height: 100%;
     width: 100%;
-}
-* {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-}
-body{
-    background-color: black;
-}
-.page {
-    background-color: white;
-    margin: 0px 100px 100px 100px;
-
+    border-radius: 7px;
 }
 .listaCat{
     list-style-type: none;
@@ -248,8 +258,7 @@ body{
     background-color: #414141;
 }
 .socialContainer{
-    display:flex;
-    
+    display:flex;  
     margin:0 auto;
     line-height: 3em;
     padding-left: 20%;
@@ -261,11 +270,14 @@ body{
     flex-direction: row-reverse;
     margin-right: 5%;
     margin-top: 2%;
+    margin-top:1%;
+    justify-content: space-around;
+    padding-left: 5%;
 }
 .ig {
     cursor: pointer;
     transition: color;
-    color: white;
+    color: black;
 }
 .ig:hover{
     cursor:pointer;
@@ -274,8 +286,7 @@ body{
 .yt {
     cursor: pointer;
     transition: color;
-    color:white;
-    margin-right: 25px;
+    color:black;
 }
 .yt:hover {
     color : #ff0000;
@@ -284,8 +295,8 @@ body{
 .tt {   
     cursor: pointer;
     transition: color;
-    color: white;
-    margin-right: 25px;
+    color: black;
+    
 }
 .tt:hover{
     color: #1da1f2;
@@ -293,18 +304,16 @@ body{
 }
 #containerReviews{
     margin-top: 5%;
-    
 }
 #containerReviews h1 {
     -webkit-font-smoothing: antialised;
-    
     font: 700 30px Roboto, sans-serif;
     color: black;
     margin-left:5%;
 }
 #card {
     margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 1%;
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -322,7 +331,7 @@ body{
 #cardImage {
     border: solid;
     border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 0, 0, 0.2);
     border-radius: 7px;
     height: 100%;
     width: 100%;
@@ -366,14 +375,83 @@ body{
 }
 #line{
     height: 1px;
-    width: 75%;
-    border-top: 1px solid rgba(0, 0, 0, 0.4);
-    margin-top: 10px;
+    width: 65%;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 1%;
+    margin-left: 5%;
+}
+#modalLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+#modalLogin input{
+    margin-top: 0.5%;
+    width: 30%;
+    height: 60px;
+    border-radius: 7px;
+    border: 1px solid #818181;
+    padding-left: 1%;
+    color: #333;
+    font: 500 16px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    
+}
+#modalLogin button{
+    margin: 3%; 
+    width: 31.5%;
+    height: 60px;
+    border: 0;
+    border-radius: 7px;
+    background-color:#5c5c5c;
+    color: white;
+    font: 500 20px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+    transition: filter;
+}
+#modalLogin button:hover{
+    cursor: pointer;
+    filter: brightness(90%)
+}
+#modalStyle{
+    overflow: scroll;
+    width: 70%;
+}
+#inputImage{
+    display:none;
+}
+#inputImage:hover{
+    cursor: pointer;
+}
+#modalStyle button {
+    border: 0;
+    color: black;
+    font: 500 16px Roboto, sans-serif;
+    transition: filter;
+    margin: 1%;
+}
+#modalStyle button:hover {
+    cursor: pointer;
+    filter: brightness(90%)
+}
+#modalStyle input{
+    margin:1%;
+}
+.DraftEditor-root {
+    background-color: #fffef7;
+    width:92.5%;
+    padding:1%;
+    height:300px;
+    border: 1px solid rgb(85, 85, 85);
+    overflow: scroll;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    
 }
 ::-webkit-scrollbar {
     width: 0px; 
     background: transparent;
 }
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
+

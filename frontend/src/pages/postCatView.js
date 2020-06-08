@@ -63,6 +63,7 @@ export default function PostCatView(){
 
     return(
         <div>
+            
             <MenuBar/>
             <div className='containerReviews'>
             <h1>{cat}</h1>
