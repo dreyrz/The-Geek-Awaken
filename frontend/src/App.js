@@ -35,11 +35,11 @@ export default function App() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [openLogar, setOpenLogar] = React.useState(false);
+  const [openEditPost, setOpenEditPost] = React.useState(false);
   const [postagemInfo, setPostagemInfo] = React.useState([]);
   const [image, setImage] = React.useState([])
   const [mainImage, setMainImage] = React.useState(null)
-  const [imagi, setImagi] = React.useState(null)
-  const [urli, setUrli] = React.useState([])
+  const [postsRecentes, setPostsRecentes] = React.useState([])
   const [mainTitutlo, setMainTitulo] = React.useState('')
   const [senha, setSenha] = React.useState('')
   const [username, setUsername] = React.useState('')
@@ -63,6 +63,12 @@ export default function App() {
   }
   function handleCloseLogar(){
     setOpenLogar(false);
+  }
+  function handleOpenEditPost(){
+    setOpenEditPost(true);
+  }
+  function handleCloseEditPost(){
+    setOpenEditPost(false);
   }
   function salvarMainImagem(image,url){
     setProgressMainImage(0)
@@ -126,8 +132,6 @@ export default function App() {
         objTextos[`texto${i+1}`] = postagemInfo[i].texto
         objFotos[`foto${i+1}`] = uerielis[i]
        }
-       console.log(urli)
-       console.log(objFotos)
        var newKeyPost = (await firebase.database().ref(`posts/feed/`).child("feed").push()).key;
        var updates = {}
        updates[`/posts/feed/`+ newKeyPost] = {titulo:mainTitutlo,imagem:urlMainImage,id:newKeyPost,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
@@ -158,8 +162,8 @@ export default function App() {
     <div className='body' >
       <MenuBar logar={handleLogar}/>
       <div className="page">
-        <div><CatPosts/></div> 
-        <ReviewsRecentes openModal={handleOpen}/>
+        <div><CatPosts posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
+        <ReviewsRecentes posts={postsRecentes} openModal={handleOpen}/>
       </div>
       <Modal
         open={open}
@@ -189,11 +193,6 @@ export default function App() {
             ))}
             <progress value={progress} max="100"/>
             <button onClick={()=>enviar()}>Enviar</button>
-            {/*<div>
-              <input type="file" onChange={handleChange}/>
-              <button onClick={()=>salvarImagem(imagi)}>Enviar</button>
-              <br/>
-            </div>*/}
             </div>
           </div>
       </Modal>
@@ -213,6 +212,16 @@ export default function App() {
               }
             }}>Confimar</button>
           </div>
+        </div>
+      </Modal>
+      <Modal
+        open={openEditPost}
+        onClose={handleCloseEditPost}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description">
+        <div className={classes.modal}>
+          {console.log("modal")}
+          {console.log(postsRecentes)}
         </div>
       </Modal>
     </div>

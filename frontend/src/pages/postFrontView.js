@@ -7,7 +7,6 @@ export default function PostFrontView(props){
     const [postagem,setPostagem] = React.useState([])
 
     async function carregarDados(){
-        console.log(props.location.state.post)
         if(props.location.state.post.id !== ""){
             let aux = props.location.state.post
             let vetAux = []
