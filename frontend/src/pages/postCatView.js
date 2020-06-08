@@ -17,7 +17,7 @@ export default function PostCatView(){
             }
         }
         setCat(str)
-        let obrasAux = []; 
+        let obrasAux = [];
         await firebase.database().ref(`posts/categorias/${str.toLowerCase()}`).once('value').
         then(function(snapshot){
             Object.keys(snapshot.val()).forEach(function(postFeed){

@@ -7,15 +7,18 @@ export default function PostFrontView(props){
     const [postagem,setPostagem] = React.useState([])
 
     async function carregarDados(){
-        let aux = props.location.state.post
-        let vetAux = []
-        let cont = 1
-        Object.keys(aux.titulos).forEach(function(titulo){
-            vetAux.push({titulos:aux.titulos[titulo],textos:aux.textos['texto'+cont],images:aux.imagens['foto'+cont]})
-            cont++
-            
-        })
-        setPostagem(vetAux)
+        console.log(props.location.state.post)
+        if(props.location.state.post.id !== ""){
+            let aux = props.location.state.post
+            let vetAux = []
+            let cont = 1
+            Object.keys(aux.titulos).forEach(function(titulo){
+                vetAux.push({titulos:aux.titulos[titulo],textos:aux.textos['texto'+cont],images:aux.imagens['foto'+cont]})
+                cont++
+                
+            })
+            setPostagem(vetAux)
+        }
     }
 
     React.useEffect(()=>{

@@ -24,8 +24,8 @@ export default function CatPosts(props){
     },[])
 
     return(
-    <div id='catsTitle' > 
-        <h1>Destaques</h1>
+    <div> 
+        <h1 style={{color: "#333", font:"700 35px Roboto",fontFamily:"sans-serif"}}>Destaques</h1>
         <div className="containerOB"  >    
             {vetCats.map((cat,key)=>(
             <Link to={{pathname:"/postFront",state:{post:cat}}}>

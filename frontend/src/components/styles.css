@@ -82,13 +82,6 @@ li div:hover{
 .liCFilho:hover .listaCat2{
     display: block;
 }
-#catsTitle {
-    color: #333;
-    font: 700 15px Roboto, sans-serif;
-    -webkit-font-smoothing: antialised;
-    margin-left: 5%;
-    padding-top: 2%;
-}
 @media (min-width: 1374px){
     .containerOB h3{
         width: 300px;
@@ -103,8 +96,6 @@ li div:hover{
     .containerOB{
         display:flex;
         justify-content:space-between;
-        margin-right:3%;
-        margin-left:3%;
     }
     .cats{
         height: 400px;
@@ -178,12 +169,12 @@ li div:hover{
     }
     .containerOB{
         display:flex;
-        justify-content:space-between;
+        justify-content:space-around;
         
     }
     .cats{
-        height: 300px;
-        width: 200px;
+        height: 350px;
+        width: 250px;
         cursor: pointer;
     }
     .title{
@@ -192,7 +183,6 @@ li div:hover{
         margin-top: -43px;
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
-        width: 14%;
     }
     #card {
         margin-left: 5%;
@@ -262,15 +252,15 @@ li div:hover{
         margin-left:0%;
     }
     .cats{
-        height: 400px;
-        width: 250px;
+        height: 350px;
+        width: 230px;
         cursor: pointer;
     }
     .title{
         background-color: rgba(34,63,90, 0.75);
         position: absolute;
         margin-top: -45px;
-        width: 250px;
+        width: 230px;
     }
     #card {
         margin-left: 5%;
@@ -334,14 +324,14 @@ li div:hover{
     .containerOB{
         display:flex;
         align-items: center;
-        justify-content:space-between;
+        justify-content:space-around;
         flex-direction: row;
         margin-right:1%;
         margin-left:1%;
     }
     .cats{
-        height: 300px;
-        width: 180px;
+        height: 310px;
+        width: 210px;
         cursor: pointer;
         margin-bottom: 5%;
     }
@@ -349,7 +339,86 @@ li div:hover{
         background-color: rgba(34,63,90, 0.75);
         position: absolute;
         margin-top: -45px;
-        width: 180px;
+        width: 210px;
+    }
+    #card {
+        margin-left: 5%;
+        margin-top: 1%;
+        width: 70%;
+        display: flex;
+        border-radius:7px;
+        height: 120px;
+    }
+    #cardImageAux {
+        height: 95%;
+        width: 23%;
+        border-radius: 7px;
+        border-width: 1px;
+    }
+    #cardImageAux:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
+    #cardImage {
+            
+        border-radius: 7px;
+        height: 100%;
+        width: 100%;
+    }
+    #cardText {
+        margin-left:5%;
+        height: 80%; 
+        width: 60%;
+        
+    }
+    #cardText h2 {
+        -webkit-font-smoothing: antialised;
+        font: 700 20px Roboto, sans-serif;
+        color: #333;
+        
+        
+    }
+    #cardText h2:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #cardText h4 {  
+        -webkit-font-smoothing: antialised;
+        font: 500 15px Roboto, sans-serif;
+        margin-top: 2%;
+        color: black;
+    }
+    
+}
+@media (max-width: 951px){
+    .containerOB h3{
+        width: 100%;
+        color: rgb(224, 224, 224);
+        font-size: 18px;
+        line-height: 1.21em;
+        font-weight: 900;
+        margin-left: 6%;
+        height: 40px;
+        font-family: 'ars-maquette-web', sans-serif;
+    }
+    .containerOB{
+        display:flex;
+        align-items: center;
+        justify-content:space-around;
+        flex-direction: column;
+        margin-left: 10%;
+    }
+    .cats{
+        height: 330px;
+        width: 505px;
+        cursor: pointer;
+        margin-bottom: 5%;
+    }
+    .title{
+        background-color: rgba(34,63,90, 0.75);
+        position: absolute;
+        margin-top: -45px;
+        width: 505px;
     }
     #card {
         margin-left: 5%;
@@ -419,7 +488,7 @@ li div:hover{
     }
     .cats{
         height: 300px;
-        width: 350px;
+        width: 420px;
         cursor: pointer;
         margin-bottom: 5%;
     }
@@ -427,7 +496,7 @@ li div:hover{
         background-color: rgba(34,63,90, 0.75);
         position: absolute;
         margin-top: -45px;
-        width: 400px;
+        width: 420px;
     }
     #card {
         margin-left: 5%;
