@@ -35,28 +35,29 @@ function salvar(){
     textoValue.length<2 ? setSalvo(false):setSalvo(true)
 }
 const body = (
-    <div>
-        <div>
-          <button onClick={()=>toggleBlockTypeStyle("header-one")}>Titulo Grande</button>
-          <button onClick={()=>toggleBlockTypeStyle("header-three")}>Titulo Medio</button>
-          <button onClick={()=>toggleBlockTypeStyle("header-five")}>Titulo Pequeno</button>
-        </div>
-        <div style={{width:"90%",marginLeft:"10%"}} className="editor-container">
-          <Editor div='teste'
+    <div className="editor-container" >
+      <h1 style={{marginBottom:'3%'}}>Post</h1>
+      <div>
+          <button onClick={()=>toggleBlockTypeStyle("header-one")}>Título Grande</button>
+          <button onClick={()=>toggleBlockTypeStyle("header-three")}>Título Medio</button>
+          <button onClick={()=>toggleBlockTypeStyle("header-five")}>Título Pequeno</button>
+      </div>
+      <div>
+          <Editor
             placeholder="Título"
             editorState={editorState}
             onChange={setEditorState} id='editorTitulo' />
-        </div>
-        <div>
+      </div>
+      <div>
           {//<ImageUploadComponent url={props.url} images={props.images} sendImage={props.sendImage}/>}
           }
-          <div>
-            <input type="file" onChange={handleChange}/>
-            <button onClick={handleImageNew}>Enviar</button>
-            <br/>
-          </div>
-        </div>
         <div>
+          <input type="file" onChange={handleChange} style={{marginTop:'1%'}} />
+          <button onClick={handleImageNew}>Enviar</button>
+          <br/>
+        </div>
+      </div>
+      <div style={{marginTop:'3%'}} >
           <button onClick={()=>toggleInlineStyle("BOLD")}>Bold</button>
           <button onClick={()=>toggleInlineStyle("ITALIC")}>Italico</button>
           <button onClick={()=>toggleInlineStyle("UNDERLINE")}>Sublinhar</button>
@@ -64,8 +65,15 @@ const body = (
             placeholder="Texto"
             editorState={editorStateTexto}
             onChange={setEditorStateTexto} />
-        </div>
-          <button style={{display: salvo === false? "block":"none"}} onClick={()=>salvar()}>Salvar Secao</button>
+      </div>
+        <button
+            style={{
+              marginLeft:'12%',border:'0',backgroundColor:'#5c5c5c',color:'white',
+              width:'16%',height:'40px', borderRadius:'4px',
+              display: salvo === false? "block":"none"
+            }} 
+            onClick={()=>salvar()}>Salvar Seção
+        </button>
     </div>
   );
 return body

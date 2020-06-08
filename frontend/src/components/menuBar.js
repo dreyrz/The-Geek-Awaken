@@ -28,8 +28,8 @@ export default function menuBar(props){
     }
     
      return (
-         <header className="containerMenu">
-                <ul id="listaCat"style={{maxHeight:'55px'}}>
+         <header id="containerMenu">
+                <ul id="listaCat">
                       <li id='logo'>
                         <img src={logo} alt='logo'></img>      
                     </li>
@@ -81,7 +81,8 @@ export default function menuBar(props){
                                     <TwitterIcon className="tt" style={{fontSize: socialFont() }} />
                         </a>
                     </div>      
-                </ul>               
+                </ul>
+                <div id="lineMenu"></div>               
         </header>
      )
 }

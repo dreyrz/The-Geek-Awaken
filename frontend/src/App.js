@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
       justifyContent:'center',
       alignItems:'center', 
       textAlign:'center',
-      overflowY:"scroll",
       top: '50%',
       left: '50%',
       marginRight: '-50%',
@@ -163,11 +162,12 @@ export default function App() {
   }
   
   return (
-    <div className='body'>
+    
+    <div className='body' >
       <MenuBar logar={handleLogar}/>
       <div className="page">
         <div><CatPosts/></div> 
-          <ReviewsRecentes openModal={handleOpen}/>
+        <ReviewsRecentes openModal={handleOpen}/>
       </div>
       <Modal
         open={open}
@@ -176,16 +176,19 @@ export default function App() {
         aria-describedby="simple-modal-description">
           <div className={classes.modal}>
             <div id='modalStyle'>
-              <h1>Selecione uma imagem para ser a principal</h1>
+              <h1>Imagem do card/carrossel</h1>
               <ImageUpload direct={true} func={salvarMainImagem}/> 
-              <img src={urlMainImage} width="100px" height="100px" style={{padding:'2%'}} />
-              <progress value={progressMainImage} max="100"/>
+              <img src={urlMainImage} width="100px" height="100px" style={{margin:'2%'}} />
+              <progress value={progressMainImage} max="40"/>
+              <h1 style={{marginTop:'3%'}} >Título do card/carrossel</h1>
+              <input onChange={handleMainTitulo} placeholder='Título do card/carrossel' 
+              style={{height:'60px',width:'60%',fontSize:'20px',padding:'1%'}} 
+              maxLength='30'/>
 
-              <h1>Escreva um título para ser o principal</h1>
-              <input onChange={handleMainTitulo} style={{height:'60px',width:'90%',fontSize:'20px'}} />
-
-              <h1>Escreva uma sinopse</h1>
-              <input onChange={e=>setSinopse(e.target.value)} style={{height:'60px',width:'90%',fontSize:'20px'}} />
+              <h1 style={{marginTop:'3%'}} >Sinopse do card/carrossel</h1>
+              <textarea onChange={e=>setSinopse(e.target.value)} placeholder='Sinopse do card/carrossel' 
+              style={{height:'70px',width:'60%',fontSize:'20px',resize:'none',padding:'1%'}} 
+              maxLength='180' />
             
             {vetorSecoes.map((secao,key)=>(
               <div key={key}>
@@ -210,9 +213,9 @@ export default function App() {
         <div className={classes.modal}>
           <div id='modalLogin'>
             <input onChange={e=>setUsername(e.target.value)} placeholder="Username"/>
-            <input onChange={e=>setSenha(e.target.value)} placeholder="Senha"/>
+            <input onChange={e=>setSenha(e.target.value)}  type='password' placeholder="Senha"/>
             <button onClick={()=>{
-              if(username ==='' && senha === ''){ //editor logar
+              if(username === 'editor' && senha === 'logar'){
               localStorage.setItem("logado","logado") 
               handleOpen();
               }

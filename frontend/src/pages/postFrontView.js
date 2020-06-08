@@ -25,7 +25,7 @@ export default function PostFrontView(props){
     return(
         <div>
             <MenuBar/>
-            <div className="containerPost">
+            <div className="containerPost" style={{backgroundColor:'black',height:'100%',width:'100%'}} >
             {postagem.map((post,key)=>(
                     <>
                         <div className="containerTitle"><h1>{post.titulos}</h1></div>

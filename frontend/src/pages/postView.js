@@ -29,7 +29,7 @@ export default function PostView(props){
     },[])
 
     return(
-        <div>
+        <div style={{backgroundColor:'black'}} >
             <MenuBar/>
             <div className="containerPost">
             {postagem.map((post,key)=>(

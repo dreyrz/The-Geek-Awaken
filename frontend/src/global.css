@@ -5,9 +5,12 @@
 }
 body{
     background-color: black;
+    margin-top: 4%;
+    background-image: url(assets/1538894656142.jpg);
+    background-attachment: fixed;
 }
 .page {
     background-color: white;
-    margin:1% 10% 4% 10%;
-    border-radius: 20px;
+    margin: 6% 5% 1% 5%;
+    border-radius: 15px;
 }
