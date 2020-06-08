@@ -69,9 +69,9 @@ export default function PostCatView(){
             <h1>{cat}</h1>
             {obras.map((cat, key) => (           
                 <div key={key}>
-                    <div className="linha"></div>
-                    <div className='card' >
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} ><img className="cardImage" alt='imagem do card' src={cat.imagem} />  </Link>             
+                    <div id="linha"></div>
+                    <div id='card' >
+                        <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} ><img id="cardImage" alt='imagem do card' src={cat.imagem} />  </Link>             
                         <div style={{overflowY:"scroll"}}>
                             <div>
                                 <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}><h2>{cat.nomeDaObra}</h2></Link>
@@ -81,9 +81,7 @@ export default function PostCatView(){
                  </div>
                 </div>
             ))}
-            <div className='verMaisContainer' style={{ cursor: 'pointer' }} >
-                <h1>Ver mais</h1>
-            </div>
+            
         </div>
         </div>
     );

@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;700&display=swap');
+#containerMenu{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index: 999;
+}
 #listaCat{
     list-style-type: none;
     margin: 0;
@@ -12,11 +18,9 @@
     height: 63px;
     overflow: hidden;
     margin-left: 1%;
+    margin-top:0.1%;
 }
-#logo:hover{
-    background-color: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
+
 #logo img {
     margin-top:1%;
     transform:scale(1.7,1.7);
@@ -66,6 +70,7 @@ li div:hover{
 }
 #logar div:hover{
     cursor: auto;
+    background-color: white;
 }
 .listaCat2 li:hover{
     cursor: pointer;
@@ -77,8 +82,12 @@ li div:hover{
 .liCFilho:hover .listaCat2{
     display: block;
 }
-#inicio{
+#catsTitle {
+    color: #333;
+    font: 700 15px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
     margin-left: 5%;
+    padding-top: 2%;
 }
 @media (min-width: 1374px){
     .containerOB h3{
@@ -107,6 +116,53 @@ li div:hover{
         position: absolute;
         margin-top: -45px;
     }
+    #card {
+        margin-left: 5%;
+        margin-top: 1%;
+        width: 70%;
+        display: flex;
+        border-radius:7px;
+        height: 120px;
+    }
+    #cardImageAux {
+        height: 95%;
+        width: 23%;
+        border-radius: 7px;
+        border-width: 1px;
+    }
+    #cardImageAux:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
+    #cardImage {
+            
+        border-radius: 7px;
+        height: 100%;
+        width: 100%;
+    }
+    #cardText {
+        margin-left:5%;
+        height: 80%; 
+        width: 60%;
+        
+    }
+    #cardText h2 {
+        -webkit-font-smoothing: antialised;
+        font: 700 20px Roboto, sans-serif;
+        color: #333;
+        
+        
+    }
+    #cardText h2:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #cardText h4 {  
+        -webkit-font-smoothing: antialised;
+        font: 500 15px Roboto, sans-serif;
+        margin-top: 2%;
+        color: black;
+    }
     
 }
 @media (max-width: 1373px){
@@ -119,30 +175,73 @@ li div:hover{
         margin-left: 6%;
         height: 40px;
         font-family: 'ars-maquette-web', sans-serif;
-        
     }
     .containerOB{
         display:flex;
         justify-content:space-between;
-        margin-right:2%;
-        margin-left:2%;
-        padding-top: 2%;
+        
     }
     .cats{
-        height: 400px;
-        width: 250px;
+        height: 300px;
+        width: 200px;
         cursor: pointer;
-        
     }
     .title{
         background-color: rgba(34,63,90, 0.75);
         position: absolute;
-        margin-top: -44px;
+        margin-top: -43px;
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
+        width: 14%;
+    }
+    #card {
+        margin-left: 5%;
+        margin-top: 1%;
+        width: 70%;
+        display: flex;
+        border-radius:7px;
+        height: 120px;
+    }
+    #cardImageAux {
+        height: 95%;
+        width: 23%;
+        border-radius: 7px;
+        border-width: 1px;
+    }
+    #cardImageAux:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
+    #cardImage {
+            
+        border-radius: 7px;
+        height: 100%;
+        width: 100%;
+    }
+    #cardText {
+        margin-left:5%;
+        height: 80%; 
+        width: 60%;
+        
+    }
+    #cardText h2 {
+        -webkit-font-smoothing: antialised;
+        font: 700 20px Roboto, sans-serif;
+        color: #333;
+        
+        
+    }
+    #cardText h2:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #cardText h4 {  
+        -webkit-font-smoothing: antialised;
+        font: 500 15px Roboto, sans-serif;
+        margin-top: 2%;
+        color: black;
     }
     
-
 }
 @media (max-width: 1148px){
     .containerOB h3{
@@ -157,8 +256,8 @@ li div:hover{
     }
     .containerOB{
         display:flex;
-        align-items: center;
         justify-content:space-between;
+        align-items: center;
         margin-right:0%;
         margin-left:0%;
     }
@@ -173,8 +272,53 @@ li div:hover{
         margin-top: -45px;
         width: 250px;
     }
-    
-    
+    #card {
+        margin-left: 5%;
+        margin-top: 1%;
+        width: 70%;
+        display: flex;
+        border-radius:7px;
+        height: 120px;
+    }
+    #cardImageAux {
+        height: 95%;
+        width: 23%;
+        border-radius: 7px;
+        border-width: 1px;
+    }
+    #cardImageAux:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
+    #cardImage {
+            
+        border-radius: 7px;
+        height: 100%;
+        width: 100%;
+    }
+    #cardText {
+        margin-left:5%;
+        height: 80%; 
+        width: 60%;
+        
+    }
+    #cardText h2 {
+        -webkit-font-smoothing: antialised;
+        font: 700 20px Roboto, sans-serif;
+        color: #333;
+        
+        
+    }
+    #cardText h2:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #cardText h4 {  
+        -webkit-font-smoothing: antialised;
+        font: 500 15px Roboto, sans-serif;
+        margin-top: 2%;
+        color: black;
+    }
 }
 @media (max-width: 1100px){
     .containerOB h3{
@@ -207,6 +351,53 @@ li div:hover{
         margin-top: -45px;
         width: 180px;
     }
+    #card {
+        margin-left: 5%;
+        margin-top: 1%;
+        width: 70%;
+        display: flex;
+        border-radius:7px;
+        height: 120px;
+    }
+    #cardImageAux {
+        height: 95%;
+        width: 23%;
+        border-radius: 7px;
+        border-width: 1px;
+    }
+    #cardImageAux:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
+    #cardImage {
+            
+        border-radius: 7px;
+        height: 100%;
+        width: 100%;
+    }
+    #cardText {
+        margin-left:5%;
+        height: 80%; 
+        width: 60%;
+        
+    }
+    #cardText h2 {
+        -webkit-font-smoothing: antialised;
+        font: 700 20px Roboto, sans-serif;
+        color: #333;
+        
+        
+    }
+    #cardText h2:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #cardText h4 {  
+        -webkit-font-smoothing: antialised;
+        font: 500 15px Roboto, sans-serif;
+        margin-top: 2%;
+        color: black;
+    }
     
 }
 @media (max-width: 821px){
@@ -228,7 +419,7 @@ li div:hover{
     }
     .cats{
         height: 300px;
-        width: 400px;
+        width: 350px;
         cursor: pointer;
         margin-bottom: 5%;
     }
@@ -238,7 +429,51 @@ li div:hover{
         margin-top: -45px;
         width: 400px;
     }
-    
+    #card {
+        margin-left: 5%;
+        margin-top: 1%;
+        width: 70%;
+        display: flex;
+        border-radius:7px;
+        height: 120px;
+    }
+    #cardImageAux {
+        height: 95%;
+        width: 23%;
+        border-radius: 7px;
+        border-width: 1px;
+    }
+    #cardImageAux:hover {
+        cursor: pointer;
+        filter: brightness(90%);
+    }
+    #cardImage {
+            
+        border-radius: 7px;
+        height: 100%;
+        width: 100%;
+    }
+    #cardText {
+        margin-left:5%;
+        height: 80%; 
+        width: 60%;
+    }
+    #cardText h2 {
+        -webkit-font-smoothing: antialised;
+        font: 700 20px Roboto, sans-serif;
+        color: #333;
+    }
+    #cardText h2:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    #cardText h4 {  
+        -webkit-font-smoothing: antialised;
+        font: 500 15px Roboto, sans-serif;
+        margin-top: 2%;
+        color: black;
+    }
+
 }
 .textCat{
     height: 30%;
@@ -258,7 +493,7 @@ li div:hover{
 }
 .socialContainer{
     display:flex;  
-    margin:0 auto;
+    margin-left: auto;
     line-height: 3em;
     margin-top:1%;
     justify-content: space-around;
@@ -298,77 +533,30 @@ li div:hover{
 #containerReviews h1 {
     -webkit-font-smoothing: antialised;
     font: 700 30px Roboto, sans-serif;
-    color: black;
+    color: #333;
     margin-left:5%;
-}
-#card {
-    margin-left: 5%;
-    margin-top: 1%;
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    border-radius:7px;
-    height: 120px;
-}
-#cardImageAux {
-    height: 95%;
-    width: 23%;
-}
-#cardImageAux:hover {
-    cursor: pointer;
-    filter: brightness(90%);
-}
-#cardImage {
-    border: solid;
-    border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.2);
-    border-radius: 7px;
-    height: 100%;
-    width: 100%;
-}
-#cardText {
-    margin-left:5%;
-    height: 80%; 
-    width: 60%;
-    position: relative;
-    overflow: scroll;
-    overflow-x: hidden;
-}
-#cardText h2 {
-    -webkit-font-smoothing: antialised;
-    font: 700 25px Roboto, sans-serif;
-    color: black;
-    transition: filter;
-}
-#cardText h2:hover {
-    cursor:pointer;
-    text-decoration: underline;
 }
 
-#cardText h4 {  
-    -webkit-font-smoothing: antialised;
-    font: 500 15px Roboto, sans-serif;
-    margin-top: 2%;
-    color: black;
-}
-#verMaisContainer {
-    margin-top: 5%; 
-    height: 80px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-#verMaisContainer h1 {
-    color:black;
-    font: 900 40px Roboto, sans-serif;
-    -webkit-font-smoothing: antialised;
-}
 #line{
     height: 1px;
     width: 65%;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
-    margin-top: 1%;
     margin-left: 5%;
+}
+#lineMenu{
+    height: 1px;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.containerTitle h1{
+    -webkit-font-smoothing: antialised;
+    font: 700 40px Roboto, sans-serif;
+    color: white;
+}
+.containerTexto p{
+    -webkit-font-smoothing: antialised;
+    font: 500 16px Roboto, sans-serif;
+    color: white;
 }
 #modalLogin{
     display: flex;
@@ -387,7 +575,6 @@ li div:hover{
     color: #333;
     font: 500 16px Roboto, sans-serif;
     -webkit-font-smoothing: antialised;
-    
 }
 #modalLogin button{
     margin: 3%; 
@@ -406,14 +593,12 @@ li div:hover{
     filter: brightness(90%)
 }
 #modalStyle{
-    overflow: scroll;
-    width: 70%;
+    overflow-y: scroll;
+    width: 100%;
+    padding: 2%;
 }
-#inputImage{
-    display:none;
-}
-#inputImage:hover{
-    cursor: pointer;
+#modalStyle h1 {
+    font: 700 30px Roboto, sans-serif;
 }
 #modalStyle button {
     border: 0;
@@ -426,22 +611,28 @@ li div:hover{
     cursor: pointer;
     filter: brightness(90%)
 }
+#modalStyle textarea{
+    margin:1%;
+    font: 500 16px Roboto, sans-serif;
+}
 #modalStyle input{
     margin:1%;
 }
-.DraftEditor-root {
-    background-color: #fffef7;
-    width:92.5%;
-    padding:1%;
-    height:300px;
-    border: 1px solid rgb(85, 85, 85);
-    overflow: scroll;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    
+#inputImage:hover{
+    cursor: pointer;
 }
-::-webkit-scrollbar {
-    width: 0px; 
-    background: transparent;
+.editor-container{
+    margin-top: 5%; 
+}
+.DraftEditor-root {
+    margin-left: 12%;
+    height: 200px;
+    width:69.5%;
+    padding:3%;   
+    border: 1px solid rgb(85, 85, 85);
+    border-radius: 3px;
+    overflow-y: scroll;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif; 
 }
 

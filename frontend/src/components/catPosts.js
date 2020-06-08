@@ -24,16 +24,19 @@ export default function CatPosts(props){
     },[])
 
     return(
-        <div className="containerOB">
+    <div id='catsTitle' > 
+        <h1>Destaques</h1>
+        <div className="containerOB"  >    
             {vetCats.map((cat,key)=>(
-                <Link to={{pathname:"/postFront",state:{post:cat}}}>
-                    <div key={key} className="cats">
-                        <img className="image" src={cat.imagem} alt=''/>
-                        <div className="title"  ><h3>{cat.titulo}</h3></div>
-                    </div>
-                </Link>
-                
+            <Link to={{pathname:"/postFront",state:{post:cat}}}>
+                <div key={key} className="cats" >
+                    <img className="image" src={cat.imagem}  alt=''/>
+                    <div className="title" ><h3>{cat.titulo}</h3></div>
+                </div>
+            </Link> 
             ))}
-        </div>
+        </div>  
+    </div>
+        
     )
 }

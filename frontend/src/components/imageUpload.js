@@ -1,5 +1,4 @@
 import React from 'react'
-import ImageIcon from '@material-ui/icons/Image';
 
 export default function ImageUploadComponent(props){
     const [image, setImage] = React.useState(null)
@@ -32,12 +31,10 @@ export default function ImageUploadComponent(props){
     }
 
     return(
-        <div style={{float:'left', display:'flex',flexDirection:'column',marginTop:'2.5%',marginLeft:'30%'}}>
+        <div style={{float:'left', display:'flex',flexDirection:'column',marginTop:'2.5%',marginLeft:'35%'}}>
             <label style={{cursor:'pointer'}} >
                 <input id='inputImage' type="file" multiple onChange={handleChange}/>
-                <ImageIcon style={{fontSize:'45'}} />
             </label>
-            
             <button onClick={()=>handleUpload()}>Enviar</button>
         </div>
         
