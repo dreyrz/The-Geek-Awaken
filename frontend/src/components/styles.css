@@ -79,7 +79,6 @@ li div:hover{
 }
 #inicio{
     margin-left: 5%;
-    padding: 3px;
 }
 @media (min-width: 1374px){
     .containerOB h3{
@@ -261,15 +260,6 @@ li div:hover{
     display:flex;  
     margin:0 auto;
     line-height: 3em;
-    padding-left: 20%;
-}
-.social {
-    display:flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: row-reverse;
-    margin-right: 5%;
-    margin-top: 2%;
     margin-top:1%;
     justify-content: space-around;
     padding-left: 5%;
