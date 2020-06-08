@@ -1,6 +1,5 @@
 import React from 'react'
 import MenuBar from "../components/menuBar"
-import Banner from "../components/banner"
 import "./styles.css"
 
 export default function PostFrontView(props){
@@ -25,7 +24,6 @@ export default function PostFrontView(props){
 
     return(
         <div>
-            <Banner/>
             <MenuBar/>
             <div className="containerPost">
             {postagem.map((post,key)=>(

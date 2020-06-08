@@ -1,6 +1,5 @@
 import React from 'react'
 import MenuBar from "../components/menuBar"
-import Banner from "../components/banner"
 import firebase from "../firebase"
 import { Link } from "react-router-dom"
 import "./styles.css"
@@ -64,7 +63,6 @@ export default function PostCatView(){
 
     return(
         <div>
-            <Banner/>
             <MenuBar/>
             <div className='containerReviews'>
             <h1>{cat}</h1>

@@ -1,7 +1,6 @@
 import React from 'react';
 import MenuBar from "./components/menuBar"
 import CatPosts from "./components/catPosts"
-import Banner from "./components/banner"
 import ReviewsRecentes from './components/reviewsR'
 import Modal from '@material-ui/core/Modal';
 import EditorTexto from './components/editorTexto';
