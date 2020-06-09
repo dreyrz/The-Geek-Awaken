@@ -18,6 +18,7 @@ export default function ReviewsRecentes(props) {
         })
         let vetorAux = [];
         let cont = contador
+        vetorPostsFeedID.reverse();
         for(cont; cont<vetorPostsFeedID.length;cont++){
             if(cont<4){
                 vetorAux.push(vetorPostsFeedID[cont])
