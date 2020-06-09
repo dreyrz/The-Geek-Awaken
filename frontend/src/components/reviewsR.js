@@ -58,7 +58,8 @@ export default function ReviewsRecentes(props) {
     }
     return (
         <div id='containerReviews'>
-            <div style={{marginBottom:'3%'}}><h1>Postagens</h1>
+            <div style={{marginBottom:'3%'}}>
+                <h1>Postagens</h1>
             <button onClick={()=>props.openModal()} style={{display: localStorage.getItem('logado') === 'logado' ? "block":"none"}}>Novo</button></div>
             {vetorCats.map((cat, key) => (
            

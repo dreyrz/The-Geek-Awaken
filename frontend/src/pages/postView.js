@@ -28,10 +28,10 @@ export default function PostView(props){
         carregarDados();
     },[])
 
-    return(
-        <div style={{backgroundColor:'black'}} >
-            <MenuBar/>
-            <div className="containerPost">
+    return(<div><MenuBar/>
+        <div style={{backgroundColor:'white', margin:'10% 10% 10% 10%', borderRadius:'15px'}} >
+            
+            <div className="containerPost" >
             {postagem.map((post,key)=>(
                     <>
                         <div className="containerTitle"><h1>{post.titulos}</h1></div>
@@ -41,5 +41,7 @@ export default function PostView(props){
                 ))}
             </div>
         </div>
+    </div>
+        
     );
 }

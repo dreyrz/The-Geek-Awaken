@@ -134,7 +134,6 @@ li div:hover{
         filter: brightness(90%);
     }
     #cardImage {
-            
         border-radius: 7px;
         height: 100%;
         width: 100%;
@@ -143,14 +142,12 @@ li div:hover{
         margin-left:5%;
         height: 80%; 
         width: 60%;
-        
+        overflow: hidden;
     }
     #cardText span {
         -webkit-font-smoothing: antialised;
         font: 700 20px Roboto, sans-serif;
         color: #333;
-        
-        
     }
     #cardText span:hover{
         cursor: pointer;
@@ -161,6 +158,7 @@ li div:hover{
         font: 500 15px Roboto, sans-serif;
         margin-top: 2%;
         color: black;
+        
     }
     
 }
@@ -217,22 +215,22 @@ li div:hover{
         cursor: pointer;
         filter: brightness(90%);
     }
-    #cardImage {
-            
+    #cardImage { 
         border-radius: 7px;
         height: 100%;
-        width: 100%;
+        width:  100%;
     }
     #cardText {
         margin-left:5%;
         height: 80%; 
         width: 60%;
+        overflow-y: scroll;
         
     }
     #cardText span {
         -webkit-font-smoothing: antialised;
         font: 700 20px Roboto, sans-serif;
-        color: #333;  
+        color: #333;
     }
     #cardText span:hover{
         cursor: pointer;
@@ -645,10 +643,28 @@ li div:hover{
 }
 #containerReviews{
     margin-top: 5%;
+    margin-right: 5%;
 }
 #containerReviews h1 {
     -webkit-font-smoothing: antialised;
     font: 700 30px Roboto, sans-serif;
+    color: #333;
+    margin-left:5%;
+    padding-top: 1%;
+}
+#containerReviews span {
+    -webkit-font-smoothing: antialised;
+    font: 700 18px Roboto, sans-serif;
+    color: #333;
+    margin-left:5%;
+}
+#containerReviews span:hover{
+    cursor: pointer; 
+    text-decoration: underline;
+}
+#containerReviews h4 {
+    -webkit-font-smoothing: antialised;
+    font: 500 18px Roboto, sans-serif;
     color: #333;
     margin-left:5%;
 }
@@ -667,12 +683,12 @@ li div:hover{
 .containerTitle h1{
     -webkit-font-smoothing: antialised;
     font: 700 40px Roboto, sans-serif;
-    color: white;
+    color: black;
 }
 .containerTexto p{
     -webkit-font-smoothing: antialised;
-    font: 500 16px Roboto, sans-serif;
-    color: white;
+    font: 500 19px Roboto, sans-serif;
+    color: black;
 }
 #modalLogin{
     display: flex;

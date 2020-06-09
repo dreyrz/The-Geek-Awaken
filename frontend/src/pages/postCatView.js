@@ -62,23 +62,28 @@ export default function PostCatView(){
     }*/
 
     return(
-        <div>
+        <div className='page' style={{minHeight:'700px'}} >
             
             <MenuBar/>
-            <div className='containerReviews'>
+            <div id='containerReviews'>
             <h1>{cat}</h1>
             {obras.map((cat, key) => (           
                 <div key={key}>
-                    <div id="linha"></div>
-                    <div id='card' >
-                        <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}} ><img id="cardImage" alt='imagem do card' src={cat.imagem} />  </Link>             
-                        <div style={{overflowY:"scroll"}}>
-                            <div>
-                                <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}><h2>{cat.nomeDaObra}</h2></Link>
-                                <h4>{cat.sinopse}</h4>
-                            </div>
-                        </div>                      
-                 </div>
+                    
+                    <div id='card' style={{width:'100%',height:'180px'}} >
+                        <div id="cardImageAux">
+                            <Link style={{ textDecoration: 'none', borderRadius:'7px'}} to={{pathname:'/postView', state:{post:cat}}} >
+                                    <img id="cardImage" alt='imagem do card' src={cat.imagem} />             
+                            </Link>  
+                        </div>         
+                        <div id='cardText'>
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}>
+                                 <span>{cat.titulo}</span> 
+                             </Link> 
+                                <p>{cat.sinopse}</p>
+                        </div>      
+                    </div>
+                    <div id="line" style={{width:'98%'}} ></div>
                 </div>
             ))}
             
