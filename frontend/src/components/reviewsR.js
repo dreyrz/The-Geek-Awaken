@@ -11,7 +11,7 @@ export default function ReviewsRecentes(props) {
     async function carregarDados(){
         console.log("carregar dadod")
         let vetorPostsFeedID = []
-        await firebase.database().ref(`posts/feed`).once('value').then(function(snapshot){
+        await firebase.database().ref(`posts/feed`).limitToLast(10).once('value').then(function(snapshot){
             Object.keys(snapshot.val()).forEach(function(postFeed){
                 vetorPostsFeedID.push(snapshot.val()[postFeed])
             })
@@ -61,9 +61,9 @@ export default function ReviewsRecentes(props) {
         <div id='containerReviews'>
             <div style={{marginBottom:'3%'}}><h1>Postagens</h1>
             <button onClick={()=>props.openModal()} style={{display: localStorage.getItem('logado') === 'logado' ? "block":"none"}}>Novo</button></div>
-            {vetorCats.map((cat, key) => (           
+            {vetorCats.map((cat, key) => (
+           
                 <div key={key}>
-                    
                     <div id='card'>
                         <div id="cardImageAux">
                             <Link style={{ textDecoration: 'none', borderRadius:'7px'}} to={{pathname:'/postView', state:{post:cat}}} >
@@ -71,16 +71,19 @@ export default function ReviewsRecentes(props) {
                             </Link>  
                         </div>         
                         <div id='cardText'>
-                            <Link style={{ textDecoration: 'none',backgroundColor:'pink'}} to={{pathname:'/postView', state:{post:cat}}}>
-                                 <h2>{cat.titulo}</h2> 
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}>
+                                 <span>{cat.titulo}</span> 
                              </Link> 
-                                <h4>{cat.sinopse}</h4>
+                                <p>{cat.sinopse}</p>
                         </div>      
                     </div>
                     <div id="line"></div>
                 </div>
             ))}
-            <h4 onClick={()=>verMais()}>Ver Mais</h4>
+            <div className='verMais' onClick={()=>verMais()} >
+                <h4 >Ver Mais</h4>
+            </div>
+            
         </div>
     )
 }

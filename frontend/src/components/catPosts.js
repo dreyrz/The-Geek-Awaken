@@ -25,7 +25,7 @@ export default function CatPosts(props){
 
     return(
     <div> 
-        <h1 style={{color: "#333",marginLeft: "5%",paddingTop: "2%", font:"700 35px Roboto",fontFamily:"sans-serif"}}>Destaques</h1>
+        <h1 className='dest' >Destaques</h1>
         <div className="containerOB"  >    
             {vetCats.map((cat,key)=>(
                 <div>
