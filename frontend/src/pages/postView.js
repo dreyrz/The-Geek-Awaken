@@ -29,7 +29,7 @@ export default function PostView(props){
     },[])
 
     return(<div><MenuBar/>
-        <div style={{backgroundColor:'white', margin:'10% 10% 10% 10%', borderRadius:'15px'}} >
+        <div style={{backgroundColor:'white', margin:'6% 5% 1% 5%', borderRadius:'15px'}} >
             
             <div className="containerPost" >
             {postagem.map((post,key)=>(

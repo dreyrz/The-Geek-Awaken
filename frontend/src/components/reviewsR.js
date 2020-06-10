@@ -72,7 +72,7 @@ export default function ReviewsRecentes(props) {
                         </div>         
                         <div id='cardText'>
                             <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}>
-                                 <span>{cat.titulo}</span> 
+                                 <h2>{cat.titulo}</h2> 
                              </Link> 
                                 <p>{cat.sinopse}</p>
                         </div>      
@@ -81,7 +81,7 @@ export default function ReviewsRecentes(props) {
                 </div>
             ))}
             <div className='verMais' onClick={()=>verMais()} >
-                <h4 >Ver Mais</h4>
+                <h3>Ver mais</h3>
             </div>
             
         </div>

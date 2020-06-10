@@ -227,6 +227,7 @@ export default function App() {
       <div className="page">
         <div><CatPosts posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
         <ReviewsRecentes posts={postsRecentes} openModal={handleOpen}/>
+        
       </div>
       <Modal
         open={open}
