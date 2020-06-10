@@ -260,7 +260,9 @@ export default function App() {
       
       <MenuBar logar={handleLogar}/>
       <div className="page">
-        <div><Slide posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
+        {/*<div><Slide posts={postsRecentes} openModal={handleOpenEditPost}/></div> */}
+        <div><CatPosts posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
+        
         <ReviewsRecentes posts={postsRecentes} openModal={handleOpen}/>
         
       </div>

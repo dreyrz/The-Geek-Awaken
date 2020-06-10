@@ -9,11 +9,24 @@ import logoTGA from '../assets/logoTGA.png'
 
 export default function Slides(props) {
 
-    const slideImages = [
-        logo,
-        teste,
-        logoTGA
-      ];
+  const [vetCats,setVetCats] = React.useState([{imagem:'',titulo:'',id:''}])
+
+   async  function carregarDados(){
+       let vetAux = []
+        await firebase.database().ref('posts/postsFront').once('value').then(function(snapshot){
+                Object.keys(snapshot.val()).forEach(function(postFeed){
+                    vetAux.push({imagem:snapshot.val()[postFeed].imagem,id:postFeed,
+                                titulo:snapshot.val()[postFeed].titulo,titulos:snapshot.val()[postFeed].titulos,
+                                imagens:snapshot.val()[postFeed].fotos,textos:snapshot.val()[postFeed].textos})
+                })
+        })
+        setVetCats(vetAux)
+    }
+    
+    React.useEffect(()=>{
+        carregarDados();
+    },[])
+
 
       const properties = {
         duration: 4000,
@@ -28,27 +41,15 @@ export default function Slides(props) {
         <div className="slideContainer">
 
           <Slide {...properties}>
-            <div className="slide">
-              <div style={{backgroundImage: `url(${slideImages[0]})`}}>
-                <div className='slideTextContainer'>
-                <p>KKKKKKKKKKKKK</p>
+            {vetCats.map((cat,id)=>(
+              <div className="slide">
+                <div style={{backgroundImage: `url(${cat.imagem})`}}>
+                  <div className='slideTextContainer'>
+                     <p>{cat.titulo}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="slide">
-              <div style={{backgroundImage: `url(${slideImages[1]})`}}>
-                <div className='slideTextContainer'>
-                    <p>KKKKKKKKKKKKK</p>
-                </div>
-              </div>
-            </div>
-            <div className="slide">
-              <div style={{backgroundImage: `url(${slideImages[2]})`}}>
-                <div className='slideTextContainer'>
-                    <p>KKKKKKKKKKKKK</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </Slide>
         </div>
       )

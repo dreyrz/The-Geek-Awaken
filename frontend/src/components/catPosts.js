@@ -23,15 +23,8 @@ export default function CatPosts(props){
         carregarDados();
     },[])
 
-    window.onload = function() { 
-        setTimeout(function () {
-            let timeout = document.getElementById("timeout");
-            timeout.className = ""; //Remove a classe hide
-        }, 1500);
-   };
-
     return(
-    <div id='timeout' class='hide'    > 
+    <div> 
         <h1 className='dest' >Destaques</h1>
         <div className="containerOB"  >    
             {vetCats.map((cat,key)=>(
