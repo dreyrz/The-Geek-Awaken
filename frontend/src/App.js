@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuBar from "./components/menuBar"
 import CatPosts from "./components/catPosts"
+import Slide from './components/slide'
 import ReviewsRecentes from './components/reviewsR'
 import Modal from '@material-ui/core/Modal';
 import EditorTexto from './components/editorTexto';
@@ -223,9 +224,10 @@ export default function App() {
   return (
     
     <div className='body' >
+      
       <MenuBar logar={handleLogar}/>
       <div className="page">
-        <div><CatPosts posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
+        <div><Slide posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
         <ReviewsRecentes posts={postsRecentes} openModal={handleOpen}/>
         
       </div>

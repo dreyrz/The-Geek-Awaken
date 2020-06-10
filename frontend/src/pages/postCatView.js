@@ -33,7 +33,7 @@ export default function PostCatView(){
 
             
         }
-        setObras(obrasAux)
+        
         
     }
     

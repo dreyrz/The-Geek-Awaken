@@ -27,7 +27,7 @@ export default function CatPosts(props){
         setTimeout(function () {
             let timeout = document.getElementById("timeout");
             timeout.className = ""; //Remove a classe hide
-        }, 1000);
+        }, 1500);
    };
 
     return(
