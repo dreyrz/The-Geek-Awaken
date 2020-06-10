@@ -11,13 +11,14 @@ export default function ReviewsRecentes(props) {
     async function carregarDados(){
         console.log("carregar dadod")
         let vetorPostsFeedID = []
-        await firebase.database().ref(`posts/feed`).once('value').then(function(snapshot){
+        await firebase.database().ref(`posts/feed`).limitToLast(10).once('value').then(function(snapshot){
             Object.keys(snapshot.val()).forEach(function(postFeed){
                 vetorPostsFeedID.push(snapshot.val()[postFeed])
             })
         })
         let vetorAux = [];
         let cont = contador
+        vetorPostsFeedID.reverse();
         for(cont; cont<vetorPostsFeedID.length;cont++){
             if(cont<4){
                 vetorAux.push(vetorPostsFeedID[cont])
