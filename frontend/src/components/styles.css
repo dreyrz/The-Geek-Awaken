@@ -144,12 +144,12 @@ li div:hover{
         width: 60%;
         overflow: hidden;
     }
-    #cardText span {
+    #cardText h2 {
         -webkit-font-smoothing: antialised;
         font: 700 20px Roboto, sans-serif;
         color: #333;
     }
-    #cardText span:hover{
+    #cardText h2:hover{
         cursor: pointer;
         text-decoration: underline;
     }

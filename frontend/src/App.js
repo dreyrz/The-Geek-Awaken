@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import firebase from './firebase'
 import ImageUpload from './components/imageUpload'
 import './global.css';
@@ -47,6 +49,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 export default function App() {
   const classes = useStyles();
+  const tipos = ['jogos','animes','mangas','filmes','series']
+  const [checkboxState,setCheckoxState]= React.useState([false,false,false,false,false,])
   const [open, setOpen] = React.useState(false);
   const [openLogar, setOpenLogar] = React.useState(false);
   const [openEditPost, setOpenEditPost] = React.useState(false);
@@ -69,15 +73,21 @@ export default function App() {
   const [vetorSecoes, setVetorSecoes] = React.useState([
     <EditorTexto images={image} sendImage={salvarImagem} postagemInfo={postagemInfo}  salvar={salvarPostagem}/>
   ])
+
+  function handleChangeCheckbox(key){
+    let aux = checkboxState.slice()
+    aux[key] = !checkboxState[key]
+    setCheckoxState(aux)
+  };
   function handleOpen(){
     setOpen(true);
     localStorage.setItem('url',JSON.stringify([]))
   }
   function handleClose(){
-    localStorage.removeItem('logado')
+    //localStorage.removeItem('logado')
     setOpen(false);
     setCategorias([])
-    setCategorias('')
+    setCategoria('')
   }
   function handleOpenLogar(){
     setOpenLogar(true);
@@ -182,7 +192,29 @@ export default function App() {
         for(let t = 0; t<categorias.length;t++){
           auxCategoria.push({nome:categorias[t],existe:false})
         }
-        for(let i = 0; i<auxCategoria.length;i++){
+        for(let o = 0; o < checkboxState.length; o++){
+          if(checkboxState[o] === true){
+            for(let i = 0; i<auxCategoria.length;i++){
+              let achou = false
+              for(let x=0;x<vetorPostsFeedID.length;x++){
+                if(auxCategoria[i].nome == vetorPostsFeedID[x]){
+                  achou = true
+                  console.log("entrou if")
+                  var upar = {}
+                  upar[`/posts/categorias/${tipos[o]}/${auxCategoria[i].nome}/`+ mainTitutlo] = {titulo:mainTitutlo,imagem:urlMainImage,id:mainTitutlo,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
+                  await firebase.database().ref().update(upar)
+                }
+              }
+              if(achou===false){
+                console.log("else")
+                var upar = {}
+                upar[`/posts/categorias/${tipos[o]}/${auxCategoria[i].nome}/`+ mainTitutlo] = {titulo:mainTitutlo,imagem:urlMainImage,id:mainTitutlo,sinopse:sinopse,fotos:objFotos,titulos:objTitulos,textos:objTextos}
+                await firebase.database().ref().update(upar)
+              }
+            }
+          }
+        }
+        /*for(let i = 0; i<auxCategoria.length;i++){
           let achou = false
           for(let x=0;x<vetorPostsFeedID.length;x++){
             if(auxCategoria[i].nome == vetorPostsFeedID[x]){
@@ -200,6 +232,7 @@ export default function App() {
             await firebase.database().ref().update(upar)
           }
         }
+        */
        window.location.reload()
     }
   }
@@ -227,7 +260,9 @@ export default function App() {
       
       <MenuBar logar={handleLogar}/>
       <div className="page">
-        <div><Slide posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
+        {/*<div><Slide posts={postsRecentes} openModal={handleOpenEditPost}/></div> */}
+        <div><CatPosts posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
+        
         <ReviewsRecentes posts={postsRecentes} openModal={handleOpen}/>
         
       </div>
@@ -246,6 +281,19 @@ export default function App() {
               <input onChange={handleMainTitulo} placeholder='Título do card/carrossel' 
               style={{height:'60px',width:'60%',fontSize:'20px',padding:'1%'}} 
               maxLength='30'/>
+              <h1>Tipo do Post</h1>
+              {tipos.map((tipo,key)=>(
+                                        <FormControlLabel
+                                        key={key}
+                                        label={tipo}
+                                        control={<Checkbox
+                                                checked={checkboxState[key]}
+                                                onChange={()=>handleChangeCheckbox(key)}
+                                                name={tipo}
+                                                color="primary"
+                                                />}
+                                        />
+                                      ))}
               <h1 style={{marginTop:'3%'}} >Categorias</h1>
               <input onChange={handleCategoria} placeholder='Nome da categoria' 
               style={{height:'60px',width:'60%',fontSize:'20px',padding:'1%'}} 
