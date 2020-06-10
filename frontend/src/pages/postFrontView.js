@@ -23,11 +23,12 @@ export default function PostFrontView(props){
     React.useEffect(()=>{
         carregarDados();
     },[])
+    
 
     return(
         <div>
             <MenuBar/>
-            <div className="containerPost" style={{backgroundColor:'black',height:'100%',width:'100%'}} >
+            <div className="containerPost" style={{backgroundColor:'white', margin:'6% 5% 1% 5%', borderRadius:'15px'}} >
             {postagem.map((post,key)=>(
                     <>
                         <div className="containerTitle"><h1>{post.titulos}</h1></div>
@@ -37,5 +38,8 @@ export default function PostFrontView(props){
                 ))}
             </div>
         </div>
-    );
+    )
+
+
+    
 }

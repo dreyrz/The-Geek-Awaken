@@ -199,8 +199,8 @@ li div:hover{
     }
     #card {
         margin-left: 5%;
-        margin-top: 1%;
-        width: 70%;
+        margin-top: 2%;
+        width: 80%;
         display: flex;
         border-radius:7px;
         height: 120px;
@@ -219,17 +219,19 @@ li div:hover{
         border-radius: 7px;
         height: 100%;
         width:  100%;
+       
     }
     #cardText {
         margin-left:5%;
-        height: 80%; 
+        height: 93%; 
         width: 60%;
-        overflow-y: scroll;
-        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
-    #cardText span {
+    #cardText h2 {
         -webkit-font-smoothing: antialised;
-        font: 700 20px Roboto, sans-serif;
+        font: 700 23px Roboto, sans-serif;
         color: #333;
     }
     #cardText span:hover{
@@ -238,13 +240,18 @@ li div:hover{
     }
     #cardText p {  
         -webkit-font-smoothing: antialised;
-        font: 500 15px Roboto, sans-serif;
+        font: 500 19px Roboto, sans-serif;
         margin-top: 2%;
         color: black;
     }
     
 }
 @media (max-width: 1148px){
+    #socialContainer{
+        display:flex; 
+        margin-top: 1%;
+        padding-right: 20%
+    }
     .dest {
         color: #333;
         margin-left: 5%;
@@ -587,6 +594,14 @@ li div:hover{
         margin-top: 2%;
         color: black;
     }
+    #socialContainer{
+        display:flex;
+        float: left; 
+        justify-content:space-evenly;
+        cursor:auto;
+        margin-top: 1%;
+        margin-left: 20%;
+    }
 
 }
 .textCat{
@@ -605,13 +620,11 @@ li div:hover{
     overflow: hidden;
     background-color: #414141;
 }
-.socialContainer{
-    display:flex;  
-    margin-left: auto;
-    line-height: 3em;
-    margin-top:1%;
-    justify-content: space-around;
-    padding-left: 5%;
+#socialContainer{
+    display:flex; 
+    justify-content:space-evenly;
+    cursor:auto;
+    margin-top: 1%;
 }
 .ig {
     cursor: pointer;
@@ -625,7 +638,7 @@ li div:hover{
 .yt {
     cursor: pointer;
     transition: color;
-    color:black;
+    color:black;  
 }
 .yt:hover {
     color : #ff0000;
@@ -635,7 +648,6 @@ li div:hover{
     cursor: pointer;
     transition: color;
     color: black;
-    
 }
 .tt:hover{
     color: #1da1f2;
@@ -643,8 +655,8 @@ li div:hover{
 }
 #containerReviews{
     margin-top: 5%;
-    margin-right: 5%;
 }
+
 #containerReviews h1 {
     -webkit-font-smoothing: antialised;
     font: 700 30px Roboto, sans-serif;
@@ -652,28 +664,14 @@ li div:hover{
     margin-left:5%;
     padding-top: 1%;
 }
-#containerReviews span {
-    -webkit-font-smoothing: antialised;
-    font: 700 18px Roboto, sans-serif;
-    color: #333;
-    margin-left:5%;
-}
-#containerReviews span:hover{
-    cursor: pointer; 
-    text-decoration: underline;
-}
-#containerReviews h4 {
-    -webkit-font-smoothing: antialised;
-    font: 500 18px Roboto, sans-serif;
-    color: #333;
-    margin-left:5%;
-}
+
 
 #line{
     height: 1px;
     width: 65%;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     margin-left: 5%;
+    margin-top: 1%;
 }
 #lineMenu{
     height: 1px;
@@ -768,24 +766,53 @@ li div:hover{
     font-family: 'Roboto', sans-serif; 
 }
 .verMais{
-    background-color: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 80px;
+    margin-top: 0.5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    justify-self: center;
-    justify-items: center;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    transition: filter 0.2s; 
 }
 .verMais:hover {
     cursor: pointer;
+    filter: brightness(80%)
 }
-.verMais h4{
+.verMais h3{
     color: white;
     font: 700 40px Roboto, sans-serif;
     -webkit-font-smoothing: antialised;
-    transition: filter; 
 }
+.hide {
+    display: none;
+ }
+ .slideContainer {
+    width: 80%;
+    margin: auto;
+    padding-top: 3%;
+}
+.slide > div {
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    height: 300px;
+}
+   
+.slideTextContainer {
+    width: 100%;
+    height: 20%;
+    background-color: rgba(34,63,90, 0.75);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font: 500 25px Roboto, sans-serif;
+    -webkit-font-smoothing: antialised;
+}
+
+   
+  

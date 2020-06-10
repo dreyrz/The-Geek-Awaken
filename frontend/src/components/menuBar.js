@@ -71,16 +71,30 @@ export default function menuBar(props){
                         </ul>
                     </li>
                     <li className="liCFilho" id="logar" onClick={()=>props.logar()}><div></div></li>
-                    <div className="socialContainer">
-                        <a  target="_blank" rel="noopener noreferrer" href='https://www.instagram.com/the_geek_awaken/' >
-                                    <InstagramIcon className="ig" style={{fontSize: socialFont() }} />
-                        </a>  
-                        <a  target="_blank" rel="noopener noreferrer" href='https://www.youtube.com/channel/UC-rFR4rU0OeHCWzOdVrywWA'>
-                                    <YouTubeIcon className="yt" style={{fontSize: socialFont() }} />
-                        </a>
-                        <a  target="_blank" rel="noopener noreferrer" href='https://twitter.com/TheGeekAwaken'>
-                                    <TwitterIcon className="tt" style={{fontSize: socialFont() }} />
-                        </a>
+                    <div  id='socialContainer' >
+                        <div style={{marginLeft:'30%'}} >
+                            <a  target="_blank" rel="noopener noreferrer" 
+                                href='https://www.instagram.com/the_geek_awaken/' >
+                                <InstagramIcon className="ig"
+                                style={{fontSize: socialFont()  }} />
+                            </a>
+                        </div>
+                        
+                        <div style={{marginLeft:'10%',marginRight:'10%'}} >
+                            <a  target="_blank" rel="noopener noreferrer" 
+                                href='https://www.youtube.com/channel/UC-rFR4rU0OeHCWzOdVrywWA'>
+                                <YouTubeIcon className="yt" 
+                                style={{fontSize: socialFont() }} />
+                            </a>
+                        </div>
+                        <div style={{marginRight:'20%'}} >
+                            <a target="_blank" rel="noopener noreferrer" 
+                                href='https://twitter.com/TheGeekAwaken'>
+                                <TwitterIcon className="tt" 
+                                style={{fontSize: socialFont() }} />
+                            </a>
+                        </div>
+                        
                     </div>      
                 </ul>
                 <div id="lineMenu"></div>               

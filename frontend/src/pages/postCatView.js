@@ -28,9 +28,12 @@ export default function PostCatView(props){
             })
             setObras(obrasAux)
 
+            
         }
+        
+        
     }
-
+    
     React.useEffect(()=>{
         carregarDados();
     },[props.location.state])
@@ -60,11 +63,12 @@ export default function PostCatView(props){
         aux != 0 ?  setContador(contador+aux) : setContador(contador+4)
         setVetorCats(vetorAux)
     }*/
-
+    
     return(
+        <div><MenuBar/>
         <div className='page' style={{minHeight:'700px'}} >
             
-            <MenuBar/>
+            
             <div id='containerReviews'>
             <h1>{cat}</h1>
             {obras.map((cat, key) => (           
@@ -78,7 +82,7 @@ export default function PostCatView(props){
                         </div>         
                         <div id='cardText'>
                             <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}>
-                                 <span>{cat.titulo}</span> 
+                                 <h2>{cat.nomeDaObra}</h2> 
                              </Link> 
                                 <p>{cat.sinopse}</p>
                         </div>      
@@ -88,6 +92,6 @@ export default function PostCatView(props){
             ))}
             
         </div>
-        </div>
+        </div></div>
     );
 }
