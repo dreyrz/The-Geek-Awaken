@@ -4,20 +4,19 @@ import firebase from "../firebase"
 import { Link } from "react-router-dom"
 import "./styles.css"
 
-export default function PostCatView(){
+export default function PostCatView(props){
 
     const [obras, setObras] = React.useState([])
     const [cat, setCat] = React.useState()
 
     async function carregarDados(){
         let str = '';
-        for(var i =0; i<window.location.search.length;i++){
-            if(i>3){
-                str = `${str}` + `${window.location.search[i]}`
-            }
-        }
+        let title = ''
+        console.log(props)
+        str=props.location.state.url
+        title = props.location.state.title
         if(str !== ''){
-            setCat(str)
+            setCat(title)
             let obrasAux = [];
             await firebase.database().ref(`posts/categorias/${str.toLowerCase()}`).limitToLast(10).once('value').
             then(function(snapshot){
@@ -26,8 +25,6 @@ export default function PostCatView(){
                         titulos:snapshot.val()[postFeed].titulos,textos:snapshot.val()[postFeed].textos,
                         imagem:snapshot.val()[postFeed].imagem,sinopse:snapshot.val()[postFeed].sinopse,id:snapshot.val()[postFeed].id})
                 })
-    
-                
             })
             setObras(obrasAux)
 
@@ -36,7 +33,7 @@ export default function PostCatView(){
 
     React.useEffect(()=>{
         carregarDados();
-    },[])
+    },[props.location.state])
 
     /*function verMais() {
         let vetorAux = [];
