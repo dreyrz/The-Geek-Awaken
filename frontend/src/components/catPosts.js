@@ -28,10 +28,10 @@ export default function CatPosts(props){
         <h1 className='dest' >Destaques</h1>
         <div className="containerOB"  >    
             {vetCats.map((cat,key)=>(
-                <div>
+                <div key={key} >
                     <button style={{display: localStorage.getItem('logado') === 'logado' ? "block":"none"}} onClick={()=>props.openModal(key)}>clique</button>
-                    <Link to={{pathname:"/postFront",state:{post:cat}}}>
-                        <div key={key} className="cats" >
+                    <Link to={{pathname:`/postFront/postFront${key+1}`,state:{post:cat}}}>
+                        <div className="cats" >
                             <img className="image" src={cat.imagem}  alt=''/>
                             <div className="title" ><h3>{cat.titulo}</h3></div>
                         </div>

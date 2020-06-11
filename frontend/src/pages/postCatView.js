@@ -76,12 +76,12 @@ export default function PostCatView(props){
                     
                     <div id='card' style={{width:'100%',height:'180px'}} >
                         <div id="cardImageAux">
-                            <Link style={{ textDecoration: 'none', borderRadius:'7px'}} to={{pathname:'/postView', state:{post:cat}}} >
+                            <Link style={{ textDecoration: 'none', borderRadius:'7px'}} to={{pathname:`/postView/${cat.id}`, state:{post:cat}}} >
                                     <img id="cardImage" alt='imagem do card' src={cat.imagem} />             
                             </Link>  
                         </div>         
                         <div id='cardText'>
-                            <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}>
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:`/postView/${cat.id}`, state:{post:cat}}}>
                                  <h2>{cat.nomeDaObra}</h2> 
                              </Link> 
                                 <p>{cat.sinopse}</p>

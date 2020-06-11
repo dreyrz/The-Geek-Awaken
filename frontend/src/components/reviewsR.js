@@ -67,12 +67,12 @@ export default function ReviewsRecentes(props) {
                 <div key={key}>
                     <div id='card'>
                         <div id="cardImageAux">
-                            <Link style={{ textDecoration: 'none', borderRadius:'7px'}} to={{pathname:'/postView', state:{post:cat}}} >
+                            <Link style={{ textDecoration: 'none', borderRadius:'7px'}} to={{pathname:`/postView/${cat.id}`, state:{post:cat}}} >
                                     <img id="cardImage" alt='imagem do card' src={cat.imagem} />             
                             </Link>  
                         </div>         
                         <div id='cardText'>
-                            <Link style={{ textDecoration: 'none' }} to={{pathname:'/postView', state:{post:cat}}}>
+                            <Link style={{ textDecoration: 'none' }} to={{pathname:`/postView/${cat.id}`, state:{post:cat}}}>
                                  <h2>{cat.titulo}</h2> 
                              </Link> 
                                 <p>{cat.sinopse}</p>
