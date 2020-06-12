@@ -261,7 +261,7 @@ export default function App() {
       <MenuBar logar={handleLogar}/>
       <div className="page">
         {/*<div><Slide posts={postsRecentes} openModal={handleOpenEditPost}/></div> */}
-        <div><CatPosts posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
+        <div><Slide posts={postsRecentes} openModal={handleOpenEditPost}/></div> 
         
         <ReviewsRecentes posts={postsRecentes} openModal={handleOpen}/>
         
@@ -310,7 +310,7 @@ export default function App() {
               <h1 style={{marginTop:'3%'}} >Sinopse do card/carrossel</h1>
               <textarea onChange={e=>setSinopse(e.target.value)} placeholder='Sinopse do card/carrossel' 
               style={{height:'70px',width:'60%',fontSize:'20px',resize:'none',padding:'1%'}} 
-              maxLength='180' />
+              maxLength='200' /> //OBERTRAN, MANTENHA ESSE MÁXIMO DE CARACTERES POIS JEAN PEDIU
             
             {vetorSecoes.map((secao,key)=>(
               <div key={key}>

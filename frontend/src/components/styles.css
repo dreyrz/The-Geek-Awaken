@@ -206,8 +206,8 @@ li div:hover{
         height: 120px;
     }
     #cardImageAux {
-        height: 95%;
-        width: 23%;
+        height: auto;
+        width: 20%;
         border-radius: 7px;
         border-width: 1px;
     }
@@ -219,7 +219,6 @@ li div:hover{
         border-radius: 7px;
         height: 100%;
         width:  100%;
-       
     }
     #cardText {
         margin-left:5%;
@@ -654,7 +653,7 @@ li div:hover{
     cursor: pointer;
 }
 #containerReviews{
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 #containerReviews h1 {
@@ -792,15 +791,21 @@ li div:hover{
  .slideContainer {
     width: 80%;
     margin: auto;
-    padding-top: 3%;
+    padding-top: 2%;
 }
 .slide > div {
     display: flex;
     align-items: flex-end;
     background-size: cover;
-    height: 300px;
+    height: 350px;
+    
 }
-   
+.slideImage{
+    width: 100%;
+    
+    margin: auto;
+}   
+
 .slideTextContainer {
     width: 100%;
     height: 20%;

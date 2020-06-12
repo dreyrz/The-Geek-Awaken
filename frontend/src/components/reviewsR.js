@@ -20,12 +20,12 @@ export default function ReviewsRecentes(props) {
         let cont = contador
         vetorPostsFeedID.reverse();
         for(cont; cont<vetorPostsFeedID.length;cont++){
-            if(cont<4){
+            if(cont<8){
                 vetorAux.push(vetorPostsFeedID[cont])
             }
             props.posts.push(vetorPostsFeedID[cont])
         }
-        setContador(4)
+        setContador(8)
         setVetorCats(vetorAux);
         setVetorStorage(vetorPostsFeedID)
     }
@@ -39,7 +39,7 @@ export default function ReviewsRecentes(props) {
         let aux = 0
         let i = 0
         vetorAux=[...vetorCats]
-        if(vetorStorage.length - cont < 4){
+        if(vetorStorage.length - cont < 8){
             aux = vetorStorage.length - cont
             for(let t=0; t<aux;t++){
                 vetorAux.push(vetorStorage[cont])
@@ -48,7 +48,7 @@ export default function ReviewsRecentes(props) {
         }
         else{
             for(cont; cont<vetorStorage.length;cont++){
-                if(i<4){
+                if(i<8){
                     vetorAux.push(vetorStorage[cont])
                 }
                 i++
