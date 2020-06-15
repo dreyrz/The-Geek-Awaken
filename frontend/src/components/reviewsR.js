@@ -9,7 +9,7 @@ export default function ReviewsRecentes(props) {
     const [contador, setContador] = React.useState(0)
     
     async function carregarDados(){
-        console.log("carregar dadod")
+      
         let vetorPostsFeedID = []
         await firebase.database().ref(`posts/feed`).limitToLast(10).once('value').then(function(snapshot){
             Object.keys(snapshot.val()).forEach(function(postFeed){

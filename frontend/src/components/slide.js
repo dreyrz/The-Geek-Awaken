@@ -4,7 +4,7 @@ import firebase from '../firebase';
 import { Slide } from 'react-slideshow-image';
 import { Link } from 'react-router-dom';
 
-export default function Slides(props) {
+export default function Slides() {
 
   const [vetCats,setVetCats] = React.useState([{imagem:'',titulo:'',id:''}])
 

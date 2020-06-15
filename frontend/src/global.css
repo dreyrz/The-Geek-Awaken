@@ -6,11 +6,11 @@
 body{
     background-color: black;
     margin-top: 4%;
-    background-image: url(assets/1538894656142.jpg);
+    background-image: url(assets/bodyBackground.jpg);
     background-attachment: fixed;
 }
 .page {
     background-color: white;
-    margin: 6% 5% 1% 5%;
+    margin: 90px 5% 1% 5%;
     border-radius: 15px;
 }

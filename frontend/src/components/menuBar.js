@@ -5,7 +5,8 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Drawer from './drawer'
 
 export default function menuBar(props){
     const menusJogos = ["Puzzle","Ação"]
@@ -15,25 +16,52 @@ export default function menuBar(props){
     const menusAnimes = ["Shounen", "Ação"]
 
     function socialFont() {
-        if (window.matchMedia("(min-width: 1374px)").matches) {    
+        if (window.matchMedia('(min-width: 1374px)').matches) {    
             return 40;
-        } else if (window.matchMedia('(max-width: 1373px)')){
+        } else if (window.matchMedia('(max-width: 1373px)').matches){
+            
             return 30;
-        } else if (window.matchMedia(('max-width: 1148px'))){
+        } else if (window.matchMedia(('max-width: 1148px')).matches){
               return 20;
-        } else if (window.matchMedia(('max-width: 1100px'))){
+        } else if (window.matchMedia(('max-width: 1100px')).matches){
             return 10;
-        } else if (window.matchMedia(('max-width: 821px'))){
+        } else if (window.matchMedia('screen and (max-width: 821px)').matches){
+            
             return 5;
         }
     }
+    function url (str) {
+        var map = {
+            '-' : ' ',
+            '-' : '_',
+            'a' : 'á|à|ã|â|À|Á|Ã|Â',
+            'e' : 'é|è|ê|É|È|Ê',
+            'i' : 'í|ì|î|Í|Ì|Î',
+            'o' : 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
+            'u' : 'ú|ù|û|ü|Ú|Ù|Û|Ü',
+            'c' : 'ç|Ç',
+            'n' : 'ñ|Ñ'
+        };
+        
+        str = str.toLowerCase();
+        
+        for (var pattern in map) {
+            str = str.replace(new RegExp(map[pattern], 'g'), pattern);
+        };
+    
+        return str;
+    };
+    
     
      return (
          <header id="containerMenu">
                 <ul id="listaCat">
-                      <li id='logo'>
-                        <img src={logo} alt='logo'></img>      
-                    </li>
+                
+                    <Drawer props={socialFont()+10} />
+            
+                <li id='logo'>
+                    <img src={logo} alt='logo'></img>      
+                </li>
                     <li onClick={()=>(window.location=`/`)}  id="inicio" className="liCFilho"><div>Início</div></li>
                     <li className="liCFilho"><div>Jogos<ArrowDropDownIcon/></div>
                         <ul className="listaCat2">
@@ -64,11 +92,7 @@ export default function menuBar(props){
                         </ul>
                     </li>
                     <li className="liCFilho"><div>Séries<ArrowDropDownIcon/></div>
-                        <ul className="listaCat2">
-                            {menusSeries.map((series,key)=>(
-                                <Link to={{pathname:`/postCatView`, state:{url:`/series/${series == "Ação" ? 'acao':series}`,title:series}}}><li key={key}><p>{series}</p></li></Link>
-                            ))}   
-                        </ul>
+                        
                     </li>
                     <li className="liCFilho" id="logar" onClick={()=>props.logar()}><div></div></li>
                     <div  id='socialContainer' >
@@ -97,7 +121,7 @@ export default function menuBar(props){
                         
                     </div>      
                 </ul>
-                <div id="lineMenu"></div>               
+                <div id="lineMenu"></div>          
         </header>
      )
 }
